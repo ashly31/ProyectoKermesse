@@ -10,7 +10,7 @@ class Dt_usuario extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_usuario;";
+			$querySQL = "select * from dbkermesse.tbl_usuario WHERE estado<>3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();

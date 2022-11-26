@@ -29,6 +29,7 @@ $varMsj = 0;
 if(isset($_GET['$varMsj']))
 {
     $varMsj = $_GET['varMsj'];
+
 }
 ?>
 
@@ -431,13 +432,14 @@ if(isset($_GET['$varMsj']))
                                                 <td><?php echo $r->__GET('email');  ?></td>
                                                 <td><?php echo  $estadoUser ?></td>
                                                 <td>
-                                                    <a href="usuario/visualizar_usuario.php?viewU=<?php echo $r->__GET('id_usuario'); ?>" target="_blank" title="Visualizar los datos">
+                                                    <a href="usuario/visualizar_usuario.php?viewU=<?php echo $r->__GET('id_usuario'); ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="usuario/editar_usuario.php" target="_blank" title="Modificar los datos">
+                                                    <a href="usuario/editar_usuario.php"  title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="usuario/eliminar_usuario.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_Usuario.php?delUser=<?php echo $r->__GET('id_usuario');
+                                                    ?>"  title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
