@@ -36,26 +36,108 @@ class Dt_listaPrecio extends Conexion
 		}
 	}
 
-	/* public function insertarUsuario(tbl_usuario $user){
-		try{
-			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
-					VALUES(?,?,?,?,?,?)";
-			
-			$this->myCon->prepare($sql)->execute(array(
-				$user->__GET('usuario'),
-				$user->__GET('pwd'),
-				$user->__GET('nombres'),
-				$user->__GET('apellidos'),
-				$user->__GET('email'),
-				$user->__GET('estado')));
-			
-			$this->myCon = parent::desconectar();
+	public function insertarLP(Tbl_lista_precio $lp)
+	{
+	   try{
+		   $this->myCon = parent::conectar();
+		   $sql = "INSERT INTO dbkermesse.tbl_lista_precio (id_lista_precio, id_kermesse, 
+		   nombre, descripcion, estado)
+				   VALUES(?,?,?,?,?)";
+		   
+		   $this->myCon->prepare($sql)
+			->execute(array(
+			   $lp->__GET('id_lista_precio'),
+			   $lp->__GET('id_kermesse'),
+			   $lp->__GET('nombre'),
+			   $lp->__GET('descripcion'),
+			   $lp->__GET('estado')));
+		   
+		   $this->myCon = parent::desconectar();
 
-		}catch (Exception $e){
+	   }catch (Exception $e){
+		   die($e->getMessage());
+	   }
+   } 
+
+   public function getLPByID($id)
+	{
+		try
+		{
+			$this->myCon = parent::conectar();
+			$querySQL = "SELECT * FROM dbkermesse.tbl_lista_precio WHERE id_lista_precio = ?;";
+			$stm = $this->myCon->prepare($querySQL);
+			$stm->execute(array($id));
+
+			$r = $stm->fetch(PDO::FETCH_OBJ);
+
+			$lp = new tbl_moneda();
+
+			//_SET(CAMPOBD, atributoEntidad)
+			$lp->__SET('id_lista_precio', $r->id_lista_precio);
+			$lp->__SET('id_kermesse', $r->id_kermesse);
+			$lp->__SET('nombre', $r->nombre);
+			$lp->__SET('descripcion', $r->descripcion);
+			$lp->__SET('estado', $r->estado);
+
+			$this->myCon = parent::desconectar();
+			return $lp;
+		}
+		catch (Exception $e) 
+		{
 			die($e->getMessage());
 		}
-	} */
+	}
+
+	public function editLP(Tbl_lista_precio $lp)
+	{
+		try
+		{
+			$this->myCon = parent::conectar();
+			$sql = "UPDATE dbkermesse.tbl_lista_precio SET
+						id_kermesse =?,
+						nombre =?,
+						descripcion = ?,
+						estado = ?
+					WHERE id_lista_precio = ?";
+
+				$this->myCon->prepare($sql)
+			     ->execute(
+				array(
+					$lp->__GET('id_kermesse'),
+			        $lp->__GET('nombre'),
+			        $lp->__GET('descripcion'),
+			        $lp->__GET('estado'),
+					$lp->__GET('id_lista_precio')	
+				));
+				 $this->myCon = parent::desconectar();
+		}
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
+
+	public function deleteLP($id)
+	{
+		try
+		{
+			$this->myCon = parent::conectar();
+			$sql = "UPDATE dbkermesse.tbl_lista_precio SET
+						estado = 3
+				    WHERE id_lista_precio = ?";
+
+			$stm = $this->myCon->prepare($sql);
+			$stm->execute(array($id));
+
+			$this->myCon = parent::desconectar();
+		}
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
 
 	}
 /*
