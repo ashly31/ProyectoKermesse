@@ -25,6 +25,7 @@ class Dt_listaPrecioDet extends Conexion
 				$lpd->__SET('id_lista_precio', $r->id_lista_precio);
 				$lpd->__SET('id_producto', $r->id_producto);
 				$lpd->__SET('precio_venta', $r->precio_venta);
+				$lpd->__SET('estado', $r->estado);
 				$result[] = $lpd;
 			}
 			$this->myCon = parent::desconectar();
@@ -35,26 +36,108 @@ class Dt_listaPrecioDet extends Conexion
 		}
 	}
 
-	/* public function insertarUsuario(tbl_usuario $user){
+	public function insertarLPDet(Tbl_listaprecio_det $lpd)
+	 {
 		try{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
-					VALUES(?,?,?,?,?,?)";
+			$sql = "INSERT INTO dbkermesse.tbl_listaprecio_det (id_listaprecio_det, id_lista_precio,
+			id_producto, precio_venta, estado)
+					VALUES(?,?,?,?,?)";
 			
-			$this->myCon->prepare($sql)->execute(array(
-				$user->__GET('usuario'),
-				$user->__GET('pwd'),
-				$user->__GET('nombres'),
-				$user->__GET('apellidos'),
-				$user->__GET('email'),
-				$user->__GET('estado')));
+			$this->myCon->prepare($sql)
+			 ->execute(array(
+				$lpd->__GET('id_listaprecio_det'),
+				$lpd->__GET('id_lista_precio'),
+				$lpd->__GET('id_producto'),
+				$lpd->__GET('precio_venta'),
+				$lpd->__GET('estado')));
 			
 			$this->myCon = parent::desconectar();
 
 		}catch (Exception $e){
 			die($e->getMessage());
 		}
-	} */
+	}
+
+	public function getLPDByID($id)
+	{
+		try
+		{
+			$this->myCon = parent::conectar();
+			$querySQL = "SELECT * FROM dbkermesse.tbl_listaprecio_det WHERE id_listaprecio_det = ?;";
+			$stm = $this->myCon->prepare($querySQL);
+			$stm->execute(array($id));
+
+			$r = $stm->fetch(PDO::FETCH_OBJ);
+
+			$lpd = new Tbl_listaprecio_det;
+
+			//_SET(CAMPOBD, atributoEntidad)
+			$lpd->__SET('id_listaprecio_det', $r->id_listaprecio_det);
+			$lpd->__SET('id_lista_precio', $r->id_lista_precio);
+			$lpd->__SET('id_producto', $r->id_producto);
+			$lpd->__SET('precio_venta', $r->precio_venta);
+			$lpd->__SET('estado', $r->estado);
+
+			$this->myCon = parent::desconectar();
+			return $lpd;
+		}
+		catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
+	public function editLPDet(Tbl_listaprecio_det $lpd)
+	{
+		try
+		{
+			$this->myCon = parent::conectar();
+			$sql = "UPDATE dbkermesse.tbl_listaprecio_det SET
+						id_lista_precio =?,
+						id_producto = ?,
+						precio_venta = ?,
+						estado = ?
+					WHERE id_listaprecio_det = ?";
+
+				$this->myCon->prepare($sql)
+			     ->execute(
+				array(
+					$lpd->__GET('id_lista_precio'),
+				    $lpd->__GET('id_producto'),
+				    $lpd->__GET('precio_venta'),
+				    $lpd->__GET('estado')
+				)
+				 );
+				 $this->myCon = parent::desconectar();
+		}
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
+
+	public function deleteLPDet($id)
+	{
+		try
+		{
+			$this->myCon = parent::conectar();
+			$sql = "UPDATE dbkermesse.tbl_listaprecio_det SET
+						estado = 3
+				    WHERE id_listaprecio_det = ?";
+
+			$stm = $this->myCon->prepare($sql);
+			$stm->execute(array($id));
+
+			$this->myCon = parent::desconectar();
+		}
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
 
 	}
 /*

@@ -7,7 +7,7 @@ include './arqueocaja/visualizar_arqueoCaja.php';
 include './arqueocaja/editar_arqueoCaja.php';
 include './arqueocaja/eliminar_arqueoCaja.php';
 
-$ac = new Dt_arqueoCaja();
+$dac = new Dt_arqueoCaja();
 
 //variable de control msj
 $varMsj = 0;
@@ -141,9 +141,6 @@ if (isset($varMsj)) {
                         <a class="collapse-item" href="registro.php">Registro</a>
                         <a class="collapse-item" href="olvido_Contra.php">Olvido de Contraseña</a>
                         <div class="collapse-divider"></div>
-                        <!--    <h6 class="collapse-header">Otras Páginas:</h6>
-                    <a class="collapse-item" href="404.html">Página 404</a>
-                    <a class="collapse-item" href="blank.html">Página en Blanco</a> -->
                     </div>
                 </div>
             </li>
@@ -360,9 +357,13 @@ if (isset($varMsj)) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-0 text-gray-800">Arqueo Caja</h1>
-                    <p class="mb-4">El arqueo de caja es un inventario material de los fondos existentes
-                        en un momento dado. <a target="_blank" href="./arqueocaja/agregar_arqueocaja.php">Agregar</a>.</p>
+                    <div class="card mb-4">
+                    <div class="card-body">
+                    El arqueo de caja es un inventario material de los fondos existentes en un momento dado. 
+                    Para agregar un nuevo arqueoCaja por favor de clic en el botón: 
+                    <a target="_blank" href="./arqueocaja/agregar_arqueocaja.php"><i class="fa fa-plus-square"></i> Agregar</a>.
+                    </div>
+                    </div>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -406,7 +407,7 @@ if (isset($varMsj)) {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        foreach ($ac->listarArqueoCaja() as $r) :
+                                        foreach ($dac->listarArqueoCaja() as $r) :
                                             $estadoArqueocaja = "";
                                             if ($r->__GET('estado') == 1 || $r->__GET('estado') == 2) {
                                                 $estadoArqueocaja = "Activo";

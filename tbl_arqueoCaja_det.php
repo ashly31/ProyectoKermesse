@@ -475,8 +475,7 @@ if (isset($varMsj)) {
         </div>
         <!-- EXTRA -->
         <!-- jQuery -->
-        <script src="js/scripts.js"></script>
-        <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+        <script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
         <!-- JS DATATABLES -->
         <script src="./DataTables/datatables.min.js"></script>
         <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
@@ -492,9 +491,7 @@ if (isset($varMsj)) {
         <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
         <!-- jAlert js -->
         <script src="./jAlert/dist/jAlert.min.js"></script>
-        <script src="./jAlert/dist/jAlert-functions.min.js">
-            //optional!!
-        </script>
+        <script src="./jAlert/dist/jAlert-functions.min.js">//optional!!</script>
         <!-- END EXTRA -->
 
         <!-- Bootstrap core JavaScript-->
