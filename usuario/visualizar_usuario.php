@@ -253,36 +253,35 @@ if(isset($_POST['m'])){
 
                         <div class="form-floating mb-3">
                             <label for="id">ID del Usuario</label>
-                            <input class="form-control" id="idusuario" name="idusuario" type="id" title="Ingrese el id" required/>
+                            <input class="form-control" id="idusuario" name="idusuario" type="id" readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="usuario">Usuario</label>
-                            <input class="form-control" id="usuario" name="usuario" type="text" title="Ingrese el usuario" required/>
+                            <input class="form-control" id="usuario" name="usuario" type="text" readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="pwd">Contraseña</label>
-                            <input class="form-control" id="pwd" name="pwd" type="password" title="Ingrese una contraseña" required/>
+                            <input class="form-control" id="pwd" name="pwd" type="password"  readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="nombre">Nombre</label>
-                            <input class="form-control" id="nombre" name="nombre" type="text" title="Ingrese su nombre" required/>
+                            <input class="form-control" id="nombre" name="nombre" type="text" readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="fecha">Apellido</label>
-                            <input class="form-control" id="apellido" name="apellido" type="text" title="Ingrese su apellido" required/>
+                            <input class="form-control" id="apellido" name="apellido" type="text" readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="user">Email</label>
-                            <input class="form-control" id="email" name="email" type="email" title="Ingrese su correo electrónico" required/>
+                            <input class="form-control" id="email" name="email" type="email" readonly required/>
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
-                            <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <input class="btn btn-danger" type="reset" value="Cancelar"/>
+                            <a href="../tbl_Usuario.php"> <button type="button" class="btn btn-info">Regresar</button> </a>
                         </div>
                     </form>
                 </div>
@@ -352,6 +351,39 @@ if(isset($_POST['m'])){
 <!-- Page level custom scripts -->
 <script src="../js/demo/chart-area-demo.js"></script>
 <script src="../js/demo/chart-pie-demo.js"></script>
+<!-- jQuery -->
+
+<script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+
+<script>
+    ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
+    function setValores()
+    {
+        $("#idusuario").css("background-color", "#E3E4E5");
+        $("#idusuario").val("<?php echo $tu->__GET('id_usuario') ?>");
+
+        $("#usuario").css("background-color", "#E3E4E5");
+        $("#usuario").val("<?php echo $tu->__GET('usuario') ?>");
+
+        $("#nombre").css("background-color", "#E3E4E5");
+        $("#nombre").val("<?php echo $tu->__GET('nombres') ?>");
+
+        $("#apellido").css("background-color", "#E3E4E5");
+        $("#apellido").val("<?php echo $tu->__GET('apellidos') ?>");
+
+        $("#email").css("background-color", "#E3E4E5");
+        $("#email").val("<?php echo $tu->__GET('email') ?>");
+
+    }
+
+    $(document).ready(function ()
+    {
+        // CARGAMOS LOS VALORES EN LOS CONTROLES //
+        setValores();
+    });
+
+</script>
 
 </body>
 
