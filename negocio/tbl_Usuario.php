@@ -72,11 +72,11 @@ if ($_POST)
 
         $tbu->__SET('id_usuario', $_GET['delUser']);
         $dtu->deleteUser($tbu->__GET('id_usuario'));
-        header("Location: /Kermesse/tbl_Usuario.php?msj=5");
+        header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=5");
     }
     catch(Exception $e)
     {
-        header("Location: /Kermesse/tbl_Usuario.php?msj=6");
+        header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=6");
         die($e->getMessage());
     }
 }
