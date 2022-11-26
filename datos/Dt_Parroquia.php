@@ -1,0 +1,76 @@
+<?php
+include_once("conexion.php");
+include_once("./entidades/tbl_parroquia.php");
+
+
+class Dt_Parroquia extends Conexion
+{
+    private $myCon;
+
+    public function listarParroquia(){
+		
+        try{
+            $this->myCon = parent::conectar();
+			$result = array();
+			$querySQL = "select * from dbkermesse.tbl_parroquia;";
+
+			$stm = $this->myCon->prepare($querySQL);
+			$stm->execute();
+
+			foreach($stm->fetchAll(PDO::FETCH_OBJ) as $r){
+				$pq = new Tbl_parroquia();
+
+				//_SET(CAMPOBD, atributoEntidad)			
+				$pq->__SET('idParroquia', $r->idParroquia);
+				$pq->__SET('nombre', $r->nombre);
+				$pq->__SET('direccion', $r->direccion);
+				$pq->__SET('telefono', $r->telefono);
+				$pq->__SET('parroco', $r->parroco);
+				$pq->__SET('logo', $r->logo);
+				$pq->__SET('sitio_web', $r->sitio_web);
+				$result[] = $pq;
+			}
+			$this->myCon = parent::desconectar();
+			return $result;
+		}
+		catch(Exception $e){
+			die($e->getMessage());
+		}
+	}
+
+	/* public function insertarUsuario(tbl_usuario $user){
+		try{
+			$this->myCon = parent::conectar();
+			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
+					VALUES(?,?,?,?,?,?)";
+			
+			$this->myCon->prepare($sql)->execute(array(
+				$user->__GET('usuario'),
+				$user->__GET('pwd'),
+				$user->__GET('nombres'),
+				$user->__GET('apellidos'),
+				$user->__GET('email'),
+				$user->__GET('estado')));
+			
+			$this->myCon = parent::desconectar();
+
+		}catch (Exception $e){
+			die($e->getMessage());
+		}
+	} */
+
+	}
+/*
+$prueba = new Dt_usuario();
+$element = $prueba->listarIngresoUsuario();
+foreach($element as $value){
+    echo "<br>";
+    echo $value->id_usuario;
+    echo $value->usuario;
+    echo $value->pwd;
+    echo $value->nombres;
+    echo $value->apellidos;
+    echo $value->email;
+    echo $value->estado;
+}
+*/
