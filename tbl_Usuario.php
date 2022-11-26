@@ -1,17 +1,37 @@
 <?php
-//importamos las entidades
-include './entidades/tbl_usuario.php';
-include './datos/Dt_Usuario.php';
 
-$c = new Dt_Usuario();
+//error_reporting(0);
+//COMIENZA EL CODIGO DE SEGURIDAD
+
+//IMPORTAMOS ENTIDADES
+include 'entidades/tbl_usuario.php';
+include 'entidades/tbl_rol.php';
+include 'entidades/tbl_opciones.php';
+//IMPORTAMOS DATOS
+include 'datos/Dt_Usuario.php';
+include 'datos/Dt_Rol.php';
+include 'datos/Dt_Opciones.php';
+
+//ENTIDADES
+$usuario = new Tbl_Usuario();
+$rol = new Tbl_Rol();
+$listOpc = new Tbl_Opciones;
+//DATOS
+$dtu = new Dt_Usuario();
+$dtr = new Dt_Rol();
+$dtOpc = new Dt_Opciones();
+
+
+
 
 //variable de control msj
 $varMsj = 0;
-if (isset($varMsj)) {
-    //$varMsj = $_GET['msj'];
+if(isset($_GET['$varMsj']))
+{
+    $varMsj = $_GET['varMsj'];
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -375,7 +395,6 @@ if (isset($varMsj)) {
                                         <tr>
                                             <th>id_usuario</th>
                                             <th>usuario</th>
-                                            <th>pwd</th>
                                             <th>nombres</th>
                                             <th>apellidos</th>
                                             <th>email</th>
@@ -387,7 +406,6 @@ if (isset($varMsj)) {
                                         <tr>
                                             <th>id_usuario</th>
                                             <th>usuario</th>
-                                            <th>pwd</th>
                                             <th>nombres</th>
                                             <th>apellidos</th>
                                             <th>email</th>
@@ -397,7 +415,7 @@ if (isset($varMsj)) {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        foreach ($c->listarIngresoUsuario() as $r) :
+                                        foreach ($dtu->listarIngresoUsuario() as $r) :
                                             $estadoUser = "";
                                             if ($r->__GET('estado') == 1 || $r->__GET('estado') == 2) {
                                                 $estadoUser = "Activo";
@@ -408,13 +426,12 @@ if (isset($varMsj)) {
                                             <tr>
                                                 <td><?php echo $r->__GET('id_usuario');  ?></td>
                                                 <td><?php echo $r->__GET('usuario');  ?></td>
-                                                <td><?php echo $r->__GET('pwd');  ?></td>
                                                 <td><?php echo $r->__GET('nombres');  ?></td>
                                                 <td><?php echo $r->__GET('apellidos');  ?></td>
                                                 <td><?php echo $r->__GET('email');  ?></td>
                                                 <td><?php echo  $estadoUser ?></td>
                                                 <td>
-                                                    <a href="usuario/visualizar_usuario.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="usuario/visualizar_usuario.php?viewU=<?php echo $r->__GET('id_usuario'); ?>" target="_blank" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
                                                     <a href="usuario/editar_usuario.php" target="_blank" title="Modificar los datos">
