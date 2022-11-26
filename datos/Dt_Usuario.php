@@ -1,7 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("../entidades/tbl_usuario.php");
-
 
 class Dt_usuario extends Conexion
 {
@@ -38,7 +36,7 @@ class Dt_usuario extends Conexion
 		}
 	}
 
-	public function insertarUsuario(tbl_usuario $user){
+	public function insertUser(tbl_usuario $user){
 		try{
 			$this->myCon = parent::conectar();
 			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
@@ -70,7 +68,7 @@ class Dt_usuario extends Conexion
 
             $r = $stm->fetch(PDO::FETCH_OBJ);
 
-            $u = new tbl_usuario();
+            $u = new Tbl_Usuario();
 
             //_SET(CAMPOBD, atributoEntidad)
             $u->__SET('id_usuario', $r->id_usuario);

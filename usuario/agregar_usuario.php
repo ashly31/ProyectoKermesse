@@ -208,11 +208,6 @@
                         <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
 
                         <div class="form-floating mb-3">
-                            <label for="id">ID del Usuario</label>
-                            <input class="form-control" id="idusuario" name="idusuario" type="id" title="Ingrese el id" required/>
-                        </div>
-
-                        <div class="form-floating mb-3">
                             <label for="usuario">Usuario</label>
                             <input class="form-control" id="usuario" name="usuario" type="text" title="Ingrese el usuario" required/>
                         </div>
@@ -224,12 +219,12 @@
 
                         <div class="form-floating mb-3">
                             <label for="nombre">Nombre</label>
-                            <input class="form-control" id="nombre" name="nombre" type="text" title="Ingrese su nombre" required/>
+                            <input class="form-control" id="nombre" name="nombres" type="text" title="Ingrese su nombre" required/>
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="fecha">Apellido</label>
-                            <input class="form-control" id="apellido" name="apellido" type="text" title="Ingrese su apellido" required/>
+                            <input class="form-control" id="apellido" name="apellidos" type="text" title="Ingrese su apellido" required/>
                         </div>
 
                         <div class="form-floating mb-3">

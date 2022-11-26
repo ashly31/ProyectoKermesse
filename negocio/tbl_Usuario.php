@@ -4,7 +4,7 @@ include_once("../entidades/tbl_usuario.php");
 include_once("../datos/Dt_Usuario.php");
 
 $tbu = new tbl_usuario();
-$dtu = new Dt_usuario();
+$dtu = new Dt_Usuario();
 
 if ($_POST)
 {
@@ -17,7 +17,6 @@ if ($_POST)
             {
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $tbu->__SET('id_usuario', $_POST['id_usuario']);
                 $tbu->__SET('usuario', $_POST['usuario']);
                 $tbu->__SET('pwd', $_POST['pwd']);
                 $tbu->__SET('nombres', $_POST['nombres']);
@@ -27,11 +26,11 @@ if ($_POST)
 
                 $dtu->insertUser($tbu);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_Usuario.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=1");
             }
             catch (Exception $e)
             {
-                header("Location: /Kermesse/tbl_Usuario.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -65,11 +64,8 @@ if ($_POST)
             break;
     }
 
-
 }
-
-
-if ($_GET)
+    if ($_GET)
 {
     try
     {
