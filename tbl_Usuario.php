@@ -360,7 +360,7 @@ if (isset($varMsj)) {
                     <p class="mb-4">Un usuario es aquel individuo que utiliza
                         de manera habitual un producto, o servicio.
                         Es un concepto muy utilizado en el sector informático y digital.
-                        <a target="_blank" href="agregar_usuario.php">Agregar</a>.
+                        <a target="_blank" href="usuario/agregar_usuario.php">Agregar</a>.
                     </p>
 
                     <!-- DataTables -->
@@ -414,13 +414,13 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('email');  ?></td>
                                                 <td><?php echo  $estadoUser ?></td>
                                                 <td>
-                                                    <a href="visualizar_usuario.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="usuario/visualizar_usuario.php" target="_blank" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_usuario.php" target="_blank" title="Modificar los datos">
+                                                    <a href="usuario/editar_usuario.php" target="_blank" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_usuario.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="usuario/eliminar_usuario.php" target="_blank" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
