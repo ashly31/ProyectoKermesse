@@ -360,7 +360,7 @@ if(isset($_GET['$varMsj']))
                     <h1 class="h3 mb-0 text-gray-800">Tasa Cambio</h1>
                     <p class="mb-4">Dicha tasa es un indicador que expresa
                         cuántas unidades de una divisa se necesitan para
-                        obtener una unidad de la otra. <a target="_blank" href="tasacambio/agregar_tasacambio.php">Agregar</a>.</p>
+                        obtener una unidad de la otra. <a href="tasacambio/agregar_tasacambio.php">Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -416,7 +416,7 @@ if(isset($_GET['$varMsj']))
                                                     <a href="tasacambio/editar_tasacambio.php"  title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="#" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_tasaCambio.php?delTc= <?php echo $r->__GET('id_tasaCambio')?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
