@@ -12,7 +12,7 @@ class Dt_Rol extends Conexion
         try {
             $this->myCon = parent::conectar();
             $result = array();
-            $querySQL = "select * from dbkermesse.tbl_rol;";
+            $querySQL = "select * from dbkermesse.tbl_rol WHERE estado<>3;";
 
             $stm = $this->myCon->prepare($querySQL);
             $stm->execute();
