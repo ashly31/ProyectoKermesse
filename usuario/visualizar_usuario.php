@@ -28,13 +28,6 @@ require_once '../datos/Dt_Usuario.php';
 
 if(isset($_POST['m'])){
     $metodo = $_POST['m'];
-    if(method_exists("Dt_Usuario", $metodo));
-}else{
-
-}
-
-if(isset($_POST['m'])){
-    $metodo = $_POST['m'];
     if(method_exists("Dt_Usuario",$metodo))
     {
         Dt_usuario::{$metodo}();
@@ -253,7 +246,7 @@ if(isset($_POST['m'])){
 
                         <div class="form-floating mb-3">
                             <label for="id">ID del Usuario</label>
-                            <input class="form-control" id="idusuario" name="idusuario" type="id" readonly required/>
+                            <input class="form-control" id="id_usuario" name="id_usuario"  readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -267,13 +260,13 @@ if(isset($_POST['m'])){
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="nombre">Nombre</label>
-                            <input class="form-control" id="nombre" name="nombre" type="text" readonly required/>
+                            <label for="nombres">Nombre</label>
+                            <input class="form-control" id="nombres" name="nombres" type="text" readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="fecha">Apellido</label>
-                            <input class="form-control" id="apellido" name="apellido" type="text" readonly required/>
+                            <label for="apellido">Apellido</label>
+                            <input class="form-control" id="apellidos" name="apellidos" type="text" readonly required/>
                         </div>
 
                         <div class="form-floating mb-3">
