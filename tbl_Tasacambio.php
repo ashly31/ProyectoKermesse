@@ -416,7 +416,7 @@ if(isset($_GET['$varMsj']))
                                                     <a href="tasacambio/editar_tasacambio.php"  title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="#" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_tasaCambio.php?delTc= <?php echo $r->__GET('id_tasaCambio')?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
