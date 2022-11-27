@@ -402,7 +402,7 @@ if(isset($_GET['$varMsj']))
                                                     <a href="rol/visualizar_rol.php?viewR=<?php echo $r->__GET('id_rol') ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="rol/editar_rol.php" title="Modificar los datos">
+                                                    <a href="rol/editar_rol.php?editR= <?php echo $r->__GET('id_rol') ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     <a href="negocio/tbl_Rol.php?delRol= <?php echo $r->__GET('id_rol')?>" title="Eliminar los datos">
