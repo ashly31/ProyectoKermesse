@@ -357,7 +357,7 @@ if(isset($_GET['$varMsj']))
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-0 text-gray-800">Rol</h1>
-                    <p class="mb-4">Es un papel o función que alguien o algo desempeña. <a target="_blank" href="rol/agregar_rol.php">Agregar</a>.</p>
+                    <p class="mb-4">Es un papel o función que alguien o algo desempeña. <a href="rol/agregar_rol.php">Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -369,18 +369,18 @@ if(isset($_GET['$varMsj']))
                                 <table class="table table-bordered" id="tbl_Rol" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_rol</th>
-                                            <th>rol_descripcion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Rol</th>
+                                            <th>Descripción</th>
+                                            <th>Estado</th>
+                                            <th>Gestionar</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_rol</th>
-                                            <th>rol_descripcion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Rol</th>
+                                            <th>Descripción</th>
+                                            <th>Estado</th>
+                                            <th>Gestionar</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
