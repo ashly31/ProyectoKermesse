@@ -28,16 +28,20 @@ if ($_POST)
                 //var_dump($emp);
                 header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=1");
             }
-            catch (Exception $e)
+            catch (Exception $ex)
             {
                 header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=2");
-                die($e->getMessage());
+                die($ex->getMessage());
             }
             break;
 
         case '2':
             try
             {
+                if($_POST['confpass'] != $_POST['pass']){
+                    header("Location: /ProyectoKermesse/usuario/editar_usuario.php?msj=5&varEnter={$_POST['idU']}");
+                    die();
+                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $tbu->__SET('id_usuario', $_POST['idU']);
@@ -47,24 +51,21 @@ if ($_POST)
                 $tbu->__SET('apellidos', $_POST['lastName']);
                 $tbu->__SET('email', $_POST['Email']);
 
-
                 $dtu->editUser($tbu);
-                //var_dump($emp);
-                header("Location: /Kermesse/tbl_Usuario.php?msj=3");
+
+                header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=3");
             }
             catch (Exception $e)
             {
                 header("Location: /Kermesse/tbl_Usuario.php?msj=4");
                 die($e->getMessage());
             }
-            break;
 
-        default:
-            # code...
             break;
     }
 
 }
+
     if ($_GET)
 {
     try
