@@ -265,7 +265,7 @@ if(isset($_POST['m'])){
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="apellido">Apellido</label>
+                            <label for="apellidos">Apellido</label>
                             <input class="form-control" id="apellidos" name="apellidos" type="text" readonly required/>
                         </div>
 
@@ -353,17 +353,17 @@ if(isset($_POST['m'])){
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores()
     {
-        $("#idusuario").css("background-color", "#E3E4E5");
-        $("#idusuario").val("<?php echo $tu->__GET('id_usuario') ?>");
+        $("#id_usuario").css("background-color", "#E3E4E5");
+        $("#id_usuario").val("<?php echo $tu->__GET('id_usuario') ?>");
 
         $("#usuario").css("background-color", "#E3E4E5");
         $("#usuario").val("<?php echo $tu->__GET('usuario') ?>");
 
-        $("#nombre").css("background-color", "#E3E4E5");
-        $("#nombre").val("<?php echo $tu->__GET('nombres') ?>");
+        $("#nombres").css("background-color", "#E3E4E5");
+        $("#nombres").val("<?php echo $tu->__GET('nombres') ?>");
 
-        $("#apellido").css("background-color", "#E3E4E5");
-        $("#apellido").val("<?php echo $tu->__GET('apellidos') ?>");
+        $("#apellidos").css("background-color", "#E3E4E5");
+        $("#apellidos").val("<?php echo $tu->__GET('apellidos') ?>");
 
         $("#email").css("background-color", "#E3E4E5");
         $("#email").val("<?php echo $tu->__GET('email') ?>");
