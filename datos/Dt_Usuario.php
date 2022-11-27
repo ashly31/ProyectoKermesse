@@ -141,7 +141,7 @@ class Dt_usuario extends Conexion
         }
     }
 
-    public function validarUser($user, $pwd)
+    /*public function validarUser($user, $pwd)
     {
         try
         {
@@ -161,7 +161,7 @@ class Dt_usuario extends Conexion
         {
             die($e->getMessage());
         }
-    }
+    }*/
 
 
 	}
