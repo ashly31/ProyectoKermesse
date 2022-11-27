@@ -360,7 +360,7 @@ if (isset($varMsj)) {
                     <p class="mb-4">Un gasto es un egreso o salida de dinero
                         que una persona o empresa debe pagar para acreditar su
                         derecho sobre un artículo o a recibir un servicio.
-                        <a target="_blank" href="agregar_gastos.php">Agregar</a>.
+                        <a target="_blank" href="gastos/agregar_gastos.php">Agregar</a>.
                     </p>
 
                     <!-- DataTables -->
@@ -373,38 +373,38 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_Gastos" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_registro_gastos</th>
-                                            <th>idKermesse</th>
-                                            <th>idCatGastos</th>
-                                            <th>fechaGasto</th>
-                                            <th>concepto</th>
-                                            <th>monto</th>
-                                            <th>usuario_creacion</th>
-                                            <th>fecha_creacion</th>
-                                            <th>usuario_modificación</th>
-                                            <th>fecha_modificacion</th>
-                                            <th>usuario_eliminacion</th>
-                                            <th>fecha_eliminacion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Registro Gastos</th>
+                                            <th>ID Kermesse</th>
+                                            <th>id Cat Gastos</th>
+                                            <th>Fecha Gasto</th>
+                                            <th>Concepto</th>
+                                            <th>Monto</th>
+                                            <th>Usuario Creacion</th>
+                                            <th>Fecha Creacion</th>
+                                            <th>Usuario Modificación</th>
+                                            <th>Fecha Modificacion</th>
+                                            <th>Usuario Eliminacion</th>
+                                            <th>Fecha Eliminacion</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_registro_gastos</th>
-                                            <th>idKermesse</th>
-                                            <th>idCatGastos</th>
-                                            <th>fechaGasto</th>
-                                            <th>concepto</th>
-                                            <th>monto</th>
-                                            <th>usuario_creacion</th>
-                                            <th>fecha_creacion</th>
-                                            <th>usuario_modificación</th>
-                                            <th>fecha_modificacion</th>
-                                            <th>usuario_eliminacion</th>
-                                            <th>fecha_eliminacion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Registro Gastos</th>
+                                            <th>ID Kermesse</th>
+                                            <th>id Cat Gastos</th>
+                                            <th>Fecha Gasto</th>
+                                            <th>Concepto</th>
+                                            <th>Monto</th>
+                                            <th>Usuario Creacion</th>
+                                            <th>Fecha Creacion</th>
+                                            <th>Usuario Modificación</th>
+                                            <th>Fecha Modificacion</th>
+                                            <th>Usuario Eliminacion</th>
+                                            <th>Fecha Eliminacion</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -432,13 +432,13 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('fecha_eliminacion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                    <a href="visualizat_gastos.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="gastos/visualizar_gastos.php" target="_blank" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_gastos.php" target="_blank" title="Modificar los datos">
+                                                    <a href="gastos/editar_gastos.php" target="_blank" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_gastos.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="gastos/eliminar_gastos.php" target="_blank" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
