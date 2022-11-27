@@ -223,12 +223,12 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="fecha">Apellido</label>
+                            <label for="apellido">Apellido</label>
                             <input class="form-control" id="apellido" name="apellidos" type="text" title="Ingrese su apellido" required/>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="user">Email</label>
+                            <label for="email">Email</label>
                             <input class="form-control" id="email" name="email" type="email" title="Ingrese su correo electrónico" required/>
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
