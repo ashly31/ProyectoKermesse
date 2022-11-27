@@ -219,7 +219,7 @@
                     </form>
                 </div>
             </div>
-            <!-- end of Agregar Usuario -->
+            <!-- end of Agregar Rol -->
         </div>
         <!-- end begin -->
 

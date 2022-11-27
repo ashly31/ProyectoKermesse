@@ -47,7 +47,7 @@ class Dt_Tasacambio extends Conexion
 				$tc->__GET('id_monedaC'),
 				$tc->__GET('mes'),
 				$tc->__GET('anio'),
-				$tc->__GET('email')));
+				$tc->__GET('estado')));
 			
 			$this->myCon = parent::desconectar();
 
