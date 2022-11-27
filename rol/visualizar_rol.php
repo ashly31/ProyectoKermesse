@@ -217,14 +217,14 @@ $tr = $dtr->getUserByID($varIdR);
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Nuevo rol</h1>
-            <p class="mb-4">En este formulario podrá registrar nuevos roles.
+            <h1 class="h3 mb-0 text-gray-800">Ver rol</h1>
+            <p class="mb-4">En este formulario podrá ver el rol seleccionado.
             </p>
             <!-- Agregar rol -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Nuevo Rol
+                    Ver Rol
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Rol.php">

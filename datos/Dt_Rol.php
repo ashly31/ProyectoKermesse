@@ -92,6 +92,7 @@ class Dt_Rol extends Conexion
                     array(
                         $tr->__GET('rol_descripcion'),
                         $tr->__GET('estado'),
+                        $tr->__GET('id_rol')
                     )
                 );
             $this->myCon = parent::desconectar();
