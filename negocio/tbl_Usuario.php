@@ -38,22 +38,19 @@ if ($_POST)
         case '2':
             try
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /ProyectoKermesse/usuario/editar_usuario.php?msj=5&varEnter={$_POST['idU']}");
-                    die();
-                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $tbu->__SET('id_usuario', $_POST['idU']);
-                $tbu->__SET('usuario', $_POST['user']);
-                $tbu->__SET('pwd', $_POST['password']);
-                $tbu->__SET('nombres', $_POST['names']);
-                $tbu->__SET('apellidos', $_POST['lastName']);
-                $tbu->__SET('email', $_POST['Email']);
-
+                $tbu->__SET('usuario', $_POST['usuario']);
+                $tbu->__SET('pwd', $_POST['pwd']);
+                $tbu->__SET('nombres', $_POST['nombres']);
+                $tbu->__SET('apellidos', $_POST['apellidos']);
+                $tbu->__SET('email', $_POST['email']);
+                $tbu->__SET('estado', 2);
                 $dtu->editUser($tbu);
 
                 header("Location: /ProyectoKermesse/tbl_Usuario.php?msj=3");
+
             }
             catch (Exception $e)
             {

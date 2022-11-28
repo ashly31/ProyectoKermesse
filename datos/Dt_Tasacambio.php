@@ -107,9 +107,8 @@ class Dt_Tasacambio extends Conexion
                         $tc->__GET('mes'),
                         $tc->__GET('anio'),
                         $tc->__GET('estado'),
-                        $tc->__GET('id_tasaCambio')
-                    )
-                );
+                        $tc->__GET('id_tasaCambio')));
+
             $this->myCon = parent::desconectar();
         }
         catch (Exception $e)

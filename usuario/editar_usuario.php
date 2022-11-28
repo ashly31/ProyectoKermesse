@@ -226,11 +226,11 @@ $tu = $dtu->getUserByID($varIdU);
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Usuario.php">
-                        <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
+                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
 
                         <div class="form-floating mb-3">
                             <label for="id_usuario">ID usuario</label>
-                            <input class="form-control" id="idusuario" name="id_usuario" type="text" readonly required/>
+                            <input class="form-control" id="id_usuario" name="id_usuario" type="text" readonly required/>
                             <input class="form-control" id="idU" name="idU" type="hidden" />
                         </div>
 

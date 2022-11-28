@@ -38,23 +38,21 @@ if ($_POST)
         case '2':
             try
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /ProyectoKermesse/productos/editar_productos.php?msj=5&varEnter={$_POST['idProd']}");
-                    die();
-                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $tbu->__SET('id_producto', $_POST['idProd']);
+                $tbu->__SET('id_producto', $_POST['id_producto']);
                 $tbu->__SET('id_comunidad', $_POST['id_comunidad']);
                 $tbu->__SET('id_cat_producto', $_POST['id_cat_producto']);
-                $tbu->__SET('nombre', $_POST['name']);
-                $tbu->__SET('descripcion', $_POST['description']);
+                $tbu->__SET('nombre', $_POST['nombre']);
+                $tbu->__SET('descripcion', $_POST['descripcion']);
                 $tbu->__SET('cantidad', $_POST['cantidad']);
                 $tbu->__SET('preciov_sugerido', $_POST['preciov_sugerido']);
+                $tbu->__SET('estado', 2);
 
                 $dtu->editProd($tbu);
 
                 header("Location: /ProyectoKermesse/tbl_Productos.php?msj=3");
+
             }
             catch (Exception $e)
             {

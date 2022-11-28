@@ -37,17 +37,15 @@ if ($_POST)
         case '2':
             try
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /ProyectoKermesse/tasacambio/editar_tasacambio.php?msj=5&varEnter={$_POST['idTc']}");
-                    die();
-                }
+
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $tbu->__SET('id_tasaCambio', $_POST['idTc']);
-                $tbu->__SET('id_monedaO', $_POST['id_monedao']);
-                $tbu->__SET('id_monedaC', $_POST['id_monedac']);
-                $tbu->__SET('mes', $_POST['month']);
-                $tbu->__SET('anio', $_POST['year']);
+                $tbu->__SET('id_tasaCambio', $_POST['id_tasaCambio']);
+                $tbu->__SET('id_monedaO', $_POST['id_monedaO']);
+                $tbu->__SET('id_monedaC', $_POST['id_monedaC']);
+                $tbu->__SET('mes', $_POST['mes']);
+                $tbu->__SET('anio', $_POST['anio']);
+                $tbu->__SET('estado', 2);
 
                 $dtu->editTc($tbu);
 
