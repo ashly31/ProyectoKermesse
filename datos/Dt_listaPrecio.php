@@ -1,6 +1,6 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_lista_precio.php");
+
 
 
 class Dt_listaPrecio extends Conexion
@@ -70,17 +70,17 @@ class Dt_listaPrecio extends Conexion
 
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$lp = new tbl_moneda();
+			$listp = new Tbl_lista_precio();
 
 			//_SET(CAMPOBD, atributoEntidad)
-			$lp->__SET('id_lista_precio', $r->id_lista_precio);
-			$lp->__SET('id_kermesse', $r->id_kermesse);
-			$lp->__SET('nombre', $r->nombre);
-			$lp->__SET('descripcion', $r->descripcion);
-			$lp->__SET('estado', $r->estado);
+			$listp->__SET('id_lista_precio', $r->id_lista_precio);
+			$listp->__SET('id_kermesse', $r->id_kermesse);
+			$listp->__SET('nombre', $r->nombre);
+			$listp->__SET('descripcion', $r->descripcion);
+			$listp->__SET('estado', $r->estado);
 
 			$this->myCon = parent::desconectar();
-			return $lp;
+			return $listp;
 		}
 		catch (Exception $e) 
 		{

@@ -56,8 +56,24 @@ if ($_POST)
                 die($e->getMessage());
             }
             break;
+            
         
     }
 
+}
 
+if ($_GET)
+{
+    try
+    {
+
+        $op->__SET('id_opciones', $_GET['delOp']);
+        $dop->deleteOp($op->__GET('id_opciones'));
+        header("Location: /ProyectoKermesse/tbl_opciones.php?msj=5");
+    }
+    catch(Exception $e)
+    {
+        header("Location: /ProyectoKermesse/tbl_opciones.php?msj=6");
+        die($e->getMessage());
+    }
 }

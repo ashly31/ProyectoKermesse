@@ -35,16 +35,13 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/categoriaGastos/editar_categoriaGastos.php?msj=5&varEnter={$_POST['idCG']}");
-                    die();
-                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cg->__SET('id_categoria_gastos', $_POST['idCG']);
+                $cg->__SET('id_categoria_gastos', $_POST['id_categoria_gastos']);
                 $cg->__SET('nombre_categoria', $_POST['nombre_categoria']);
-                $cg->__SET('descripcion', $_POST['desc']);
-        
+                $cg->__SET('descripcion', $_POST['descripcion']);
+                $cg->__SET('estado', 2);
+
                 $dcg->editCG($cg);
                 //var_dump($emp);
                 header("Location: /Kermesse/tbl_categoriaGastos.php?msj=3");

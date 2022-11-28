@@ -373,7 +373,7 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl:Parroquia" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>idParroquia</th>
+                                            
                                             <th>nombre</th>
                                             <th>direccion</th>
                                             <th>telefono</th>
@@ -385,7 +385,7 @@ if (isset($varMsj)) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>idParroquia</th>
+                                            
                                             <th>nombre</th>
                                             <th>direccion</th>
                                             <th>telefono</th>
@@ -401,22 +401,22 @@ if (isset($varMsj)) {
                                           
                                         ?>
                                             <tr>
-                                                <td> <?php echo $r->__GET('idParroquia');  ?> </td>
+                                                
                                                 <td> <?php echo $r->__GET('nombre');  ?> </td>
                                                 <td> <?php echo $r->__GET('direccion');  ?> </td>
                                                 <td> <?php echo $r->__GET('telefono');  ?> </td>
                                                 <td> <?php echo $r->__GET('parroco');  ?> </td>
                                                 <td> <?php echo $r->__GET('logo');  ?> </td>
                                                 <td> <?php echo $r->__GET('sitio_web');  ?> </td>
-                                            
+                                        
                                             <td>
-                                                <a href="visualizar_parroquia.php" target="_blank" title="Visualizar los datos">
+                                                <a href="parroquia/visualizar_parroquia.php?viewPq=<?php echo $r->__GET('idParroquia'); ?>" title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a href="editar_parroquia.php" target="_blank" title="Modificar los datos">
+                                                <a href="parroquia/editar_parroquia.php" target="_blank" title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;
-                                                <a href="eliminar_parroquia.php" target="_blank" title="Eliminar los datos">
+                                                <a href="parroquia/eliminar_parroquia.php" target="_blank" title="Eliminar los datos">
                                                     <i class="fa-solid fa-user-minus"></i>
                                                 </a>
                                             </td>

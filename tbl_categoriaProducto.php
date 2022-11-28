@@ -407,7 +407,8 @@ if (isset($varMsj)) {
                                                     ?>" title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a href="./categoriaProductos/editar_categoriaProductos.php" title="Modificar los datos">
+                                                <a href="./categoriaProductos/editar_categoriaProductos.php?editCP=<?php echo $r->__GET('id_categoria_producto');
+                                                    ?>" title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;
                                                 <a href="negocio/tbl_categoriaproductos.php?delCP=<?php echo $r->__GET('id_categoria_producto');

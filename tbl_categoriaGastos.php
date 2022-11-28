@@ -408,7 +408,8 @@ if (isset($varMsj)) {
                                                     ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="./categoriaGastos/editar_categoriaGastos.php" title="Modificar los datos">
+                                                    <a href="./categoriaGastos/editar_categoriaGastos.php?editCG=<?php echo $r->__GET('id_categoria_gastos');
+                                                    ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     <a href="negocio/tbl_categoriaGastos.php?delCG=<?php echo $r->__GET('id_categoria_gastos');

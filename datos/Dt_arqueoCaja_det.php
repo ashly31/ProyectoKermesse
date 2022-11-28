@@ -91,7 +91,7 @@ class Dt_arqueoCaja_det extends Conexion
 		}
 	}
 
-	public function editACD(tbl_arqueocaja_det $tacd)
+	public function editACD(tbl_arqueocaja_det $acd)
 	{
 		try 
 		{
@@ -108,12 +108,12 @@ class Dt_arqueoCaja_det extends Conexion
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$tacd->__GET('idArqueoCaja'), 
-					$tacd->__GET('idMoneda'), 
-					$tacd->__GET('idDenominacion'),
-					$tacd->__GET('cantidad'),
-					$tacd->__GET('subtotal'),
-					$tacd->__GET('idArqueoCaja_Det')
+					$acd->__GET('idArqueoCaja'), 
+					$acd->__GET('idMoneda'), 
+					$acd->__GET('idDenominacion'),
+					$acd->__GET('cantidad'),
+					$acd->__GET('subtotal'),
+					$acd->__GET('idArqueoCaja_Det')
 					)
 				);
 				$this->myCon = parent::desconectar();
