@@ -361,7 +361,7 @@ if(isset($_GET['$varMsj']))
                     <h1 class="h3 mb-0 text-gray-800">Productos</h1>
                     <p class="mb-4">Un producto es todo aquello que está a disposición,
                         es decir, en el mercado, para que cualquier usuario lo adquiera
-                        con la finalidad de satisfacer una necesidad un deseo. <a href="productos/agregar_productos.php">Agregar</a>.</p>
+                        con la finalidad de satisfacer una necesidad un deseo. <a href="productos/agregar_productos.php">  <br> <i class="fa fa-plus-square"></i> Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
