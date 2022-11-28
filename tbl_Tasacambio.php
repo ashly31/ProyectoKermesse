@@ -1,7 +1,7 @@
 <?php
 //importamos las entidades
-include 'entidades/tbl_tasacambio.php';
-include 'datos/Dt_Tasacambio.php';
+include './entidades/tbl_tasacambio.php';
+include './datos/Dt_Tasacambio.php';
 
 $tc = new Dt_Tasacambio();
 

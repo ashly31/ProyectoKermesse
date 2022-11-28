@@ -1,7 +1,7 @@
 <?php
 //importamos las entidades
-include 'entidades/tbl_rol.php';
-include 'datos/Dt_Rol.php';
+include './entidades/tbl_rol.php';
+include './datos/Dt_Rol.php';
 
 $rol = new Dt_Rol();
 
