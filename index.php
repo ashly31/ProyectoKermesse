@@ -351,14 +351,6 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        
-
-                        <!-- Earnings (Monthly) Card Example -->
-                       
-                    </div>
-                    <!-- Content Row -->
-                    <div class="row">
 
                         <!-- Content Column -->
                         <div class="col-lg-6 mb-4">
@@ -373,7 +365,7 @@
                                         <img class="img-logo" style="width: 25rem;" src="img/logo-kermes.png" alt="...">
                                     </div>
                                     <p>¡Hola! Somos el equipo ABIMA. Bienvenido a nuestra página Web, hecha puramente por los mejores. ¿Deseas saber más sobre nosotros? <br>
-                                        <a target="_blank" rel="nofollow" href="nosotros.php">Ir hacia la página &rarr;</a>
+                                        <a rel="nofollow" href="nosotros.php">Ir hacia la página &rarr;</a>
                                     </p>
                                 </div>
                             </div>
@@ -389,7 +381,7 @@
                                     <p>¡Bienvenido a nuestro sitio web sobre Kermesse Parroquia Corazón de Jesús
                                         María de Las Palmas!</p>
                                     <p class="mb-0">¡Hey, tú!<br> ¿Aún no te registras? <br>
-                                        <a target="_blank" rel="nofollow" href="registro.php"> Regístrate aquí ahora &rarr;</a>
+                                        <a rel="nofollow" href="registro.php"> Regístrate aquí ahora &rarr;</a>
                                     </p>
                                 </div>
                             </div>

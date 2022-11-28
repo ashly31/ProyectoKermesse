@@ -7,10 +7,11 @@ $rol = new Dt_Rol();
 
 //variable de control msj
 $varMsj = 0;
-if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
-}
+if(isset($_GET['$varMsj']))
+{
+    $varMsj = $_GET['varMsj'];
 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -356,7 +357,7 @@ if (isset($varMsj)) {
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-0 text-gray-800">Rol</h1>
-                    <p class="mb-4">Es un papel o función que alguien o algo desempeña. <a target="_blank" href="agregar_rol.php">Agregar</a>.</p>
+                    <p class="mb-4">Es un papel o función que alguien o algo desempeña. <a href="rol/agregar_rol.php">  <br> <i class="fa fa-plus-square"></i> Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -368,18 +369,18 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_Rol" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_rol</th>
-                                            <th>rol_descripcion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Rol</th>
+                                            <th>Descripción</th>
+                                            <th>Estado</th>
+                                            <th>Gestionar</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_rol</th>
-                                            <th>rol_descripcion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Rol</th>
+                                            <th>Descripción</th>
+                                            <th>Estado</th>
+                                            <th>Gestionar</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -398,13 +399,13 @@ if (isset($varMsj)) {
                                                 <td><?php echo  $estado ?> </td>
 
                                                 <td>
-                                                    <a href="visualizar_rol.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="rol/visualizar_rol.php?viewR=<?php echo $r->__GET('id_rol') ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_rol.php" target="_blank" title="Modificar los datos">
+                                                    <a href="rol/editar_rol.php?editR= <?php echo $r->__GET('id_rol') ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_rol.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_Rol.php?delRol= <?php echo $r->__GET('id_rol')?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
