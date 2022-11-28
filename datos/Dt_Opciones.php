@@ -1,6 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_opciones.php");
 
 
 class Dt_Opciones extends Conexion
@@ -65,15 +64,15 @@ class Dt_Opciones extends Conexion
 
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$op = new Tbl_opciones;
+			$opc = new Tbl_opciones;
 
 			//_SET(CAMPOBD, atributoEntidad)
-			$op->__SET('id_opciones', $r->id_opciones);
-			$op->__SET('opcion_descripcion', $r->opcion_descripcion);
-			$op->__SET('estado', $r->estado);
+			$opc->__SET('id_opciones', $r->id_opciones);
+			$opc->__SET('opcion_descripcion', $r->opcion_descripcion);
+			$opc->__SET('estado', $r->estado);
 
 			$this->myCon = parent::desconectar();
-			return $op;
+			return $opc;
 		}
 		catch (Exception $e) 
 		{
@@ -109,7 +108,7 @@ class Dt_Opciones extends Conexion
 		}
 	}
 
-	public function deleteOpciones($id)
+	public function deleteOp($id)
 	{
 		try
 		{
@@ -130,18 +129,7 @@ class Dt_Opciones extends Conexion
 		}
 	}
 
+
+
 	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
-}
-*/
+

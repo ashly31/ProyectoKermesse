@@ -372,7 +372,7 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_Moneda" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_moneda</th>
+                                            
                                             <th>nombre</th>
                                             <th>simbolo</th>
                                             <th>estado</th>
@@ -381,7 +381,7 @@ if (isset($varMsj)) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_moneda</th>
+                                            
                                             <th>nombre</th>
                                             <th>simbolo</th>
                                             <th>estado</th>
@@ -399,13 +399,13 @@ if (isset($varMsj)) {
                                             }
                                         ?>
                                             <tr>
-                                                <td> <?php echo $r->__GET('id_moneda');  ?> </td>
+                                                
                                                 <td> <?php echo $r->__GET('nombre');  ?> </td>
                                                 <td> <?php echo $r->__GET('simbolo');  ?> </td>
                                                 <td><?php echo  $estado ?> </td>
                                             
                                             <td>
-                                                <a href="visualizar_moneda.php" target="_blank" title="Visualizar los datos">
+                                                <a href="moneda/visualizar_moneda.php? title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
                                                 <a href="editar_moneda.php" target="_blank" title="Modificar los datos">

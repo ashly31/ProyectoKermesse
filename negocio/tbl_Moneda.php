@@ -45,8 +45,6 @@ if ($_POST)
                 $op->__SET('nombre', $_POST['nombre']);
                 $op->__SET('simbolo', $_POST['simbolo']);
                 
-                
-                
         
                 $dmon->editMoneda($mon);
                 //var_dump($emp);

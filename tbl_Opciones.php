@@ -373,7 +373,7 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_opciones" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_opciones</th>
+                                            
                                             <th>opcion_descripcion</th>
                                             <th>estado</th>
                                             <th>opciones</th>
@@ -381,7 +381,7 @@ if (isset($varMsj)) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_opciones</th>
+                                            
                                             <th>opcion_descripcion</th>
                                             <th>estado</th>
                                             <th>opciones</th>
@@ -398,18 +398,18 @@ if (isset($varMsj)) {
                                             }
                                         ?>
                                             <tr>
-                                                <td> <?php echo $r->__GET('id_opciones');  ?> </td>
+                                                
                                                 <td> <?php echo $r->__GET('opcion_descripcion');  ?> </td>
                                                 <td><?php echo  $estado ?> </td>
                                             
                                             <td>
-                                                <a href="visualizar_opciones.php" target="_blank" title="Visualizar los datos">
+                                                <a href="opciones/visualizar_opciones.php?viewOp=<?php echo $r->__GET('id_opciones'); ?>" title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a href="editar_opciones.php" target="_blank" title="Modificar los datos">
+                                                <a href="opciones/editar_opciones.php" target="_blank" title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;
-                                                <a href="eliminar_opciones.php" target="_blank" title="Eliminar los datos">
+                                                <a href="negocio/tbl_kermesse.php?delOp=<?php echo $r->__GET('id_opciones'); ?>" title="Eliminar los datos">
                                                     <i class="fa-solid fa-user-minus"></i>
                                                 </a>
                                             </td>

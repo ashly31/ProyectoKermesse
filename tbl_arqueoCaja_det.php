@@ -412,7 +412,8 @@ if (isset($varMsj)) {
                                                     ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="arqueocajaDet/editar_arqueocajaDet.php" title="Modificar los datos">
+                                                    <a href="arqueocajaDet/editar_arqueocajaDet.php?editACD=<?php echo $r->__GET('idArqueoCaja_Det');
+                                                    ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     <a href="negocio/tbl_arqueocajaDet.php?delACD=<?php echo $r->__GET('idArqueoCaja_Det');

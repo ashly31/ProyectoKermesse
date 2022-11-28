@@ -1,6 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_moneda.php");
 
 
 class Dt_Moneda extends Conexion
@@ -12,13 +11,13 @@ class Dt_Moneda extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_moneda;";
+			$querySQL = "SELECT * from dbkermesse.tbl_moneda where estado<> 3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
 
 			foreach($stm->fetchAll(PDO::FETCH_OBJ) as $r){
-				$m = new Tbl_moneda();
+				$m = new tbl_moneda();
 
 				//_SET(CAMPOBD, atributoEntidad)			
 				$m->__SET('id_moneda', $r->id_moneda);
@@ -35,16 +34,15 @@ class Dt_Moneda extends Conexion
 		}
 	}
 
-	 public function insertarMoneda(Tbl_moneda $m)
+	 public function insertarMoneda(tbl_moneda $m)
 	 {
 		try{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_moneda (id_moneda, nombre, simbolo, estado)
-					VALUES(?,?,?,?)";
+			$sql = "INSERT INTO dbkermesse.tbl_moneda (nombre, simbolo, estado)
+					VALUES(?,?,?)";
 			
 			$this->myCon->prepare($sql)
 			 ->execute(array(
-				$m->__GET('id_moneda'),
 				$m->__GET('nombre'),
 				$m->__GET('simbolo'),
 				$m->__GET('estado')));
@@ -67,16 +65,15 @@ class Dt_Moneda extends Conexion
 
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$m = new tbl_moneda();
+			$mon = new tbl_moneda();
 
 			//_SET(CAMPOBD, atributoEntidad)
-			$m->__SET('id_moneda', $r->id_moneda);
-			$m->__SET('nombre', $r->nombre);
-			$m->__SET('simbolo', $r->simbolo);
-			$m->__SET('estado', $r->estado);
+			$mon->__SET('id_moneda', $r->id_moneda);
+			$mon->__SET('nombre', $r->nombre);
+			$mon->__SET('simbolo', $r->simbolo);
 
 			$this->myCon = parent::desconectar();
-			return $m;
+			return $mon;
 		}
 		catch (Exception $e) 
 		{
@@ -135,17 +132,3 @@ class Dt_Moneda extends Conexion
 	}
 
 	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
-}
-*/

@@ -3,8 +3,8 @@
 include_once("../entidades/tbl_categoria_producto.php");
 include_once("../datos/Dt_categoriaProducto.php");
 
-$cp = new Tbl_categoria_producto();
-$dcp = new Dt_categoriaProducto();
+$tcp = new Tbl_categoria_producto();
+$dc = new Dt_categoriaProducto();
 
 if ($_POST) 
 {
@@ -17,11 +17,11 @@ if ($_POST)
             { 
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cp->__SET('nombre', $_POST['nombre']);
-                $cp->__SET('descripcion', $_POST['descripcion']);
-                $cp->__SET('estado', 1);
+                $tcp->__SET('nombre', $_POST['nombre']);
+                $tcp->__SET('descripcion', $_POST['descripcion']);
+                $tcp->__SET('estado', 1);
 
-                $dcp->insertCP($cp);
+                $dc->insertCP($tcp);
                 //var_dump($emp);
                 header("Location: /Kermesse/tbl_categoriaProducto.php?msj=1");
             } 
@@ -35,23 +35,20 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/categoriaProductos/editar_categoriaProductos.php?msj=5&varEnter={$_POST['idCP']}");
-                    die();
-                }
+                
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cp->__SET('id_categoria_producto', $_POST['idCP']);
+                $cp->__SET('id_categoria_producto', $_POST['id_categoria_producto']);
                 $cp->__SET('nombre', $_POST['nombre']);
-                $cp->__SET('descripcion', $_POST['desc']);
-        
-                $dpc->editCP($cp);
+                $cp->__SET('descripcion', $_POST['descripcion']);
+                $cp->__SET('estado', 2);
+                $dcp->editCP($cp);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_categoria_producto.php?msj=3");
+                header("Location: /Kermesse/tbl_categoriaProducto.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_categoria_producto.php?msj=4");
+                header("Location: /Kermesse/tbl_categoriaProducto.php?msj=4");
                 die($e->getMessage());
             }
             break;

@@ -372,7 +372,7 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_listaPrecio" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_lista_precio</th>
+                                           
                                             <th>id_kermesse</th>
                                             <th>nombre</th>
                                             <th>descripcion</th>
@@ -382,7 +382,7 @@ if (isset($varMsj)) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_lista_precio</th>
+                                            
                                             <th>id_kermesse</th>
                                             <th>nombre</th>
                                             <th>descripcion</th>
@@ -401,14 +401,14 @@ if (isset($varMsj)) {
                                             }
                                         ?>
                                             <tr>
-                                                <td> <?php echo $r->__GET('id_lista_precio');  ?> </td>
+                                                
                                                 <td> <?php echo $r->__GET('id_kermesse');  ?> </td>
                                                 <td> <?php echo $r->__GET('nombre');  ?> </td>
                                                 <td> <?php echo $r->__GET('descripcion');  ?> </td>
                                                 <td><?php echo  $estado ?> </td>
                                             
                                                 <td>
-                                                    <a href="visaulizar_listaprecio.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="listaprecio/visualizar_listaprecio.php?viewLp=<?php echo $r->__GET('id_lista_precio'); ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
                                                     <a href="editar_listaprecio.php" target="_blank" title="Modificar los datos">

@@ -10,7 +10,6 @@ class Tbl_parroquia
     private $parroco;
     private $logo;
     private $sitio_web;
-    private $estado;
 
     //METODOS
     public function __GET($k){ return $this->$k; }

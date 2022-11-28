@@ -537,11 +537,24 @@ if (isset($varMsj)) {
         $(document).ready(function() {
             /////////// VARIABLE DE CONTROL MSJ ///////////
             var mensaje = 0;
-            mensaje = "<?php echo $varMsj ?>";
+    mensaje = "<?php echo $varMsj ?>";
 
-            if (mensaje == "1") {
-                successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
-            }
+    if(mensaje == "1")
+    {
+        successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
+    }
+    if(mensaje == "3")
+    {
+        successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+    }
+    if(mensaje == "5")
+    {
+        successAlert('Éxito', 'El usuario ha sido dado de baja exitosamente!');
+    }
+    if(mensaje == "2" || mensaje == "4" || mensaje == "6")
+    {
+        errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+    }
             /////////// DATATABLE ///////////
             $(document).ready(function() {
 

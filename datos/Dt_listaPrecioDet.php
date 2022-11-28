@@ -1,6 +1,6 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_listaprecio_det.php");
+
 
 
 class Dt_listaPrecioDet extends Conexion
@@ -69,17 +69,17 @@ class Dt_listaPrecioDet extends Conexion
 
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$lpd = new Tbl_listaprecio_det;
+			$listpd = new Tbl_listaprecio_det;
 
 			//_SET(CAMPOBD, atributoEntidad)
-			$lpd->__SET('id_listaprecio_det', $r->id_listaprecio_det);
-			$lpd->__SET('id_lista_precio', $r->id_lista_precio);
-			$lpd->__SET('id_producto', $r->id_producto);
-			$lpd->__SET('precio_venta', $r->precio_venta);
+			$listpd->__SET('id_listaprecio_det', $r->id_listaprecio_det);
+			$listpd->__SET('id_lista_precio', $r->id_lista_precio);
+			$listpd->__SET('id_producto', $r->id_producto);
+			$listpd->__SET('precio_venta', $r->precio_venta);
 			
 
 			$this->myCon = parent::desconectar();
-			return $lpd;
+			return $listpd;
 		}
 		catch (Exception $e) 
 		{

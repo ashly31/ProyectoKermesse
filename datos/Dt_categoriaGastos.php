@@ -93,8 +93,7 @@ class Dt_categoriaGastos extends Conexion
 			$sql = "UPDATE dbkermesse.tbl_categoria_gastos SET
 						nombre_categoria = ?, 
 						descripcion = ?, 
-						estado = ?,
-						
+						estado = ?
 				    WHERE id_categoria_gastos = ?";
 
 				$this->myCon->prepare($sql)
