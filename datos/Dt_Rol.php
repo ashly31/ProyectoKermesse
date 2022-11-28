@@ -1,7 +1,6 @@
 <?php
 include_once("conexion.php");
 
-
 class Dt_Rol extends Conexion
 {
     private $myCon;
@@ -84,7 +83,7 @@ class Dt_Rol extends Conexion
             $this->myCon = parent::conectar();
             $sql = "UPDATE dbkermesse.tbl_rol SET
 						rol_descripcion= ?,
-						estado = ?, 
+						estado = ? 
 				    WHERE id_rol = ?";
 
             $this->myCon->prepare($sql)

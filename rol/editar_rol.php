@@ -225,7 +225,7 @@ $tr = $dtr ->getUserByID($varIdR);
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Rol.php">
-                        <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
+                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
 
                         <div class="form-floating mb-3">
                             <label for="id_rol">ID Rol</label>

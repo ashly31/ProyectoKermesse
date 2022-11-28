@@ -226,7 +226,7 @@ $tu = $dtu->getTcByID($varIdT);
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_tasaCambio.php">
-                        <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
+                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
 
                         <div class="form-floating mb-3">
                             <label for="id_tasaCambio">ID de Tasa de cambio</label>

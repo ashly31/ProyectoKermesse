@@ -35,18 +35,16 @@ if ($_POST)
         case '2':
             try
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /ProyectoKermesse/rol/editar_rol.php?msj=5&varEnter={$_POST['idR']}");
-                    die();
-                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $tbr->__SET('id_rol', $_POST['idR']);
-                $tbr->__SET('rol_descripcion', $_POST['rol_d']);
+                $tbr->__SET('id_rol', $_POST['id_rol']);
+                $tbr->__SET('rol_descripcion', $_POST['rol_descripcion']);
+                $tbr->__SET('estado', 2);
 
                 $dtr->editRol($tbr);
 
                 header("Location: /ProyectoKermesse/tbl_Rol.php?msj=3");
+
             }
             catch (Exception $e)
             {

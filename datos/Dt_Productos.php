@@ -102,7 +102,7 @@ class Dt_Productos extends Conexion
 						descripcion = ?,
 						cantidad = ?,
 						preciov_sugerido = ?,
-						estado = ?,
+						estado = ?
 				    WHERE id_producto = ?";
 
             $this->myCon->prepare($sql)
