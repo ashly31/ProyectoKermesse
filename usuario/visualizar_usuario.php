@@ -245,7 +245,7 @@ if(isset($_POST['m'])){
                         <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
 
                         <div class="form-floating mb-3">
-                            <label for="id">ID del Usuario</label>
+                            <label for="id_usuario">ID del Usuario</label>
                             <input class="form-control" id="id_usuario" name="id_usuario"  readonly required/>
                         </div>
 
@@ -254,10 +254,6 @@ if(isset($_POST['m'])){
                             <input class="form-control" id="usuario" name="usuario" type="text" readonly required/>
                         </div>
 
-                        <div class="form-floating mb-3">
-                            <label for="pwd">Contraseña</label>
-                            <input class="form-control" id="pwd" name="pwd" type="password"  readonly required/>
-                        </div>
 
                         <div class="form-floating mb-3">
                             <label for="nombres">Nombre</label>
