@@ -9,7 +9,7 @@ $dac = new Dt_arqueoCaja();
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
-     $varMsj = $_GET['msj'];
+     //$varMsj = $_GET['msj'];
 }
 ?>
 
