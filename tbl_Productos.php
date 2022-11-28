@@ -361,7 +361,7 @@ if(isset($_GET['$varMsj']))
                     <h1 class="h3 mb-0 text-gray-800">Productos</h1>
                     <p class="mb-4">Un producto es todo aquello que está a disposición,
                         es decir, en el mercado, para que cualquier usuario lo adquiera
-                        con la finalidad de satisfacer una necesidad un deseo. <a target="_blank" href="productos/agregar_productos.php">Agregar</a>.</p>
+                        con la finalidad de satisfacer una necesidad un deseo. <a href="productos/agregar_productos.php">Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -420,7 +420,7 @@ if(isset($_GET['$varMsj']))
                                                     <a href="productos/visualizar_productos.php?viewP= <?php echo $r->__GET('id_producto') ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="productos/editar_productos.php" title="Modificar los datos">
+                                                    <a href="productos/editar_productos.php?editP= <?php echo $r->__GET('id_producto')?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     <a href="negocio/tbl_Productos.php?delProd=<?php echo $r->__GET('id_producto')?>" title="Eliminar los datos">
