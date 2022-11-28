@@ -381,7 +381,8 @@ if(isset($_GET['$varMsj']))
                     <p class="mb-4">Un usuario es aquel individuo que utiliza
                         de manera habitual un producto, o servicio.
                         Es un concepto muy utilizado en el sector informático y digital.
-                        <a href="usuario/agregar_usuario.php">Agregar</a>.
+                        <a href="usuario/agregar_usuario.php">
+                           <br> <i class="fa fa-plus-square"></i> Agregar</a>.
                     </p>
 
                     <!-- DataTables -->
