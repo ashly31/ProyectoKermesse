@@ -1,6 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_categoria_gastos.php");
 
 
 class Dt_categoriaGastos extends Conexion
@@ -12,13 +11,13 @@ class Dt_categoriaGastos extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_categoria_gastos;";
+			$querySQL = "select * from dbkermesse.tbl_categoria_gastos where estado<>3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
 
 			foreach($stm->fetchAll(PDO::FETCH_OBJ) as $r){
-				$cg = new Tbl_categoria_gastos();
+				$cg = new tbl_categoria_gastos();
 
 				//_SET(CAMPOBD, atributoEntidad)			
 				$cg->__SET('id_categoria_gastos', $r->id_categoria_gastos);
@@ -35,18 +34,17 @@ class Dt_categoriaGastos extends Conexion
 		}
 	}
 
-	public function insertCG(Tbl_categoria_gastos $cg)
+	public function insertCG(tbl_categoria_gastos $cg)
 	{
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_categoria_gastos (id_categoria_gastos, nombre_categoria, 
+			$sql = "INSERT INTO dbkermesse.tbl_categoria_gastos (nombre_categoria, 
 			descripcion, estado) 
-		        VALUES (?,?,?,?)";
+		        VALUES (?,?,?)";
 
 			$this->myCon->prepare($sql)
 		     ->execute(array(
-			 $cg->__GET('id_categoria_gastos'),
 			 $cg->__GET('nombre_categoria'),
 			 $cg->__GET('descripcion'),
 			 $cg->__GET('estado')));
@@ -70,17 +68,16 @@ class Dt_categoriaGastos extends Conexion
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$cg = new Tbl_categoria_gastos();
+			$tcg = new Tbl_categoria_gastos();
 
 			//_SET(CAMPOBD, atributoEntidad)			
-			$cg->__SET('id_categoria_gastos', $r->id_categoria_gastos);
-			$cg->__SET('nombre_categoria', $r->nombre_categoria);
-			$cg->__SET('descripcion', $r->descripcion);
-			$cg->__SET('estado', $r->estado);
+			$tcg->__SET('id_categoria_gastos', $r->id_categoria_gastos);
+			$tcg->__SET('nombre_categoria', $r->nombre_categoria);
+			$tcg->__SET('descripcion', $r->descripcion);
 			
 
 			$this->myCon = parent::desconectar();
-			return $cg;
+			return $tcg;
 		} 
 		catch (Exception $e) 
 		{
@@ -88,7 +85,7 @@ class Dt_categoriaGastos extends Conexion
 		}
 	}
 
-	public function editCG(Tbl_categoria_gastos $cg)
+	public function editCG(Tbl_categoria_gastos $tcg)
 	{
 		try 
 		{
@@ -103,10 +100,10 @@ class Dt_categoriaGastos extends Conexion
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$cg->__GET('nombre_categoria'), 
-					$cg->__GET('descripcion'), 
-					$cg->__GET('estado'),
-					$cg->__GET('id_categoria_gastos')
+					$tcg->__GET('nombre_categoria'), 
+					$tcg->__GET('descripcion'), 
+					$tcg->__GET('estado'),
+					$tcg->__GET('id_categoria_gastos')
 					)
 				);
 				$this->myCon = parent::desconectar();
@@ -128,7 +125,7 @@ class Dt_categoriaGastos extends Conexion
 				    WHERE id_categoria_gastos = ?";
 
 			$stm = $this->myCon->prepare($sql);
-			$stm->execute(array($id));
+			$stm->execute(array($id)); 
 
 			$this->myCon = parent::desconectar();
 		} 

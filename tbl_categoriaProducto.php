@@ -2,12 +2,8 @@
 //importamos las entidades
 include './entidades/tbl_categoria_producto.php';
 include './datos/Dt_categoriaProducto.php';
-include './categoriaProductos/agregar_catgoriaProductos.php';
-include './categoriaProductos/editar_categoriaProductos.php';
-include './categoriaProductos/eliminar_categoriaProductos.php';
-include './categoriaProductos/visualizar_categoriaProductos.php';
 
-$cp = new Dt_categoriaProducto();
+$dcp = new Dt_categoriaProducto();
 
 //variable de control msj
 $varMsj = 0;
@@ -363,7 +359,7 @@ if (isset($varMsj)) {
                     <h1 class="h3 mb-0 text-gray-800">Categoría Productos</h1>
                     <p class="mb-4">Las categorías son grupos de productos formados por
                         ítems complementarios o sustitutos para satisfacer las necesidades
-                        del consumidor. <a target="_blank" href="./categoriaProductos/agregar_catgoriaProductos.php">Agregar</a>.</p>
+                        del consumidor. <a href="./categoriaProductos/agregar_categoriaProductos.php"><i class="fa fa-plus-square"></i> Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -393,7 +389,7 @@ if (isset($varMsj)) {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        foreach ($cp->listarCategoriaProducto() as $r) :
+                                        foreach ($dcp->listarCategoriaProducto() as $r) :
                                             $estado = "";
                                             if ($r->__GET('estado') == 1 || $r->__GET('estado') == 2) {
                                                 $estado = "Activo";
@@ -407,18 +403,20 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('descripcion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                <a href="./categoriaProductos/visualizar_categoriaProductos.php" target="_blank" title="Visualizar los datos">
+                                                <a href="./categoriaProductos/visualizar_categoriaProductos.php?viewCP=<?php echo $r->__GET('id_categoria_producto');
+                                                    ?>" title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a href="./categoriaProductos/editar_categoriaProductos.php" target="_blank" title="Modificar los datos">
+                                                <a href="./categoriaProductos/editar_categoriaProductos.php" title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;
-                                                <a href="./categoriaProductos/eliminar_categoriaProductos.php" target="_blank" title="Eliminar los datos">
+                                                <a href="negocio/tbl_categoriaproductos.php?delCP=<?php echo $r->__GET('id_categoria_producto');
+                                                    ?>" title="Eliminar los datos">
                                                     <i class="fa-solid fa-user-minus"></i>
                                                 </a>
                                                 </td>
                                             </tr>
-                                        <?php
+                                        <?php 
                                         endforeach;
                                         ?>
                                     </tbody>

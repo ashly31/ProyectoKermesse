@@ -1,6 +1,6 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_arqueocaja.php");
+
 
 
 class Dt_arqueoCaja extends Conexion
@@ -12,7 +12,7 @@ class Dt_arqueoCaja extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_arqueocaja;";
+			$querySQL = "select * from dbkermesse.tbl_arqueocaja where estado<>3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -47,14 +47,13 @@ class Dt_arqueoCaja extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_arqueocaja (id_ArqueoCaja, idKermesse, fechaArqueo, granTotal, 
+			$sql = "INSERT INTO dbkermesse.tbl_arqueocaja  (idKermesse, fechaArqueo, granTotal, 
 			usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion, usuario_eliminacion, 
 			fecha_eliminacion, estado) 
-		        VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		        VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			$this->myCon->prepare($sql)
 		     ->execute(array(
-			 $ac->__GET('id_ArqueoCaja'),
 			 $ac->__GET('idKermesse'),
 			 $ac->__GET('fechaArqueo'),
 			 $ac->__GET('granTotal'),
@@ -85,23 +84,22 @@ class Dt_arqueoCaja extends Conexion
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$ac = new Tbl_arqueocaja();
+			$a = new Tbl_arqueocaja();
 
 			//_SET(CAMPOBD, atributoEntidad)			
-			$ac->__SET('id_ArqueoCaja', $r->id_ArqueoCaja);
-			$ac->__SET('idKermesse', $r->idKermesse);
-			$ac->__SET('fechaArqueo', $r->fechaArqueo);
-			$ac->__SET('granTotal', $r->granTotal);
-			$ac->__SET('usuario_creacion', $r->usuario_creacion);
-			$ac->__SET('fecha_creacion', $r->fecha_creacion);
-			$ac->__SET('usuario_modificacion', $r->usuario_modificacion);
-			$ac->__SET('fecha_modificacion', $r->fecha_modificacion);
-			$ac->__SET('usuario_eliminacion', $r->usuario_eliminacion);
-			$ac->__SET('fecha_eliminacion', $r->fecha_eliminacion);
-			$ac->__SET('estado', $r->estado);
+			$a->__SET('id_ArqueoCaja', $r->id_ArqueoCaja);
+			$a->__SET('idKermesse', $r->idKermesse);
+			$a->__SET('fechaArqueo', $r->fechaArqueo);
+			$a->__SET('granTotal', $r->granTotal);
+			$a->__SET('usuario_creacion', $r->usuario_creacion);
+			$a->__SET('fecha_creacion', $r->fecha_creacion);
+			$a->__SET('usuario_modificacion', $r->usuario_modificacion);
+			$a->__SET('fecha_modificacion', $r->fecha_modificacion);
+			$a->__SET('usuario_eliminacion', $r->usuario_eliminacion);
+			$a->__SET('fecha_eliminacion', $r->fecha_eliminacion);
 
 			$this->myCon = parent::desconectar();
-			return $ac;
+			return $a;
 		} 
 		catch (Exception $e) 
 		{
@@ -109,13 +107,12 @@ class Dt_arqueoCaja extends Conexion
 		}
 	}
 
-	public function editAC(Tbl_arqueocaja $ac)
+	public function editAC(Tbl_arqueocaja $tac)
 	{
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE dbkermesse.tbl_arqueocaja SET
-						idKermesse = ?, 
+			$sql = "UPDATE dbkermesse.tbl_arqueocaja SET 
 						fechaArqueo = ?, 
 						granTotal = ?,
 						usuario_creacion = ?,
@@ -130,17 +127,17 @@ class Dt_arqueoCaja extends Conexion
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$ac->__GET('idKermesse'), 
-					$ac->__GET('fechaArqueo'), 
-					$ac->__GET('granTotal'),
-					$ac->__GET('usuario_creacion'),
-					$ac->__GET('fecha_creacion'),
-					$ac->__GET('usuario_modificacion'),
-					$ac->__GET('fecha_modificacion'),
-					$ac->__GET('usuario_eliminacion'),
-					$ac->__GET('fecha_eliminacion'),
-					$ac->__GET('estado'),
-					$ac->__GET('id_ArqueoCaja')
+				//	$tac->__GET('idKermesse'), 
+					$tac->__GET('fechaArqueo'), 
+					$tac->__GET('granTotal'),
+					$tac->__GET('usuario_creacion'),
+					$tac->__GET('fecha_creacion'),
+					$tac->__GET('usuario_modificacion'),
+					$tac->__GET('fecha_modificacion'),
+					$tac->__GET('usuario_eliminacion'),
+					$tac->__GET('fecha_eliminacion'),
+					$tac->__GET('estado'),
+					$tac->__GET('id_ArqueoCaja')
 					)
 				);
 				$this->myCon = parent::desconectar();

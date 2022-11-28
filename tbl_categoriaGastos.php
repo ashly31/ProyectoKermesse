@@ -2,12 +2,8 @@
 //importamos las entidades
 include './entidades/tbl_categoria_gastos.php';
 include './datos/Dt_categoriaGastos.php';
-include './categoriaGastos/agregar_categoriaGastos.php';
-include './categoriaGastos/editar_categoriaGastos.php';
-include './categoriaGastos/visualizar_arqueocajaDet.php';
-include './categoriaGastos/eliminar_categoriaGastos.php';
 
-$cg = new Dt_categoriaGastos();
+$dcg = new Dt_categoriaGastos();
 
 //variable de control msj
 $varMsj = 0;
@@ -364,7 +360,7 @@ if (isset($varMsj)) {
                     <p class="mb-4">Unas categorías de gastos se trata simplemente de agrupar
                         organizadamente los tipos gastos de nuestra empresa, con el fin de crear
                         presupuestos más reales y poder presentar correctamente tanto informes,
-                        como declaraciones de impuestos <a target="_blank" href="./categoriaGastos/agregar_categoriaGastos.php">Agregar</a>.</p>
+                        como declaraciones de impuestos <a href="./categoriaGastos/agregar_categoriaGastos.php"><i class="fa fa-plus-square"></i> Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -394,7 +390,7 @@ if (isset($varMsj)) {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        foreach ($cg->listarCategoriaGastos() as $r) :
+                                        foreach ($dcg->listarCategoriaGastos() as $r) :
                                             $estado = "";
                                             if ($r->__GET('estado') == 1 || $r->__GET('estado') == 2) {
                                                 $estado = "Activo";
@@ -408,13 +404,15 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('descripcion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                    <a href="./categoriaGastos/visualizar_arqueocajaDet.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="./categoriaGastos/visualizar_categoriaGastos.php?viewCG=<?php echo $r->__GET('id_categoria_gastos');
+                                                    ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="./categoriaGastos/editar_categoriaGastos.php" target="_blank" title="Modificar los datos">
+                                                    <a href="./categoriaGastos/editar_categoriaGastos.php" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="./categoriaGastos/eliminar_categoriaGastos.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_categoriaGastos.php?delCG=<?php echo $r->__GET('id_categoria_gastos');
+                                                    ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>

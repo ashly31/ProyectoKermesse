@@ -1,11 +1,10 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_arqueocaja_det.php");
 
 
 class Dt_arqueoCaja_det extends Conexion
 {
-    private $myCon; 
+    private $myCon;  
 
     public function listarArqueocajaDet(){
 		
@@ -42,13 +41,12 @@ class Dt_arqueoCaja_det extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_arqueocaja_det (id_ArqueoCaja_Det, idArqueoCaja, idMoneda,
+			$sql = "INSERT INTO dbkermesse.tbl_arqueocaja_det (idArqueoCaja, idMoneda,
 			idDenominacion, cantidad, subtotal) 
-		        VALUES (?,?,?,?,?,?)";
+		        VALUES (?,?,?,?,?)";
 
 			$this->myCon->prepare($sql)
 		     ->execute(array(
-			 $acd->__GET('id_ArqueoCaja_Det'),
 			 $acd->__GET('idArqueoCaja'),
 			 $acd->__GET('idMoneda'),
 			 $acd->__GET('idDenominacion'),
@@ -68,24 +66,24 @@ class Dt_arqueoCaja_det extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$querySQL = "SELECT * FROM dbkermesse.tbl_arqueocaja_det WHERE id_ArqueoCaja_Det = ?;";
+			$querySQL = "SELECT * FROM dbkermesse.tbl_arqueocaja_det WHERE idArqueoCaja_Det = ?;";
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute(array($id));
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$acd = new tbl_arqueocaja_det();
+			$ad = new tbl_arqueocaja_det();
 
 			//_SET(CAMPOBD, atributoEntidad)			
-			$acd->__SET('id_ArqueoCaja_Det', $r->id_ArqueoCaja_Det);
-			$acd->__SET('idArqueoCaja', $r->idArqueoCaja);
-			$acd->__SET('idMoneda', $r->idMoneda);
-			$acd->__SET('idDenominacion', $r->idDenominacion);
-			$acd->__SET('cantidad', $r->cantidad);
-			$acd->__SET('subtotal', $r->subtotal);
+			$ad->__SET('idArqueoCaja_Det', $r->idArqueoCaja_Det);
+			$ad->__SET('idArqueoCaja', $r->idArqueoCaja);
+			$ad->__SET('idMoneda', $r->idMoneda);
+			$ad->__SET('idDenominacion', $r->idDenominacion);
+			$ad->__SET('cantidad', $r->cantidad);
+			$ad->__SET('subtotal', $r->subtotal);
 
 			$this->myCon = parent::desconectar();
-			return $acd;
+			return $ad;
 		} 
 		catch (Exception $e) 
 		{
@@ -93,7 +91,7 @@ class Dt_arqueoCaja_det extends Conexion
 		}
 	}
 
-	public function editACD(tbl_arqueocaja_det $acd)
+	public function editACD(tbl_arqueocaja_det $tacd)
 	{
 		try 
 		{
@@ -105,17 +103,17 @@ class Dt_arqueoCaja_det extends Conexion
 						cantidad = ?,
 						subtotal = ?,
 						
-				    WHERE id_ArqueoCaja_Det = ?";
+				    WHERE idArqueoCaja_Det = ?";
 
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$acd->__GET('idArqueoCaja'), 
-					$acd->__GET('idMoneda'), 
-					$acd->__GET('idDenominacion'),
-					$acd->__GET('cantidad'),
-					$acd->__GET('subtotal'),
-					$acd->__GET('id_ArqueoCaja_Det')
+					$tacd->__GET('idArqueoCaja'), 
+					$tacd->__GET('idMoneda'), 
+					$tacd->__GET('idDenominacion'),
+					$tacd->__GET('cantidad'),
+					$tacd->__GET('subtotal'),
+					$tacd->__GET('idArqueoCaja_Det')
 					)
 				);
 				$this->myCon = parent::desconectar();
@@ -134,7 +132,7 @@ class Dt_arqueoCaja_det extends Conexion
 			$this->myCon = parent::conectar();
 			$sql = "UPDATE dbkermesse.tbl_arqueocaja_det SET
 						estado = 3
-				    WHERE id_ArqueoCaja_Det = ?";
+				    WHERE idArqueoCaja_Det = ?";
 
 			$stm = $this->myCon->prepare($sql);
 			$stm->execute(array($id));

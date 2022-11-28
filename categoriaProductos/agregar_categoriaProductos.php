@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
-    <title>Kermesse - Agregar Categorias Gastos</title>
+    <title>Kermesse - Agregar Categorias Productos</title>
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
     <script src="https://kit.fontawesome.com/6aba70b797.js" crossorigin="anonymous"></script>
@@ -167,34 +167,34 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Categoria Gastos</h1>
-            <p class="mb-4">En este formulario podrá agregar nuevas Categorias de Gastos.
+            <h1 class="h3 mb-0 text-gray-800">Categoria Productos</h1>
+            <p class="mb-4">En este formulario podrá agregar nuevas Categorias de Productos.
             </p>
-            <!-- Agregar CG -->
+            <!-- Agregar CP -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Nueva Categoria de Gastos
+                    Nueva Categoría de Productos
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="../negocio/tbl_categoriagastos.php">
+                    <form method="POST" action="../negocio/tbl_categoriaproductos.php">
                         <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
                         <div class="form-floating mb-3">
-                            <label for="nombre_categoria">nombre de la categoria</label>
-                            <input class="form-control" id="nombre_categoria" name="nombre_categoria" type="text" title="Ingrese el nombre_categoria" required/>
+                            <label for="nombre">Nombre de la categoría</label>
+                            <input class="form-control" id="nombre" name="nombre" type="text" title="Ingrese el nombre" required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="descripcion">descripcion</label>
+                            <label for="descripcion">Descripción</label>
                             <input class="form-control" id="descripcion" name="descripcion" type="text" title="Ingrese la descripcion" required/>
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <a href="../tbl_categoriaGastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
+                            <a href="../tbl_categoriaProducto.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- end of Agregar CG -->
+            <!-- end of Agregar CP -->
         </div>
         <!-- end begin -->
         <!-- End of Main Content -->

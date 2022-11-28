@@ -1,6 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_categoria_producto.php");
 
 
 class Dt_categoriaProducto extends Conexion
@@ -12,7 +11,7 @@ class Dt_categoriaProducto extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_categoria_producto;";
+			$querySQL = "select * from dbkermesse.tbl_categoria_producto where estado<>3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -40,13 +39,12 @@ class Dt_categoriaProducto extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_categoria_producto (id_categoria_producto, nombre, 
+			$sql = "INSERT INTO dbkermesse.tbl_categoria_producto (nombre, 
 			descripcion, estado) 
-		        VALUES (?,?,?,?)";
+		        VALUES (?,?,?)";
 
 			$this->myCon->prepare($sql)
 		     ->execute(array(
-			 $cp->__GET('id_categoria_producto'),
 			 $cp->__GET('nombre'),
 			 $cp->__GET('descripcion'),
 			 $cp->__GET('estado')));
@@ -70,16 +68,16 @@ class Dt_categoriaProducto extends Conexion
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$cp = new Tbl_categoria_producto();
+			$c = new Tbl_categoria_producto();
 
 			//_SET(CAMPOBD, atributoEntidad)			
-			$cp->__SET('id_categoria_producto', $r->id_categoria_producto);
-			$cp->__SET('nombre', $r->nombre);
-			$cp->__SET('descripcion', $r->descripcon);
-			$cp->__SET('estado', $r->estado);
+			$c->__SET('id_categoria_producto', $r->id_categoria_producto);
+			$c->__SET('nombre', $r->nombre);
+			$c->__SET('descripcion', $r->descripcion);
+			$c->__SET('estado', $r->estado);
 
 			$this->myCon = parent::desconectar();
-			return $cp;
+			return $c;
 		} 
 		catch (Exception $e) 
 		{
@@ -87,7 +85,7 @@ class Dt_categoriaProducto extends Conexion
 		}
 	}
 
-	public function editCP(Tbl_categoria_producto $cp)
+	public function editCP(Tbl_categoria_producto $tcp)
 	{
 		try 
 		{
@@ -102,10 +100,10 @@ class Dt_categoriaProducto extends Conexion
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$cp->__GET('id_categoria_producto'), 
-					$cp->__GET('nombre'), 
-					$cp->__GET('descripcion'),
-					$cp->__GET('esatdo'),
+					$tcp->__GET('nombre'), 
+					$tcp->__GET('descripcion'),
+					$tcp->__GET('estado'),
+					$tcp->__GET('id_categoria_producto'), 
 					)
 				);
 				$this->myCon = parent::desconectar();
@@ -151,6 +149,6 @@ foreach($element as $value){
     echo $value->nombres;
     echo $value->apellidos;
     echo $value->email;
-    echo $value->estado;
+    echo $value->estado; 
 }
 */
