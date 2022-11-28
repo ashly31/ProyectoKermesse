@@ -29,7 +29,7 @@ $tu = $dtu->getProdByID($varIdProd);
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
 
-    <title>Kermesse - Editar Usuario</title>
+    <title>Kermesse - Editar Productos</title>
 
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
@@ -215,14 +215,14 @@ $tu = $dtu->getProdByID($varIdProd);
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Usuarios</h1>
-            <p class="mb-4">En este formulario podrá editar usuarios existentes.
+            <h1 class="h3 mb-0 text-gray-800">Productos</h1>
+            <p class="mb-4">En este formulario podrá editar productos existentes.
             </p>
             <!-- Agregar AC -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Editar Usuario
+                    Editar Producto
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Productos.php">

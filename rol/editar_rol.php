@@ -316,10 +316,8 @@ $tr = $dtr ->getUserByID($varIdR);
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores()
     {
-        $("#id_rol").css("background-color", "#E3E4E5");
         $("#id_rol").val("<?php echo $tr->__GET('id_rol') ?>");
         $("#idR").val("<?php echo $tr->__GET('id_rol') ?>");
-        $("#rol_descripcion").css("background-color", "#E3E4E5");
         $("#rol_descripcion").val("<?php echo $tr->__GET('rol_descripcion') ?>");
 
     }
