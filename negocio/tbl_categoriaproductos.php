@@ -11,16 +11,15 @@ if ($_POST)
     $varAccion = $_POST['txtaccion'];
 
     switch ($varAccion) 
-    {
+    { 
         case '1':
             try 
-            {
+            { 
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cp->__SET('id_categoria_producto', $_POST['id_categoria_producto']);
                 $cp->__SET('nombre', $_POST['nombre']);
                 $cp->__SET('descripcion', $_POST['descripcion']);
-                $cp->__SET('estado', $_POST['estado']);
+                $cp->__SET('estado', 1);
 
                 $dcp->insertCP($cp);
                 //var_dump($emp);
@@ -36,12 +35,15 @@ if ($_POST)
         case '2':
             try 
             {
+                if($_POST['confpass'] != $_POST['pass']){
+                    header("Location: /Kermesse/categoriaProductos/editar_categoriaProductos.php?msj=5&varEnter={$_POST['idCP']}");
+                    die();
+                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $cp->__SET('id_categoria_producto', $_POST['idCP']);
                 $cp->__SET('nombre', $_POST['nombre']);
                 $cp->__SET('descripcion', $_POST['desc']);
-                $cp->__SET('estado', $_POST['estado']);
         
                 $dpc->editCP($cp);
                 //var_dump($emp);
@@ -53,10 +55,7 @@ if ($_POST)
                 die($e->getMessage());
             }
             break;
-        
-        default:
-            # code...
-            break;
+
     }
 
 

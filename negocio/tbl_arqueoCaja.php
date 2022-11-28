@@ -17,7 +17,6 @@ if ($_POST)
             {
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $ac->__SET('id_ArqueoCaja', $_POST['id_ArqueoCaja']);
                 $ac->__SET('idKermesse', $_POST['idKermesse']);
                 $ac->__SET('fechaArqueo', $_POST['fechaArqueo']);
                 $ac->__SET('granTotal', $_POST['granTotal']);
@@ -43,6 +42,10 @@ if ($_POST)
         case '2':
             try 
             {
+                if($_POST['confpass'] != $_POST['pass']){
+                    header("Location: /Kermesse/arqueocaja/editar_arqueocaja.php?msj=5&varEnter={$_POST['idAC']}");
+                    die();
+                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $ac->__SET('id_ArqueoCaja', $_POST['idAC']);
@@ -55,7 +58,7 @@ if ($_POST)
                 $ac->__SET('fecha_modificacion', $_POST['fecha_modificacion']);
                 $ac->__SET('usuario_eliminacion', $_POST['usuario_eliminacion']);
                 $ac->__SET('fecha_eliminacion', $_POST['fecha_eliminacion']);
-                $ac->__SET('estado', 2);
+                
         
                 $dac->editAC($ac);
                 //var_dump($emp);
@@ -68,9 +71,6 @@ if ($_POST)
             }
             break;
         
-        default:
-            # code...
-            break;
     }
 
 
@@ -91,4 +91,4 @@ if ($_GET)
         header("Location: /Kermesse/tbl_arqueoCaja.php?msj=6");
         die($e->getMessage());
     }
-}
+} 

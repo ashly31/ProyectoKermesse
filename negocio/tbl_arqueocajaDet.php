@@ -17,7 +17,6 @@ if ($_POST)
             {
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $acd->__SET('id_ArqueoCaja_Det', $_POST['id_ArqueoCaja_Det']);
                 $acd->__SET('idArqueoCaja', $_POST['idArqueoCaja']);
                 $acd->__SET('idMoneda', $_POST['idMoneda']);
                 $acd->__SET('idDenominacion', $_POST['idDenominacion']);
@@ -38,12 +37,16 @@ if ($_POST)
         case '2':
             try 
             {
+                if($_POST['confpass'] != $_POST['pass']){
+                    header("Location: /Kermesse/arqueocajaDet/editar_arqueocajaDet.php?msj=5&varEnter={$_POST['idArqueoCaja_Det']}");
+                    die();
+                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $acd->__SET('id_ArqueoCaja_Det', $_POST['idACD']);
-                $acd->__SET('id_ArqueoCaja', $_POST['idAC']);
-                $acd->__SET('idMoneda', $_POST['idM']);
-                $acd->__SET('idDenominacion', $_POST['idD']);
+                $acd->__SET('idArqueoCaja_Det', $_POST['idArqueCaja_Det']);
+                $acd->__SET('idArqueoCaja', $_POST['idArqueoCaja']);
+                $acd->__SET('idMoneda', $_POST['idMoneda']);
+                $acd->__SET('idDenominacion', $_POST['idDenominacion']);
                 $acd->__SET('cantidad', $_POST['cantidad']);
                 $acd->__SET('subtotal', $_POST['subtotal']);
         
@@ -58,9 +61,6 @@ if ($_POST)
             }
             break;
         
-        default:
-            # code...
-            break;
     }
 
 
@@ -72,8 +72,8 @@ if ($_GET)
     try 
     {
         
-        $acd->__SET('id_ArqueoCaja_Det', $_GET['delACD']);
-        $dacd->deleteACD($acd->__GET('id_ArqueoCaja_Det'));
+        $acd->__SET('idArqueoCaja_Det', $_GET['delACD']);
+        $dacd->deleteACD($acd->__GET('idArqueoCaja_Det'));
         header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=5");
     }
     catch(Exception $e) 

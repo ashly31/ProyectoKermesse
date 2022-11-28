@@ -25,7 +25,7 @@ class Dt_listaPrecioDet extends Conexion
 				$lpd->__SET('id_lista_precio', $r->id_lista_precio);
 				$lpd->__SET('id_producto', $r->id_producto);
 				$lpd->__SET('precio_venta', $r->precio_venta);
-				$lpd->__SET('estado', $r->estado);
+			
 				$result[] = $lpd;
 			}
 			$this->myCon = parent::desconectar();
@@ -41,16 +41,15 @@ class Dt_listaPrecioDet extends Conexion
 		try{
 			$this->myCon = parent::conectar();
 			$sql = "INSERT INTO dbkermesse.tbl_listaprecio_det (id_listaprecio_det, id_lista_precio,
-			id_producto, precio_venta, estado)
-					VALUES(?,?,?,?,?)";
+			id_producto, precio_venta)
+					VALUES(?,?,?,?)";
 			
 			$this->myCon->prepare($sql)
 			 ->execute(array(
 				$lpd->__GET('id_listaprecio_det'),
 				$lpd->__GET('id_lista_precio'),
 				$lpd->__GET('id_producto'),
-				$lpd->__GET('precio_venta'),
-				$lpd->__GET('estado')));
+				$lpd->__GET('precio_venta')));
 			
 			$this->myCon = parent::desconectar();
 
@@ -77,7 +76,7 @@ class Dt_listaPrecioDet extends Conexion
 			$lpd->__SET('id_lista_precio', $r->id_lista_precio);
 			$lpd->__SET('id_producto', $r->id_producto);
 			$lpd->__SET('precio_venta', $r->precio_venta);
-			$lpd->__SET('estado', $r->estado);
+			
 
 			$this->myCon = parent::desconectar();
 			return $lpd;
@@ -97,7 +96,7 @@ class Dt_listaPrecioDet extends Conexion
 						id_lista_precio =?,
 						id_producto = ?,
 						precio_venta = ?,
-						estado = ?
+						
 					WHERE id_listaprecio_det = ?";
 
 				$this->myCon->prepare($sql)
@@ -106,7 +105,7 @@ class Dt_listaPrecioDet extends Conexion
 					$lpd->__GET('id_lista_precio'),
 				    $lpd->__GET('id_producto'),
 				    $lpd->__GET('precio_venta'),
-				    $lpd->__GET('estado')
+				   
 				)
 				 );
 				 $this->myCon = parent::desconectar();

@@ -1,3 +1,27 @@
+<?php
+
+//error_reporting(0);
+//IMPORTAMOS ENTIDADES Y DATOS
+
+include '../entidades/tbl_categoria_gastos.php';
+include '../datos/Dt_categoriaGastos.php';
+
+$dcg = new Dt_categoriaGastos();
+$tcg = new Tbl_categoria_gastos();
+
+//variable de control msj
+$varIdCG = 0;
+if(isset($varIdCG))
+{
+    $varIdCG = $_GET['viewCG']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
+}
+
+//OBTENEMOS LOS DATOS DEL USUARIO PARA SER CONSULTADO
+$tcg = $dcg->getCGByID($varIdCG);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
-    <title>Kermesse - Agregar Categorias Gastos</title>
+    <title>Kermesse - Visualizar Categoria Producto</title>
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
     <script src="https://kit.fontawesome.com/6aba70b797.js" crossorigin="anonymous"></script>
@@ -164,37 +188,44 @@
             </ul>
         </nav>
         <!-- End of Topbar -->
-        <!-- Begin Page Content -->
+        <!-- Comienza formulario --> 
         <div class="container-fluid">
             <!-- Page Heading -->
             <h1 class="h3 mb-0 text-gray-800">Categoria Gastos</h1>
-            <p class="mb-4">En este formulario podrá agregar nuevas Categorias de Gastos.
+            <p class="mb-4">En este formulario podrá visualizar las CG.
             </p>
-            <!-- Agregar CG -->
+            <!-- visualizar ACD -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Nueva Categoria de Gastos
+                    visualizar Categorias Gastos
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="../negocio/tbl_categoriagastos.php">
-                        <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
-                        <div class="form-floating mb-3">
-                            <label for="nombre_categoria">nombre de la categoria</label>
-                            <input class="form-control" id="nombre_categoria" name="nombre_categoria" type="text" title="Ingrese el nombre_categoria" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="descripcion">descripcion</label>
-                            <input class="form-control" id="descripcion" name="descripcion" type="text" title="Ingrese la descripcion" required/>
-                        </div>
-                        <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
-                            <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <a href="../tbl_categoriaGastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
-                        </div>
-                    </form>
+                <form method="POST" action="../negocio/tbl_arqueocajaDet.php">
+                                    <div class="form-floating mb-3">
+                                        <label for="id_categoria_gastos">Id Categoria Gastos:</label>
+                                        <input class="form-control" id="id_categoria_gastos" name="id_categoria_gastos" type="text" readonly required/>
+                                        
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                       <label for="nombre_categoria">Nombre de la Categoria:</label>
+                                        <input class="form-control" id="nombre_categoria" name="nombre_categoria" type="text" readonly required/>
+                                        
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <label for="descripcion">Descripcion:</label>
+                                        <input class="form-control" id="descripcion" name="descripcion" type="text" readonly required/>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
+                                     <a href="../tbl_categoriaGastos.php"> <button type="button" class="btn btn-info">Regresar</button> </a>
+                                    </div>
+                                </form>
                 </div>
             </div>
-            <!-- end of Agregar CG -->
+            <!-- end of visualizar ACD -->
         </div>
         <!-- end begin -->
         <!-- End of Main Content -->
@@ -245,5 +276,27 @@
 <!-- Page level custom scripts -->
 <script src="../js/demo/chart-area-demo.js"></script>
 <script src="../js/demo/chart-pie-demo.js"></script>
+<script>
+    ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
+    function setValores()
+    {
+        $("#id_categoria_gastos").css("background-color", "#E3E4E5");
+        $("#id_categoria_gastos").val("<?php echo $tcg->__GET('id_categoria_gastos') ?>");
+
+        $("#nombre_categoria").css("background-color", "#E3E4E5");
+        $("#nombre_categoria").val("<?php echo $tcg->__GET('nombre_categoria') ?>");
+
+        $("#descripcion").css("background-color", "#E3E4E5");
+        $("#descripcion").val("<?php echo $tcg->__GET('descripcion') ?>");
+
+    }
+
+    $(document).ready(function ()
+    {
+        // CARGAMOS LOS VALORES EN LOS CONTROLES //
+        setValores();
+    });
+
+</script>
 </body>
 </html>

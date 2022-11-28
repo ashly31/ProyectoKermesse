@@ -8,7 +8,7 @@ $dcg = new Dt_categoriaGastos();
 
 if ($_POST) 
 {
-    $varAccion = $_POST['txtaccion'];
+    $varAccion = $_POST['txtaccion']; 
 
     switch ($varAccion) 
     {
@@ -17,10 +17,9 @@ if ($_POST)
             {
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cg->__SET('id_categoria_gastos', $_POST['id_categoria_gastos']);
                 $cg->__SET('nombre_categoria', $_POST['nombre_categoria']);
                 $cg->__SET('descripcion', $_POST['descripcion']);
-                $cg->__SET('estado', $_POST['estado']);
+                $cg->__SET('estado', 1);
 
                 $dcg->insertCG($cg);
                 //var_dump($emp);
@@ -36,12 +35,15 @@ if ($_POST)
         case '2':
             try 
             {
+                if($_POST['confpass'] != $_POST['pass']){
+                    header("Location: /Kermesse/categoriaGastos/editar_categoriaGastos.php?msj=5&varEnter={$_POST['idCG']}");
+                    die();
+                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $cg->__SET('id_categoria_gastos', $_POST['idCG']);
                 $cg->__SET('nombre_categoria', $_POST['nombre_categoria']);
                 $cg->__SET('descripcion', $_POST['desc']);
-                $cg->__SET('estado', $_POST['estado']);
         
                 $dcg->editCG($cg);
                 //var_dump($emp);
@@ -54,9 +56,6 @@ if ($_POST)
             }
             break;
         
-        default:
-            # code...
-            break;
     }
 
 
@@ -69,8 +68,8 @@ if ($_GET)
     {
         
         $cg->__SET('id_categoria_gastos', $_GET['delCG']);
-        $dcg->deleteCG($acd->__GET('id_categoriagastos'));
-        header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=5");
+        $dcg->deleteCG($cg->__GET('id_categoria_gastos'));
+        header("Location: /Kermesse/tbl_categoriaGastos.php?msj=5");
     }
     catch(Exception $e) 
     {

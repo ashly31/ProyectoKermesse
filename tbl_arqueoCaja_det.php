@@ -2,10 +2,6 @@
 //importamos las entidades
 include './entidades/tbl_arqueocaja_det.php';
 include './datos/Dt_arqueoCaja_det.php';
-include './arqueocajaDet/agregar_arqueocajaDet.php';
-include './arqueocajaDet/editar_arqueocajaDet.php';
-include './arqueocajaDet/eliminar_arqueocajaDet.php';
-include './arqueocajaDet/visualizar_arqueocajaDet.php';
 
 $dacd = new Dt_arqueoCaja_det();
 
@@ -367,8 +363,8 @@ if (isset($varMsj)) {
                     <p class="mb-4">El arqueo de caja es el análisis de las transacciones del efectivo,
                         en un momento determinado, con el objeto de comprobar si se ha contabilizado todo
                         el efectivo recibido y si el saldo que arroja esta cuenta corresponde con lo que se
-                        encuentra físicamente en caja en dinero efectivo, cheques o vales. <a target="_blank" href="./arqueocajaDet/agregar_arqueocajaDet.php">Agregar</a>.</p>
-
+                        encuentra físicamente en caja en dinero efectivo, cheques o vales. <a href="./arqueocajaDet/agregar_arqueocajaDet.php"><i class="fa fa-plus-square"></i> Agregar</a>.</p>
+ 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -412,13 +408,15 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('cantidad');  ?></td>
                                                 <td><?php echo $r->__GET('subtotal');  ?></td>
                                                 <td>
-                                                    <a href="./arqueocajaDet/visualizar_arqueocajaDet.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="arqueocajaDet/visualizar_arqueocajaDet.php?viewACD=<?php echo $r->__GET('idArqueoCaja_Det');
+                                                    ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="./arqueocajaDet/editar_arqueocajaDet.php" target="_blank" title="Modificar los datos">
+                                                    <a href="arqueocajaDet/editar_arqueocajaDet.php" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="./arqueocajaDet/eliminar_arqueocajaDet.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_arqueocajaDet.php?delACD=<?php echo $r->__GET('idArqueoCaja_Det');
+                                                    ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
