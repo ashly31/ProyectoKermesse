@@ -413,7 +413,7 @@ if(isset($_GET['$varMsj']))
                                                     <a href="tasacambio/visualizar_tasacambio.php?viewT=<?php echo $r->__GET('id_tasaCambio')?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="tasacambio/editar_tasacambio.php"  title="Modificar los datos">
+                                                    <a href="tasacambio/editar_tasacambio.php?editT= <?php echo $r->__GET('id_tasaCambio') ?>"  title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     <a href="negocio/tbl_tasaCambio.php?delTc= <?php echo $r->__GET('id_tasaCambio')?>" title="Eliminar los datos">
