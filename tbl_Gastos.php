@@ -383,8 +383,6 @@ if (isset($varMsj)) {
                                             <th>Fecha Creacion</th>
                                             <th>Usuario Modificación</th>
                                             <th>Fecha Modificacion</th>
-                                            <th>Usuario Eliminacion</th>
-                                            <th>Fecha Eliminacion</th>
                                             <th>Estado</th>
                                             <th>Opciones</th>
                                         </tr>
@@ -401,8 +399,6 @@ if (isset($varMsj)) {
                                             <th>Fecha Creacion</th>
                                             <th>Usuario Modificación</th>
                                             <th>Fecha Modificacion</th>
-                                            <th>Usuario Eliminacion</th>
-                                            <th>Fecha Eliminacion</th>
                                             <th>Estado</th>
                                             <th>Opciones</th>
                                         </tr>
@@ -428,8 +424,6 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('fecha_creacion');  ?></td>
                                                 <td><?php echo $r->__GET('usuario_modificacion');  ?></td>
                                                 <td><?php echo $r->__GET('fecha_modificacion');  ?></td>
-                                                <td><?php echo $r->__GET('usuario_eliminacion');  ?></td>
-                                                <td><?php echo $r->__GET('fecha_eliminacion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
                                                     <a href="./gastos/visualizar_gastos.php?viewG="<?php echo $r->__GET('id_registro_gastos') ?> title="Visualizar los datos">

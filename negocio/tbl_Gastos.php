@@ -50,8 +50,6 @@ if ($_POST)
                 $tbg->__SET('fechaGasto', $_POST['fechaGasto']);
                 $tbg->__SET('concepto', $_POST['concepto']);
                 $tbg->__SET('monto', $_POST['monto']);
-                $tbg->__SET('usuario_creacion', $_POST['usuario_creacion']);
-                $tbg->__SET('fecha_creacion', $_POST['fecha_creacion']);
                 $tbg->__SET('usuario_modificacion', $_POST['usuario_modificacion']);
                 $tbg->__SET('fecha_modificacion', $_POST['fecha_modificacion']);
                 $tbg->__SET('estado', 2);

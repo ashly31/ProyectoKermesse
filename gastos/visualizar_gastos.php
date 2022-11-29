@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(0);
+//error_reporting(0);
 //IMPORTAMOS ENTIDADES Y DATOS
 
 include '../entidades/tbl_gastos.php';
@@ -17,7 +17,7 @@ if(isset($varIdG))
 }
 
 //OBTENEMOS LOS DATOS DEL USUARIO PARA SER CONSULTADO
-$tkg = $dtg->getGastosByID($varIdG);
+$tg = $dtg->getGastosByID($varIdG);
 ?>
 
 <!DOCTYPE html>
@@ -216,14 +216,14 @@ $tkg = $dtg->getGastosByID($varIdG);
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Gastos</h1>
-            <p class="mb-4">En este formulario podrá ver los gastos.
+            <h1 class="h3 mb-0 text-gray-800">Ingreso Gastos</h1>
+            <p class="mb-4">En este formulario podrá ver sus gastos.
             </p>
             <!-- Agregar AC -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Ver gastos
+                    Ver Gastos
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Gastos.php">
@@ -236,31 +236,29 @@ $tkg = $dtg->getGastosByID($varIdG);
 
                         <div class="form-floating mb-3">
                             <label for="idKermesse">ID Kermesse</label>
-                            <input class="form-control" id="idKermesse" name="idKermesse" type="text" readonly required/>
+                            <input class="form-control" id="idKermesse" name="idKermesse" readonly required/>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="idCatGastos">ID Categoria Gastos</label>
+                            <input class="form-control" id="idCatGastos" name="idCatGastos" readonly required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="idCatGastos">ID Categoría Gastos</label>
-                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="text"  readonly required/>
+                            <label for="fechaGasto">Fecha de gastos</label>
+                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="number" readonly required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="fechaGasto">Fecha de Gasto</label>
-                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="date" readonly required/>
+                            <label for="concepto">Concepto</label>
+                            <input class="form-control" id="concepto" name="concepto" readonly required/>
                         </div>
-                        <div class="form-floating mb-3">
-                            <label for="concepto">Fecha de Finalización</label>
-                            <input class="form-control" id="concepto" name="concepto" type="text" readonly required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="monto">Monto</label>
-                            <input class="form-control" id="monto" name="monto" type="text" readonly required/>
-                        </div>
+
                         <div class="form-floating mb-3">
                             <label for="usuario_creacion">Usuario Creación</label>
                             <input class="form-control" id="usuario_creacion" name="usuario_creacion" type="text" readonly required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_creacion">Fecha Creación</label>
-                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="text" readonly required/>
+                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" readonly required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="usuario_modificacion">Usuario Modificación</label>
@@ -268,15 +266,9 @@ $tkg = $dtg->getGastosByID($varIdG);
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_modificacion">Fecha Modificación</label>
-                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="text" readonly required/>
+                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime-local" readonly required/>
                         </div>
-                        <div class="form-floating mb-3">
-                            <label for="usuario_eliminacion">Usuario Eliminacion</label>
-                            <input class="form-control" id="usuario_eliminacion" name="usuario_eliminacion" type="text" readonly required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fecha_eliminacion">Fecha Eliminacion</label>
-                            <input class="form-control" id="fecha_eliminacion" name="fecha_eliminacion" type="text" readonly required/>
+
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <a href="../tbl_Gastos.php"> <button type="button" class="btn btn-info">Regresar</button> </a>
@@ -358,6 +350,7 @@ $tkg = $dtg->getGastosByID($varIdG);
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores()
     {
+
         $("#id_registro_gastos").css("background-color", "#E3E4E5");
         $("#id_registro_gastos").val("<?php echo $tg->__GET('id_registro_gastos') ?>");
 

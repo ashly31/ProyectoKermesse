@@ -560,7 +560,7 @@ if (isset($varMsj)) {
             {
                 errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
             }
-            $("#tbl_ingresoComunidad").DataTable({
+            $("").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,

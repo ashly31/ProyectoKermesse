@@ -1,25 +1,22 @@
 <?php
 
-error_reporting(0);
-
 include '../entidades/tbl_gastos.php';
 include '../datos/Dt_Gastos.php';
 
 $dtg = new Dt_Gastos();
-$tg = new Tbl_gastos();
+$tg = new tbl_gastos();
 
 //variable de control msj
-$varIdK = 0;
+$varIdG = 0;
 if(isset($varIdG))
 {
     $varIdG = $_GET['editG']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
 }
 
 //OBTENEMOS LOS DATOS DEL USUARIO PARA SER EDITADO
-$tg = $dtg->getGastosByID($varIdG);
+$tg = $dtg ->getGastosByID($varIdG);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +28,7 @@ $tg = $dtg->getGastosByID($varIdG);
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
 
-    <title>Kermesse - Editar Kermesse</title>
+    <title>Kermesse - Editar Gastos</title>
 
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
@@ -218,9 +215,9 @@ $tg = $dtg->getGastosByID($varIdG);
 
             <!-- Page Heading -->
             <h1 class="h3 mb-0 text-gray-800">Gastos</h1>
-            <p class="mb-4">En este formulario podrá editar gastos existentes.
+            <p class="mb-4">En este formulario podrá editar gastos.
             </p>
-            <!-- Agregar AC -->
+            <!-- Edit rol -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -235,12 +232,12 @@ $tg = $dtg->getGastosByID($varIdG);
                             <input class="form-control" id="idKermesse" name="idKermesse" type="text" title="Ingrese ID de Kermesse" required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="idCatGastos">ID Cat Gastos:</label>
-                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="text" title="Ingrese el ID de Cat Gastos" required/>
+                            <label for="idCatGastos">ID Categoría Gastos:</label>
+                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="text" title="Ingrese el ID de Categoria Gastos" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fechaGasto">Fecha Gasto:</label>
-                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="datetime-local" title="Ingrese la fecha de gasto" required/>
+                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="datetime-local" title="Ingrese la fecha del gasto" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="concepto">Concepto:</label>
@@ -259,23 +256,24 @@ $tg = $dtg->getGastosByID($varIdG);
                             <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" readonly/>
                         </div>
 
-                        <div class="form-floating mb-3">
-                            <label for="usuario_modificacion">Usuario Modificación:</label>
-                            <input class="form-control" id="usuario_modificacion" name="usuario_modificacion" type="text" title="Ingrese el usuario modificacion" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fecha_modificacion">Fecha Modificación:</label>
-                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime-local" title="Ingrese la fecha de modificacion" required/>
-                        </div>
+                            <div class="form-floating mb-3">
+                                <label for="usuario_modificacion">Usuario Modificación:</label>
+                                <input class="form-control" id="usuario_modificacion" name="usuario_modificacion" type="text" title="Ingrese el usuario de modificacion" required/>
+                            </div>
 
-                        <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
-                            <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <a href="../tbl_Gastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
-                        </div>
+                            <div class="form-floating mb-3">
+                                <label for="fecha_modificacion">Fecha Modificación:</label>
+                                <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime-local" title="Ingrese la fecha de modificacion" required/>
+                            </div>
+
+                            <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
+                                <input class="btn btn-primary" type="submit" value="Guardar"/>
+                                <a href="../tbl_Gastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
+                            </div>
                     </form>
                 </div>
             </div>
-            <!-- end of Agregar Usuario -->
+            <!-- end of Edit CG -->
         </div>
         <!-- end begin -->
 
@@ -345,26 +343,26 @@ $tg = $dtg->getGastosByID($varIdG);
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores()
     {
+        $("#idKermesse").val("<?php echo $tg->__GET('idKermesse') ?>");
 
-        $("#id_kermesse").val("<?php echo $tg->__GET('id_kermesse') ?>");
-
-        $("#idCatGastos").val("<?php echo $tg->__GET('idParroquia') ?>");
+        $("#idCatGastos").val("<?php echo $tg->__GET('idCatGastos') ?>");
 
         $("#fechaGasto").val("<?php echo $tg->__GET('fechaGasto') ?>");
 
         $("#concepto").val("<?php echo $tg->__GET('concepto') ?>");
 
-        $("#monto").val("<?php echo $tg->__GET('monto') ?>");
+        $("#total_bonos").val("<?php echo $tg->__GET('total_bonos') ?>");
 
         $("#usuario_creacion").css("background-color", "#E3E4E5");
+        $("#usuario_creacion").val("<?php echo $tg->__GET('usuario_creacion') ?>");
 
         $("#fecha_creacion").css("background-color", "#E3E4E5");
+        $("#fecha_creacion").val("<?php echo $tg->__GET('fecha_creacion') ?>");
 
-        $("#usuario_modificacion").css("background-color", "#E3E4E5");
         $("#usuario_modificacion").val("<?php echo $tg->__GET('usuario_modificacion') ?>");
 
-        $("#usuario_modificacion").css("background-color", "#E3E4E5");
-        $("#usuario_modificacion").val("<?php echo $tg->__GET('usuario_modificacion') ?>");
+        $("#fecha_modificacion").val("<?php echo $tg->__GET('fecha_modificacion') ?>");
+
     }
 
     $(document).ready(function ()

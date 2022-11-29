@@ -1,6 +1,7 @@
 <?php
 include_once("conexion.php");
 
+
 class Dt_Gastos extends Conexion
 {
     private $myCon;
@@ -11,13 +12,13 @@ class Dt_Gastos extends Conexion
         try {
             $this->myCon = parent::conectar();
             $result = array();
-            $querySQL = "select * from dbkermesse.tbl_gastos WHERE estado <>3;";
+            $querySQL = "select * from dbkermesse.tbl_gastos where estado<>3;";
 
             $stm = $this->myCon->prepare($querySQL);
             $stm->execute();
 
             foreach ($stm->fetchAll(PDO::FETCH_OBJ) as $r) {
-                $g = new tbl_gastos();
+                $g = new Tbl_gastos();
 
                 //_SET(CAMPOBD, atributoEntidad)
                 $g->__SET('id_registro_gastos', $r->id_registro_gastos);
@@ -33,6 +34,8 @@ class Dt_Gastos extends Conexion
                 $g->__SET('usuario_eliminacion', $r->usuario_eliminacion);
                 $g->__SET('fecha_eliminacion', $r->fecha_eliminacion);
                 $g->__SET('estado', $r->estado);
+
+
                 $result[] = $g;
             }
             $this->myCon = parent::desconectar();
@@ -46,7 +49,7 @@ class Dt_Gastos extends Conexion
     {
         try {
             $this->myCon = parent::conectar();
-            $sql = "INSERT INTO dbkermesse.tbl_gastos(idKermesse, idCatGastos, fechaGasto, concepto, monto, usuario_creacion, fecha_creacion)
+            $sql = "INSERT INTO dbkermesse.tbl_gastos (idKermesse, idCatGastos, fechaGasto, concepto, monto, usuario_creacion, fecha_creacion)
 					VALUES(?,?,?,?,?,?,?)";
 
             $this->myCon->prepare($sql)->execute(array(
@@ -55,7 +58,6 @@ class Dt_Gastos extends Conexion
                 $g->__GET('fechaGasto'),
                 $g->__GET('concepto'),
                 $g->__GET('monto'),
-                $g->__GET('estado'),
                 $g->__GET('usuario_creacion'),
                 $g->__GET('fecha_creacion')));
 
@@ -79,6 +81,7 @@ class Dt_Gastos extends Conexion
             $g = new Tbl_gastos();
 
             //_SET(CAMPOBD, atributoEntidad)
+            $g->__SET('id_registro_gastos', $r->id_registro_gastos);
             $g->__SET('idKermesse', $r->idKermesse);
             $g->__SET('idCatGastos', $r->idCatGastos);
             $g->__SET('fechaGasto', $r->fechaGasto);
@@ -91,6 +94,7 @@ class Dt_Gastos extends Conexion
             $g->__SET('usuario_eliminacion', $r->usuario_eliminacion);
             $g->__SET('fecha_eliminacion', $r->fecha_eliminacion);
             $g->__SET('estado', $r->estado);
+
 
             $this->myCon = parent::desconectar();
             return $g;
@@ -105,14 +109,13 @@ class Dt_Gastos extends Conexion
             $this->myCon = parent::conectar();
             $sql = "UPDATE dbkermesse.tbl_gastos SET
 						idKermesse = ?,
-						idCatGastos = ?,
-						fechaGasto = ?,
+						idCatGastos = ?, 
+						fechaGasto = ?, 
 						concepto = ?,
 						monto = ?,
-						usuario_creacion = ?,
-						fecha_creacion = ?,
 						usuario_modificacion = ?,
-						fecha_modificacion = ?
+						fecha_modificacion = ?,
+						estado = 2						
 				    WHERE id_registro_gastos = ?";
 
             $this->myCon->prepare($sql)
@@ -124,12 +127,8 @@ class Dt_Gastos extends Conexion
                         $tg->__GET('fechaGasto'),
                         $tg->__GET('concepto'),
                         $tg->__GET('monto'),
-                        $tg->__GET('estado'),
-                        $tg->__GET('usuario_creacion'),
-                        $tg->__GET('fecha_creacion'),
                         $tg->__GET('usuario_modificacion'),
-                        $tg->__GET('fecha_modificacion'),
-                        $tg->__GET('id_registro_gastos')
+                        $tg->__GET('fecha_modificacion')
                     )
                 );
             $this->myCon = parent::desconectar();
@@ -151,7 +150,9 @@ class Dt_Gastos extends Conexion
             $stm->execute(array($id));
 
             $this->myCon = parent::desconectar();
-        } catch (Exception $e) {
+        }
+        catch (Exception $e)
+        {
             var_dump($e);
             die($e->getMessage());
         }

@@ -59,26 +59,26 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Tablas de registros: </h6>
-                    <a class="collapse-item" href="tbl_arqueoCaja_det.php">Arqueo caja det</a>
-                    <a class="collapse-item" href="tbl_arqueoCaja.php">Arqueo caja</a>
-                    <a class="collapse-item" href="tbl_categoriaGastos.php">Categorías Gastos</a>
-                    <a class="collapse-item" href="tbl_categoriaProducto.php">Categorías Productos</a>
-                    <a class="collapse-item" href="tbl_Comunidad.php">Comunidad</a>
-                    <a class="collapse-item" href="tbl_controlBonos.php">Control Bonos</a>
-                    <a class="collapse-item" href="tbl_Denominacion.php">Denominación</a>
-                    <a class="collapse-item" href="tbl_Gastos.php">Gastos</a>
-                    <a class="collapse-item" href="tbl_ingresoComunidad_det.php">Ingreso Comunidad Det</a>
-                    <a class="collapse-item" href="tbl_ingresoComunidad.php">Ingreso Comunidad</a>
-                    <a class="collapse-item" href="tbl_kermesse.php">Kermesse</a>
-                    <a class="collapse-item" href="tbl_listaPrecio.php">Lista Precio</a>
-                    <a class="collapse-item" href="tbl_listaPrecioDet.php">Lista Precio Det</a>
-                    <a class="collapse-item" href="tbl_Moneda.php">Moneda</a>
-                    <a class="collapse-item" href="tbl_Opciones.php">Opciones</a>
-                    <a class="collapse-item" href="tbl_Parroquia.php">Parroquia</a>
-                    <a class="collapse-item" href="tbl_Productos.php">Productos</a>
-                    <a class="collapse-item" href="tbl_Rol.php">Rol</a>
-                    <a class="collapse-item" href="tbl_Tasacambio.php">Tasa Cambio</a>
-                    <a class="collapse-item" href="tbl_Usuario.php">Usuario</a>
+                    <a class="collapse-item" href="../tbl_arqueoCaja_det.php">Arqueo caja det</a>
+                    <a class="collapse-item" href="../tbl_arqueoCaja.php">Arqueo caja</a>
+                    <a class="collapse-item" href="../tbl_categoriaGastos.php">Categorías Gastos</a>
+                    <a class="collapse-item" href="../tbl_categoriaProducto.php">Categorías Productos</a>
+                    <a class="collapse-item" href="../tbl_Comunidad.php">Comunidad</a>
+                    <a class="collapse-item" href="../tbl_controlBonos.php">Control Bonos</a>
+                    <a class="collapse-item" href="../tbl_Denominacion.php">Denominación</a>
+                    <a class="collapse-item" href="../tbl_Gastos.php">Gastos</a>
+                    <a class="collapse-item" href="../tbl_ingresoComunidad_det.php">Ingreso Comunidad Det</a>
+                    <a class="collapse-item" href="../tbl_ingresoComunidad.php">Ingreso Comunidad</a>
+                    <a class="collapse-item" href="../tbl_kermesse.php">Kermesse</a>
+                    <a class="collapse-item" href="../tbl_listaPrecio.php">Lista Precio</a>
+                    <a class="collapse-item" href="../tbl_listaPrecioDet.php">Lista Precio Det</a>
+                    <a class="collapse-item" href="../tbl_Moneda.php">Moneda</a>
+                    <a class="collapse-item" href="../tbl_Opciones.php">Opciones</a>
+                    <a class="collapse-item" href="../tbl_Parroquia.php">Parroquia</a>
+                    <a class="collapse-item" href="../tbl_Productos.php">Productos</a>
+                    <a class="collapse-item" href="../tbl_Rol.php">Rol</a>
+                    <a class="collapse-item" href="../tbl_Tasacambio.php">Tasa Cambio</a>
+                    <a class="collapse-item" href="../tbl_Usuario.php">Usuario</a>
                 </div>
             </div>
         </li>
@@ -194,33 +194,31 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Gastos</h1>
-            <p class="mb-4">En este formulario podrá registrar los datos de un nuevo gasto.
+            <h1 class="h3 mb-0 text-gray-800">Ingreso Gastos</h1>
+            <p class="mb-4">En este formulario podrá registrar los datos de un ingreso de gastos.
             </p>
             <!-- Agregar AC -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Nuevo Gasto
+                    Nuevo Ingreso Gastos
                 </div>
+
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Gastos.php">
                         <input type="hidden" value="1" name="txtaccion" id="txtaccion"/>
-                        <!--     <div class="form-floating mb-3">
-                                <input class="form-control" id="idAC" name="idAC" type="id" title="Ingrese id" required/>
-                                <label for="id">idArqueoCaja:</label>
-                            </div>  -->
+
                         <div class="form-floating mb-3">
                             <label for="idKermesse">ID Kermesse:</label>
                             <input class="form-control" id="idKermesse" name="idKermesse" type="text" title="Ingrese ID de Kermesse" required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="idCatGastos">ID Cat Gastos:</label>
-                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="text" title="Ingrese el ID de Cat Gastos" required/>
+                            <label for="idCatGastos">ID Categoría Gastos:</label>
+                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="text" title="Ingrese el ID de Categoria Gastos" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fechaGasto">Fecha Gasto:</label>
-                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="datetime-local" title="Ingrese la fecha de gasto" required/>
+                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="datetime-local" title="Ingrese la fecha del gasto" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="concepto">Concepto:</label>
@@ -238,33 +236,34 @@
                             <label for="fecha_creacion">Fecha Creación:</label>
                             <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" required/>
                         </div>
-
-                        <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
-                            <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <a href="../tbl_Gastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
-                        </div>
-                    </form>
+                </div>
+                <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
+                    <input class="btn btn-primary" type="submit" value="Guardar"/>
+                    <a href="../tbl_Gastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
                 </div>
             </div>
-            <!-- end of Agregar AC -->
+            </form>
         </div>
-        <!-- end begin -->
-
-
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; ABIMA 2022</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
-
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- end of Agregar AC -->
+</div>
+<!-- end begin -->
+
+
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; ABIMA 2022</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->

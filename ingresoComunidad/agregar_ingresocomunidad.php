@@ -238,7 +238,7 @@
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <input class="btn btn-danger" type="reset" value="Cancelar"/>
+                            <a href="../tbl_ingresoComunidad.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
                         </div>
                         </div>
                     </form>
