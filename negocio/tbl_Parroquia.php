@@ -20,7 +20,8 @@ if ($_POST)
                 $pq->__SET('nombre', $_POST['nombre']);              
                 $pq->__SET('direccion', $_POST['direccion']);              
                 $pq->__SET('telefono', $_POST['telefono']);              
-                $pq->__SET('parroco', $_POST['logo']);              
+                $pq->__SET('parroco', $_POST['parroco']);              
+                $pq->__SET('logo', $_POST['logo']);              
                 $pq->__SET('sitio_web', $_POST['sitio_web']);
 
                 $dpq->insertarParroquia($pq);
