@@ -23,11 +23,11 @@ if ($_POST)
 
                 $dmon->insertarMoneda($mon);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_Moneda.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_Moneda.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_Moneda.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_Moneda.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -36,7 +36,7 @@ if ($_POST)
             try 
             {
                 if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/moneda/editar_moneda.php?msj=5&varEnter={$_POST['idMon']}");
+                    header("Location: /ProyectoKermesse/moneda/editar_moneda.php?msj=5&varEnter={$_POST['idMon']}");
                     die();
                 }
                 //CONSTRUIMOS EL OBJETO
@@ -48,16 +48,30 @@ if ($_POST)
         
                 $dmon->editMoneda($mon);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_Moneda.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_Moneda.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_Moneda.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_Moneda.php?msj=4");
                 die($e->getMessage());
             }
             break;
         
     }
+}
 
+if ($_GET)
+{
+    try
+    {
 
+        $mon->__SET('id_opciones', $_GET['delMon']);
+        $dmon->deleteMoneda($mon->__GET('id_moneda'));
+        header("Location: /ProyectoKermesse/tbl_Mpciones.php?msj=5");
+    }
+    catch(Exception $e)
+    {
+        header("Location: /ProyectoKermesse/tbl_Mpciones.php?msj=6");
+        die($e->getMessage());
+    }
 }

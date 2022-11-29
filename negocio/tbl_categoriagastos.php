@@ -23,11 +23,11 @@ if ($_POST)
 
                 $dcg->insertCG($cg);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -44,11 +44,11 @@ if ($_POST)
 
                 $dcg->editCG($cg);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=4");
                 die($e->getMessage());
             }
             break;
@@ -66,11 +66,11 @@ if ($_GET)
         
         $cg->__SET('id_categoria_gastos', $_GET['delCG']);
         $dcg->deleteCG($cg->__GET('id_categoria_gastos'));
-        header("Location: /Kermesse/tbl_categoriaGastos.php?msj=5");
+        header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=5");
     }
     catch(Exception $e) 
     {
-        header("Location: /Kermesse/tbl_categoria_gastos.php?msj=6");
+        header("Location: /ProyectoKermesse/tbl_categoria_gastos.php?msj=6");
         die($e->getMessage());
     }
 }
