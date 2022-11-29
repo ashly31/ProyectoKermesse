@@ -64,8 +64,8 @@ if ($_GET)
     try 
     {
         
-        $cp->__SET('id_categoria_producto', $_GET['delCP']);
-        $dcp->deleteCP($cp->__GET('id_categoria_producto'));
+        $tcp->__SET('id_categoria_producto', $_GET['delCP']);
+        $dcp->deleteCP($tcp->__GET('id_categoria_producto'));
         header("Location: /ProyectoKermesse/tbl_categoriaProducto.php?msj=5");
     }
     catch(Exception $e) 
