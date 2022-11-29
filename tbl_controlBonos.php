@@ -1,14 +1,18 @@
 <?php
+error_reporting(0);
+
 //importamos las entidades
 include './entidades/tbl_control_bonos.php';
 include './datos/Dt_controlBonos.php';
 
-$cb = new Dt_controlBonos();
+$dcb = new Dt_controlBonos();
 
 //variable de control msj
 $varMsj = 0;
-if (isset($varMsj)) {
-   // $varMsj = $_GET['msj'];
+if(isset($varMsj))
+{
+   $varMsj = $_GET['msj'];
+
 }
 ?>
 
@@ -22,7 +26,7 @@ if (isset($varMsj)) {
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
 
-    <title>Kermesse - Gestión del Control de bonos</title>
+    <title>Kermesse - Gestión del Control de Bonos</title>
 
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
@@ -31,6 +35,8 @@ if (isset($varMsj)) {
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- jAlert css  -->
+    <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
 </head>
 
 <body>
@@ -360,16 +366,16 @@ if (isset($varMsj)) {
                     <p class="mb-4">Un bono es un valor emitido por una corporación o 
                         entidad gubernamental para obtener capital, que representa un 
                         préstamo a un prestatario a cambio del pago de los intereses y 
-                        el capital al prestamista. <a target="_blank" href="agregar_controlbonos.php">Agregar</a>.</p>
+                        el capital al prestamista. <a href="./controlBonos/agregar_controlbonos.php"> Agregar</a>.</p>
  
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Control Bonos</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Control de Bonos</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="tbl_controlBonos" width="100%" cellspacing="0">
+                            
+                                <table class="table table-bordered" id="tbl_controlBonos">
                                     <thead>
                                         <tr>
                                             <th>id_bono</th>
@@ -390,7 +396,7 @@ if (isset($varMsj)) {
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        foreach ($cb->listarcontrolBonos() as $r) :
+                                        foreach ($dcb->listarcontrolBonos() as $r) :
                                             $estado = "";
                                             if ($r->__GET('estado') == 1 || $r->__GET('estado') == 2) {
                                                 $estado = "Activo";
@@ -398,29 +404,32 @@ if (isset($varMsj)) {
                                                 $estado = "Inactivo";
                                             }
                                         ?>
-                                        <tr>
+                                            <tr>
                                                 <td><?php echo $r->__GET('id_bono');  ?></td>
                                                 <td><?php echo $r->__GET('nombre');  ?></td>
                                                 <td><?php echo $r->__GET('valor');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                <a href="visualizar_controlbonos.php" target="_blank" title="Visualizar los datos">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>&nbsp;
-                                                <a href="editar_controlbonos.php" target="_blank" title="Modificar los datos">
-                                                    <i class="fa-solid fa-user-pen"></i>
-                                                </a>&nbsp;
-                                                <a href="eliminar_controlbonos.php" target="_blank" title="Eliminar los datos">
-                                                    <i class="fa-solid fa-user-minus"></i>
-                                                </a>
-                                                </td>
-                                        </tr>
+                                                    <a href="./controlBonos/visualizar_controlbonos.php?viewCB=<?php echo $r->__GET('id_bono');
+                                                        ?>" title="Visualizar los datos">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                    </a>&nbsp;
+                                                    <a href="./controlBonos/editar_controlbonos.php?editCB=<?php echo $r->__GET('id_bono');
+                                                        ?>" title="Modificar los datos">
+                                                            <i class="fa-solid fa-user-pen"></i>
+                                                    </a>&nbsp;
+                                                    <a href="./negocio/tbl_controlbonos.php?delCB=<?php echo $r->__GET ('id_bono'); 
+                                                            ?>" title="Eliminar los datos">
+                                                            <i class="fa-solid fa-user-minus"></i>
+                                                        </a>
+                                                    </td>
+                                             </tr>
                                         <?php
                                         endforeach;
                                         ?>
                                     </tbody>
                                 </table>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- end of datatables -->
@@ -451,7 +460,6 @@ if (isset($varMsj)) {
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -470,58 +478,74 @@ if (isset($varMsj)) {
             </div>
         </div>
     </div>
-<!-- EXTRA -->
-    <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
-    <!-- JS DATATABLES -->
-    <script src="./DataTables/datatables.min.js"></script>
-    <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
-    <script src="./DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
-    <script src="./DataTables/Responsive-2.3.0/js/responsive.dataTables.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.bootstrap5.min.js"></script>
-    <script src="./DataTables/JSZip-2.5.0/jszip.min.js"></script>
-    <script src="./DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
-    <script src="./DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
-    <!-- jAlert js -->
-    <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js"> //optional!!</script>
+    <!-- EXTRA -->
+<!-- jQuery -->
+<script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+<!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+<script src="./js/sb-admin-2.js"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="./js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="./vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script>
+
+
+<!-- JS DATATABLES -->
+<script src="./DataTables/datatables.min.js"></script>
+<!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
+<script src="./DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="./DataTables/Responsive-2.3.0/js/responsive.dataTables.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.bootstrap5.min.js"></script>
+<script src="./DataTables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="./DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="./DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+
 <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
+<!-- jAlert js -->
+<script src="./jAlert/dist/jAlert.min.js"></script>
+<script src="./jAlert/dist/jAlert-functions.min.js"> </script>
     <script>
             $(document).ready(function() {
                 /////////// VARIABLE DE CONTROL MSJ ///////////
                 var mensaje = 0;
                 mensaje = "<?php echo $varMsj ?>";
 
-                if (mensaje == "1") {
+                if(mensaje == "1")
+                {
                     successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
                 }
+                if(mensaje == "3")
+                {
+                    successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+                }
+                if(mensaje == "5")
+                {
+                    successAlert('Éxito', 'El usuario ha sido dado de baja exitosamente!');
+                }
+                if(mensaje == "2"  ||  mensaje == "4" || mensaje == "6")
+                {
+                    errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+                }
                 /////////// DATATABLE ///////////
-                $(document).ready(function() {
 
                     $("#tbl_controlBonos").DataTable({
-                        "data": mensaje,
                         "responsive": true,
                         "lengthChange": false,
                         "autoWidth": false,
@@ -620,9 +644,7 @@ if (isset($varMsj)) {
 
                 });
 
-
-
-            }); //FIN  $(document).ready()
+     //FIN  $(document).ready()
         </script>
 
 </body>

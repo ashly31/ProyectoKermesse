@@ -8,7 +8,7 @@ $tr = new Tbl_rol();
 
 //variable de control msj
 $varIdR = 0;
-if(isset($varIdR))
+if(isset($varIdR)) 
 {
     $varIdR = $_GET['editR']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
 }
@@ -225,7 +225,7 @@ $tr = $dtr ->getUserByID($varIdR);
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Rol.php">
-                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
+                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/> 
 
                         <div class="form-floating mb-3">
                             <label for="id_rol">ID Rol</label>

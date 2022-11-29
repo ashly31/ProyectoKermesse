@@ -35,26 +35,25 @@ class Dt_tasacambio_det extends Conexion
 		}
 	}
 
-	/* public function insertarUsuario(tbl_usuario $user){
+	public function insertarTasaCambioDet(Tasacambio_det $tcd){
 		try{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
-					VALUES(?,?,?,?,?,?)";
+			$sql = "INSERT INTO dbkermesse.tasacambio_det (id_tasaCambio_det,id_tasaCambio,fecha,tipoCambio)
+					VALUES(?,?,?,?)";
 			
 			$this->myCon->prepare($sql)->execute(array(
-				$user->__GET('usuario'),
-				$user->__GET('pwd'),
-				$user->__GET('nombres'),
-				$user->__GET('apellidos'),
-				$user->__GET('email'),
-				$user->__GET('estado')));
+				$tcd->__GET('id_tasaCambio_det'),
+				$tcd->__GET('id_tasaCambio'),
+				$tcd->__GET('fecha'),
+				$tcd->__GET('tipoCambio'),
+			));
 			
 			$this->myCon = parent::desconectar();
 
 		}catch (Exception $e){
 			die($e->getMessage());
 		}
-	} */
+	} 
 
 	}
 /*

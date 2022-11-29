@@ -22,11 +22,11 @@ if ($_POST)
 
                 $dop->insertarOpciones($op);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_Opciones.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_Opciones.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -34,30 +34,42 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/opciones/editar_opciones.php?msj=5&varEnter={$_POST['idOp']}");
-                    die();
-                }
+               
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $op->__SET('id_opciones', $_POST['idOp']);
                 $op->__SET('opcion_descripcion', $_POST['opcion_descripcion']);
+                $op->__SET('estado', 2);
                 
-                
-                
-        
+            
                 $dop->editOpciones($op);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_Opciones.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_Opciones.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=4");
                 die($e->getMessage());
             }
             break;
+            
         
     }
 
+}
 
+if ($_GET)
+{
+    try
+    {
+
+        $op->__SET('id_opciones', $_GET['delOp']);
+        $dop->deleteOp($op->__GET('id_opciones'));
+        header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=5");
+    }
+    catch(Exception $e)
+    {
+        header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=6");
+        die($e->getMessage());
+    }
 }

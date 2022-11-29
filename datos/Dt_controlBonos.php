@@ -1,7 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_control_bonos.php");
-
 
 class Dt_controlBonos extends Conexion
 {
@@ -12,7 +10,7 @@ class Dt_controlBonos extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_control_bonos;";
+			$querySQL = "select * from dbkermesse.tbl_control_bonos where estado <>3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -35,39 +33,97 @@ class Dt_controlBonos extends Conexion
 		}
 	}
 
-	/* public function insertarUsuario(tbl_usuario $user){
+	public function insertar_ControlBonos(Tbl_control_bonos $cb){
 		try{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
-					VALUES(?,?,?,?,?,?)";
+			$sql = "INSERT INTO dbkermesse.tbl_control_bonos (id_bono,nombre,valor,estado)
+					VALUES(?,?,?,?)";
 			
 			$this->myCon->prepare($sql)->execute(array(
-				$user->__GET('usuario'),
-				$user->__GET('pwd'),
-				$user->__GET('nombres'),
-				$user->__GET('apellidos'),
-				$user->__GET('email'),
-				$user->__GET('estado')));
+				$cb->__GET('id_bono'),
+				$cb->__GET('nombre'),
+				$cb->__GET('valor'),
+				$cb->__GET('estado')));
 			
 			$this->myCon = parent::desconectar();
 
 		}catch (Exception $e){
 			die($e->getMessage());
 		}
-	} */
-
 	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
+
+	public function getCBonosByID($id)
+	{
+		try 
+		{
+			$this->myCon = parent::conectar();
+			$querySQL = "SELECT * FROM dbkermesse.tbl_control_bonos WHERE id_bono = ?;";
+			$stm = $this->myCon->prepare($querySQL);
+			$stm->execute(array($id));
+			
+			$r = $stm->fetch(PDO::FETCH_OBJ);
+
+			$tcb = new Tbl_control_bonos();
+
+			//_SET(CAMPOBD, atributoEntidad)			
+			$tcb->__SET('id_bono', $r->id_bono);
+			$tcb->__SET('nombre', $r->nombre);
+			$tcb->__SET('valor', $r->valor);
+
+			$this->myCon = parent::desconectar();
+			return $tcb;
+		} 
+		catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+	public function editar_ControlBonos(Tbl_control_bonos $tcb)
+	{
+		try 
+		{
+			$this->myCon = parent::conectar();
+			$sql = "UPDATE dbkermesse.tbl_control_bonos SET 
+						nombre = ?,
+						valor = ?,
+						estado = ?
+				    WHERE id_bono = ?";
+
+				$this->myCon->prepare($sql)
+			     ->execute(
+				array(
+					$tcb->__GET('nombre'), 
+					$tcb->__GET('valor'),
+					$tcb->__GET('estado'),
+					$tcb->__GET('id_bono')
+					)
+				);
+				$this->myCon = parent::desconectar();
+		} 
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
+	public function eliminar_ControlBonos($id)
+	{
+		try 
+		{
+			$this->myCon = parent::conectar();
+			$sql = "UPDATE dbkermesse.tbl_control_bonos SET
+						estado = 3
+				    WHERE id_bono = ?";
+
+			$stm = $this->myCon->prepare($sql);
+			$stm->execute(array($id));
+
+			$this->myCon = parent::desconectar();
+		} 
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
 }
-*/

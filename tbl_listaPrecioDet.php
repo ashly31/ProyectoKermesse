@@ -372,7 +372,7 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_listaPrecioDet" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_listaprecio_det</th>
+                                            
                                             <th>id_lista_precio</th>
                                             <th>id_producto</th>
                                             <th>precio_venta</th>
@@ -381,7 +381,7 @@ if (isset($varMsj)) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_listaprecio_det</th>
+                                            
                                             <th>id_lista_precio</th>
                                             <th>id_producto</th>
                                             <th>precio_venta</th>
@@ -394,18 +394,18 @@ if (isset($varMsj)) {
                                            
                                         ?>
                                             <tr>
-                                                <td> <?php echo $r->__GET('id_listaprecio_det');  ?> </td>
+                                                
                                                 <td> <?php echo $r->__GET('id_lista_precio');  ?> </td>
                                                 <td> <?php echo $r->__GET('id_producto');  ?> </td>
                                                 <td> <?php echo $r->__GET('precio_venta');  ?> </td>
                                                 <td>
-                                                <a href="visualizar_listaprecioDet.php" target="_blank" title="Visualizar los datos">
+                                                <a href="listaprecio_det/visualizar_listaprecioDet.php?viewLpd=<?php echo $r->__GET('id_lista_precio'); ?>" title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a href="editar_listaprecioDet.php" target="_blank" title="Modificar los datos">
+                                                <a href="listaprecio_det/editar_listaprecioDet.php" target="_blank" title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;
-                                                <a href="eliminar_listaprecioDet.php" target="_blank" title="Eliminar los datos">
+                                                <a href="./negocio/tbl_listaprecioDet.php?delLpd=<?php echo $r->__GET('id_listaprecioDet'); ?>" title="Eliminar los datos">
                                                     <i class="fa-solid fa-user-minus"></i> 
                                                 </a>
                                                 </td>

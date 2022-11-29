@@ -1,4 +1,7 @@
 <?php
+error_reporting(0);
+//COMIENZA EL CODIGO DE SEGURIDAD
+
 //importamos las entidades
 include './entidades/tbl_moneda.php';
 include './datos/Dt_Moneda.php';
@@ -8,7 +11,7 @@ $m = new Dt_moneda();
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+     $varMsj = $_GET['msj'];
 }
 
 ?>
@@ -32,6 +35,8 @@ if (isset($varMsj)) {
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- jAlert css  -->
+    <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
 </head>
 
 <body>
@@ -360,7 +365,7 @@ if (isset($varMsj)) {
                     <h1 class="h3 mb-0 text-gray-800">Moneda</h1>
                     <p class="mb-4">La moneda hace referencia a cualquier forma
                         de dinero utilizado por todo el público y que se encuentra
-                        en circulación. <a target="_blank" href="agregar_moneda.php">Agregar</a>.</p>
+                        en circulación. <a href="./moneda/agregar_moneda.php"><i class="fa fa-plus-square"></i>Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -372,7 +377,7 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_Moneda" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_moneda</th>
+                                            
                                             <th>nombre</th>
                                             <th>simbolo</th>
                                             <th>estado</th>
@@ -381,7 +386,7 @@ if (isset($varMsj)) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_moneda</th>
+                                            
                                             <th>nombre</th>
                                             <th>simbolo</th>
                                             <th>estado</th>
@@ -399,19 +404,20 @@ if (isset($varMsj)) {
                                             }
                                         ?>
                                             <tr>
-                                                <td> <?php echo $r->__GET('id_moneda');  ?> </td>
+                                                
                                                 <td> <?php echo $r->__GET('nombre');  ?> </td>
                                                 <td> <?php echo $r->__GET('simbolo');  ?> </td>
                                                 <td><?php echo  $estado ?> </td>
                                             
                                             <td>
-                                                <a href="visualizar_moneda.php" target="_blank" title="Visualizar los datos">
+                                                <a href="moneda/visualizar_moneda.php?viewMon= <?php echo $r->__GET('id_moneda')?>" title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a href="editar_moneda.php" target="_blank" title="Modificar los datos">
+                                                <a href="./moneda/editar_moneda.php?editMon=<?php echo $r->__GET('id_moneda');
+                                                    ?>"  title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;
-                                                <a href="eliminar_moneda.php" target="_blank" title="Eliminar los datos">
+                                                <a href="./negocio/tbl_Moneda.php?delMon=<?php echo $r->__GET('id_moneda'); ?>" title="Eliminar los datos">
                                                     <i class="fa-solid fa-user-minus"></i>
                                                 </a>
                                             </td>
@@ -471,10 +477,29 @@ if (isset($varMsj)) {
             </div>
         </div>
     </div>
-    <!-- EXTRA -->
+   <!-- EXTRA -->
     <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+    <script src="./js/sb-admin-2.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="./js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="./vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="./js/demo/chart-area-demo.js"></script>
+    <script src="./js/demo/chart-pie-demo.js"></script>
+
+    
     <!-- JS DATATABLES -->
     <script src="./DataTables/datatables.min.js"></script>
     <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
@@ -488,28 +513,13 @@ if (isset($varMsj)) {
     <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+    
+    <!-- END EXTRA -->
+    
+
     <!-- jAlert js -->
     <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js">
-        //optional!!
-    </script>
-    <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="./jAlert/dist/jAlert-functions.min.js"> </script> 
 
     <script>
         $(document).ready(function() {
@@ -517,14 +527,23 @@ if (isset($varMsj)) {
             var mensaje = 0;
             mensaje = "<?php echo $varMsj ?>";
 
-            if (mensaje == "1") {
-                successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
-            }
-            /////////// DATATABLE ///////////
-            $(document).ready(function() {
-
-                $("#tbl_Moneda").DataTable({
-                    "data": mensaje,
+    if(mensaje == "1")
+    {
+        successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
+    }
+    if(mensaje == "3")
+    {
+        successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+    }
+    if(mensaje == "5")
+    {
+        successAlert('Éxito', 'La moneda ha sido eliminado exitosamente!');
+    }
+    if(mensaje == "2" || mensaje == "4" || mensaje == "6")
+    {
+        errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+    }
+    $("#tbl_Moneda").DataTable({
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
@@ -621,11 +640,9 @@ if (isset($varMsj)) {
                     }
                 }).buttons().container().appendTo('#tbl_Moneda_wrapper .col-md-6:eq(0)');
 
-            });
+                
+            });//FIN  $(document).ready()
 
-
-
-        }); //FIN  $(document).ready()
     </script>
 
 </body>

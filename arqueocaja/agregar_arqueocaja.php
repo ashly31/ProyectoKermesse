@@ -197,7 +197,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_creacion">fecha_creacion</label>
-                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="date" title="Ingrese su fecha_creacion" required/>
+                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime" title="Ingrese su fecha_creacion" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="usuario_modificacion">usuario_modificacion</label>
@@ -205,7 +205,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_modificacion">fecha_modificacion</label>
-                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="date" title="Ingrese su fecha_modificacion" required/>
+                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime" title="Ingrese su fecha_modificacion" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="usuario_eliminacion">usuario_eliminacion</label>
@@ -213,7 +213,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_eliminacion">fecha_eliminacion</label>
-                            <input class="form-control" id="fecha_eliminacion" name="fecha_eliminacion" type="date" title="Ingrese su fecha_eliminacion" required/>
+                            <input class="form-control" id="fecha_eliminacion" name="fecha_eliminacion" type="datetime" title="Ingrese su fecha_eliminacion" required/>
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <input class="btn btn-primary" type="submit" value="Guardar"/>

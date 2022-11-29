@@ -23,11 +23,11 @@ if ($_POST)
 
                 $dcg->insertCG($cg);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -35,23 +35,20 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/categoriaGastos/editar_categoriaGastos.php?msj=5&varEnter={$_POST['idCG']}");
-                    die();
-                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cg->__SET('id_categoria_gastos', $_POST['idCG']);
+                $cg->__SET('id_categoria_gastos', $_POST['id_categoria_gastos']);
                 $cg->__SET('nombre_categoria', $_POST['nombre_categoria']);
-                $cg->__SET('descripcion', $_POST['desc']);
-        
+                $cg->__SET('descripcion', $_POST['descripcion']);
+                $cg->__SET('estado', 2);
+
                 $dcg->editCG($cg);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_categoriaGastos.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=4");
                 die($e->getMessage());
             }
             break;
@@ -69,11 +66,11 @@ if ($_GET)
         
         $cg->__SET('id_categoria_gastos', $_GET['delCG']);
         $dcg->deleteCG($cg->__GET('id_categoria_gastos'));
-        header("Location: /Kermesse/tbl_categoriaGastos.php?msj=5");
+        header("Location: /ProyectoKermesse/tbl_categoriaGastos.php?msj=5");
     }
     catch(Exception $e) 
     {
-        header("Location: /Kermesse/tbl_categoria_gastos.php?msj=6");
+        header("Location: /ProyectoKermesse/tbl_categoria_gastos.php?msj=6");
         die($e->getMessage());
     }
 }

@@ -3,7 +3,7 @@
 include_once("../entidades/tbl_categoria_producto.php");
 include_once("../datos/Dt_categoriaProducto.php");
 
-$cp = new Tbl_categoria_producto();
+$tcp = new Tbl_categoria_producto();
 $dcp = new Dt_categoriaProducto();
 
 if ($_POST) 
@@ -17,17 +17,17 @@ if ($_POST)
             { 
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cp->__SET('nombre', $_POST['nombre']);
-                $cp->__SET('descripcion', $_POST['descripcion']);
-                $cp->__SET('estado', 1);
+                $tcp->__SET('nombre', $_POST['nombre']);
+                $tcp->__SET('descripcion', $_POST['descripcion']);
+                $tcp->__SET('estado', 1);
 
-                $dcp->insertCP($cp);
+                $dcp->insertCP($tcp);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_categoriaProducto.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_categoriaProducto.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_categoriaProducto.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_categoriaProducto.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -35,23 +35,20 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/categoriaProductos/editar_categoriaProductos.php?msj=5&varEnter={$_POST['idCP']}");
-                    die();
-                }
+                
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $cp->__SET('id_categoria_producto', $_POST['idCP']);
-                $cp->__SET('nombre', $_POST['nombre']);
-                $cp->__SET('descripcion', $_POST['desc']);
-        
-                $dpc->editCP($cp);
+                $tcp->__SET('id_categoria_producto', $_POST['id_categoria_producto']);
+                $tcp->__SET('nombre', $_POST['nombre']);
+                $tcp->__SET('descripcion', $_POST['descripcion']);
+                $tcp->__SET('estado', 2);
+                $dcp->editCP($tcp);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_categoria_producto.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_categoriaProducto.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_categoria_producto.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_categoriaProducto.php?msj=4");
                 die($e->getMessage());
             }
             break;
@@ -67,13 +64,13 @@ if ($_GET)
     try 
     {
         
-        $cp->__SET('id_categoria_producto', $_GET['delCP']);
-        $dcp->deleteCP($cp->__GET('id_categoria_producto'));
-        header("Location: /Kermesse/tbl_categoriaProducto.php?msj=5");
+        $tcp->__SET('id_categoria_producto', $_GET['delCP']);
+        $dcp->deleteCP($tcp->__GET('id_categoria_producto'));
+        header("Location: /ProyectoKermesse/tbl_categoriaProducto.php?msj=5");
     }
     catch(Exception $e) 
     {
-        header("Location: /Kermesse/tbl_categoriaProducto.php?msj=6");
+        header("Location: /ProyectoKermesse/tbl_categoriaProducto.php?msj=6");
         die($e->getMessage());
     }
 }

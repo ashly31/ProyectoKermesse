@@ -30,11 +30,11 @@ if ($_POST)
 
                 $dac->insertAC($ac);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_arqueoCaja.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_arqueoCaja.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -42,10 +42,7 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/arqueocaja/editar_arqueocaja.php?msj=5&varEnter={$_POST['idAC']}");
-                    die();
-                }
+
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $ac->__SET('id_ArqueoCaja', $_POST['idAC']);
@@ -58,15 +55,15 @@ if ($_POST)
                 $ac->__SET('fecha_modificacion', $_POST['fecha_modificacion']);
                 $ac->__SET('usuario_eliminacion', $_POST['usuario_eliminacion']);
                 $ac->__SET('fecha_eliminacion', $_POST['fecha_eliminacion']);
-                
+                $ac->__SET('estado', 2); 
         
                 $dac->editAC($ac);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_arqueoCaja.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_arqueoCaja.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja.php?msj=4");
                 die($e->getMessage());
             }
             break;
@@ -84,11 +81,11 @@ if ($_GET)
         
         $ac->__SET('id_ArqueoCaja', $_GET['delAC']);
         $dac->deleteAC($ac->__GET('id_ArqueoCaja'));
-        header("Location: /Kermesse/tbl_arqueoCaja.php?msj=5");
+        header("Location: /ProyectoKermesse/tbl_arqueoCaja.php?msj=5");
     }
     catch(Exception $e) 
     {
-        header("Location: /Kermesse/tbl_arqueoCaja.php?msj=6");
+        header("Location: /ProyectoKermesse/tbl_arqueoCaja.php?msj=6");
         die($e->getMessage());
     }
 } 

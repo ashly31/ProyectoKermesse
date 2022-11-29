@@ -68,16 +68,16 @@ class Dt_categoriaProducto extends Conexion
 			
 			$r = $stm->fetch(PDO::FETCH_OBJ);
 
-			$c = new Tbl_categoria_producto();
+			$cp = new Tbl_categoria_producto();
 
 			//_SET(CAMPOBD, atributoEntidad)			
-			$c->__SET('id_categoria_producto', $r->id_categoria_producto);
-			$c->__SET('nombre', $r->nombre);
-			$c->__SET('descripcion', $r->descripcion);
-			$c->__SET('estado', $r->estado);
+			$cp->__SET('id_categoria_producto', $r->id_categoria_producto);
+			$cp->__SET('nombre', $r->nombre);
+			$cp->__SET('descripcion', $r->descripcion);
+			$cp->__SET('estado', $r->estado);
 
 			$this->myCon = parent::desconectar();
-			return $c;
+			return $cp;
 		} 
 		catch (Exception $e) 
 		{
@@ -85,7 +85,7 @@ class Dt_categoriaProducto extends Conexion
 		}
 	}
 
-	public function editCP(Tbl_categoria_producto $tcp)
+	public function editCP(Tbl_categoria_producto $cp)
 	{
 		try 
 		{
@@ -93,17 +93,16 @@ class Dt_categoriaProducto extends Conexion
 			$sql = "UPDATE dbkermesse.tbl_categoria_producto SET
 						nombre = ?, 
 						descripcion = ?, 
-						estado = ?,
-						
+						estado = ?
 				    WHERE id_categoria_producto = ?";
 
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$tcp->__GET('nombre'), 
-					$tcp->__GET('descripcion'),
-					$tcp->__GET('estado'),
-					$tcp->__GET('id_categoria_producto'), 
+					$cp->__GET('nombre'), 
+					$cp->__GET('descripcion'),
+					$cp->__GET('estado'),
+					$cp->__GET('id_categoria_producto'), 
 					)
 				);
 				$this->myCon = parent::desconectar();
