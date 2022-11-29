@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 //importamos las entidades
 include './entidades/tbl_lista_precio.php';
 include './datos/Dt_listaPrecio.php';
