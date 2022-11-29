@@ -250,7 +250,6 @@ $tu = $dtu->getUserByID($varIdU);
                             <input class="form-control" id="pwd2" name="pwd2" type="password" title="Confirme su contraseña" required/>
                         </div>
 
-
                         <div class="form-floating mb-3">
                             <label for="nombre">Nombre</label>
                             <input class="form-control" id="nombre" name="nombres" type="text" title="Ingrese su nombre" required/>
@@ -262,8 +261,13 @@ $tu = $dtu->getUserByID($varIdU);
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="user">Email</label>
+                            <label for="email">Email</label>
                             <input class="form-control" id="email" name="email" type="email" title="Ingrese su correo electrónico" required/>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="email2">Confirme su email</label>
+                            <input class="form-control" id="email2" name="email2" type="email" title="Ingrese su correo electrónico" required/>
                         </div>
 
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
@@ -343,8 +347,8 @@ $tu = $dtu->getUserByID($varIdU);
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores()
     {
-        $("#idusuario").css("background-color", "#E3E4E5");
-        $("#idusuario").val("<?php echo $tu->__GET('id_usuario') ?>");
+        $("#id_usuario").css("background-color", "#E3E4E5");
+        $("#id_usuario").val("<?php echo $tu->__GET('id_usuario') ?>");
         $("#idU").val("<?php echo $tu->__GET('id_usuario') ?>");
         $("#usuario").css("background-color", "#E3E4E5");
         $("#usuario").val("<?php echo $tu->__GET('usuario') ?>");
