@@ -1,74 +1,129 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_denominacion.php");
+
 
 
 class Dt_Denominacion extends Conexion
 {
     private $myCon;
 
-    public function listarDenominacion(){
-		
-        try{
+    public function listarDenominacion()
+    {
+
+        try {
             $this->myCon = parent::conectar();
-			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_denominacion;";
+            $result = array();
+            $querySQL = "select * from dbkermesse.tbl_denominacion where estado<>3;";
 
-			$stm = $this->myCon->prepare($querySQL);
-			$stm->execute();
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->execute();
 
-			foreach($stm->fetchAll(PDO::FETCH_OBJ) as $r){
-				$d = new Tbl_denominacion();
+            foreach ($stm->fetchAll(PDO::FETCH_OBJ) as $r) {
+                $d = new Tbl_denominacion();
 
-				//_SET(CAMPOBD, atributoEntidad)			
-				$d->__SET('id_Denominacion', $r->id_Denominacion);
-				$d->__SET('idMoneda', $r->idMoneda);
-				$d->__SET('valor', $r->valor);
-				$d->__SET('valor_letras', $r->valor_letras);
-				$d->__SET('estado', $r->estado);
-				$result[] = $d;
-			}
-			$this->myCon = parent::desconectar();
-			return $result;
-		}
-		catch(Exception $e){
-			die($e->getMessage());
-		}
-	}
+                //_SET(CAMPOBD, atributoEntidad)
+                $d->__SET('id_Denominacion', $r->id_Denominacion);
+                $d->__SET('idMoneda', $r->idMoneda);
+                $d->__SET('valor', $r->valor);
+                $d->__SET('valor_letras', $r->valor_letras);
+                $d->__SET('estado', $r->estado);
+                $result[] = $d;
+            }
+            $this->myCon = parent::desconectar();
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
-	/* public function insertarUsuario(tbl_usuario $user){
-		try{
-			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
-					VALUES(?,?,?,?,?,?)";
-			
-			$this->myCon->prepare($sql)->execute(array(
-				$user->__GET('usuario'),
-				$user->__GET('pwd'),
-				$user->__GET('nombres'),
-				$user->__GET('apellidos'),
-				$user->__GET('email'),
-				$user->__GET('estado')));
-			
-			$this->myCon = parent::desconectar();
+    public function insertDeno(tbl_denominacion $d)
+    {
+        try {
+            $this->myCon = parent::conectar();
+            $sql = "INSERT INTO dbkermesse.tbl_denominacion (idMoneda, valor, valor_letras, estado)
+					VALUES(?,?,?,1)";
 
-		}catch (Exception $e){
-			die($e->getMessage());
-		}
-	} */
+            $this->myCon->prepare($sql)->execute(array(
+                $d->__GET('idMoneda'),
+                $d->__GET('valor'),
+                $d->__GET('valor_letras')));
 
-	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
+            $this->myCon = parent::desconectar();
+
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getDenoByID($id)
+    {
+        try {
+            $this->myCon = parent::conectar();
+            $querySQL = "SELECT * FROM dbkermesse.tbl_denominacion WHERE id_Denominacion = ?;";
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->execute(array($id));
+
+            $r = $stm->fetch(PDO::FETCH_OBJ);
+
+            $d = new Tbl_denominacion();
+
+            //_SET(CAMPOBD, atributoEntidad)
+            $d->__SET('id_Denominacion', $r->id_Denominacion);
+            $d->__SET('idMoneda', $r->idMoneda);
+            $d->__SET('valor', $r->valor);
+            $d->__SET('valor_letras', $r->valor_letras);
+
+
+            $this->myCon = parent::desconectar();
+            return $d;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function editDeno(tbl_denominacion $td)
+    {
+        try {
+            $this->myCon = parent::conectar();
+            $sql = "UPDATE dbkermesse.tbl_denominacion SET
+						idMoneda = ?,
+						valor = ?, 
+						valor_letras = ?, 
+						estado = ?
+				    WHERE id_denominacion = ?";
+
+            $this->myCon->prepare($sql)
+                ->execute(
+                    array(
+                        $td->__GET('idMoneda'),
+                        $td->__GET('valor'),
+                        $td->__GET('valor_letras'),
+                        $td->__GET('estado'),
+                        $td->__GET('id_denominacion')
+                    )
+                );
+            $this->myCon = parent::desconectar();
+        } catch (Exception $e) {
+            var_dump($e);
+            die($e->getMessage());
+        }
+    }
+
+    public function deleteDeno($id)
+    {
+        try {
+            $this->myCon = parent::conectar();
+            $sql = "UPDATE dbkermesse.tbl_denominacion SET
+						estado = 3
+				    WHERE id_Denominacion = ?";
+
+            $stm = $this->myCon->prepare($sql);
+            $stm->execute(array($id));
+
+            $this->myCon = parent::desconectar();
+        } catch (Exception $e) {
+            var_dump($e);
+            die($e->getMessage());
+        }
+    }
 }
-*/
