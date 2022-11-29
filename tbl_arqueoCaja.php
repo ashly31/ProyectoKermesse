@@ -1,4 +1,7 @@
 <?php
+error_reporting(0);
+//COMIENZA EL CODIGO DE SEGURIDAD
+
 //importamos 
 include './entidades/tbl_arqueoCaja.php';
 include './datos/Dt_arqueoCaja.php';
@@ -9,7 +12,7 @@ $dac = new Dt_arqueoCaja();
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
-     //$varMsj = $_GET['msj'];
+    $varMsj = $_GET['msj'];
 }
 ?>
 
@@ -25,13 +28,15 @@ if (isset($varMsj)) {
 
     <title>Kermesse - Gestión de Arqueo Caja</title>
 
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="./vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
     <script src="https://kit.fontawesome.com/6aba70b797.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="./css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- jAlert css  -->
+    <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
 </head>
 
 <body>
@@ -368,8 +373,8 @@ if (isset($varMsj)) {
                             <h6 class="m-0 font-weight-bold text-primary">Arqueo Caja</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="tbl_arqueoCaja" width="100%" cellspacing="0">
+                           
+                                <table class="table table-bordered table-striped" id="tbl_arqueoCaja">
                                     <thead>
                                         <tr>
                                             <th>id_ArqueoCaja</th>
@@ -425,15 +430,15 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('fecha_eliminacion');  ?></td>
                                                 <td><?php echo  $estadoArqueocaja  ?></td>
                                                 <td>
-                                                    <a href="arqueocaja/visualizar_arqueocaja.php?viewAC=<?php echo $r->__GET('id_ArqueoCaja');
+                                                    <a href="./arqueocaja/visualizar_arqueocaja.php?viewAC=<?php echo $r->__GET('id_ArqueoCaja');
                                                     ?>"  title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="arqueocaja/editar_arqueocaja.php?editAC=<?php echo $r->__GET('id_ArqueoCaja');
+                                                    <a href="./arqueocaja/editar_arqueocaja.php?editAC=<?php echo $r->__GET('id_ArqueoCaja');
                                                     ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="negocio/tbl_arqueoCaja.php?delAC=<?php echo $r->__GET('id_ArqueoCaja');
+                                                    <a href="./negocio/tbl_arqueoCaja.php?delAC=<?php echo $r->__GET('id_ArqueoCaja');
                                                     ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
@@ -444,7 +449,7 @@ if (isset($varMsj)) {
                                         ?>
                                     </tbody>
                                 </table>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- end of datatables -->
@@ -495,8 +500,27 @@ if (isset($varMsj)) {
     </div>
     <!-- EXTRA -->
     <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+    <script src="./js/sb-admin-2.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="./js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="./vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="./js/demo/chart-area-demo.js"></script>
+    <script src="./js/demo/chart-pie-demo.js"></script>
+
+    
     <!-- JS DATATABLES -->
     <script src="./DataTables/datatables.min.js"></script>
     <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
@@ -510,34 +534,19 @@ if (isset($varMsj)) {
     <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+    
+    <!-- END EXTRA -->
+    
+
     <!-- jAlert js -->
     <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js">
-        //optional!!
-    </script>
-    <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="./jAlert/dist/jAlert-functions.min.js"> </script> 
 
     <script>
         $(document).ready(function() {
             /////////// VARIABLE DE CONTROL MSJ ///////////
             var mensaje = 0;
-    mensaje = "<?php echo $varMsj ?>";
+            mensaje = "<?php echo $varMsj ?>";
 
     if(mensaje == "1")
     {
@@ -549,17 +558,13 @@ if (isset($varMsj)) {
     }
     if(mensaje == "5")
     {
-        successAlert('Éxito', 'El usuario ha sido dado de baja exitosamente!');
+        successAlert('Éxito', 'El AC ha sido eliminado exitosamente!');
     }
     if(mensaje == "2" || mensaje == "4" || mensaje == "6")
     {
         errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
     }
-            /////////// DATATABLE ///////////
-            $(document).ready(function() {
-
-                $("#tbl_arqueoCaja").DataTable({
-                    "data": mensaje,
+    $("#tbl_arqueoCaja").DataTable({
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
@@ -656,11 +661,9 @@ if (isset($varMsj)) {
                     }
                 }).buttons().container().appendTo('#tbl_arqueoCaja_wrapper .col-md-6:eq(0)');
 
-            });
+                
+            });//FIN  $(document).ready()
 
-
-
-        }); //FIN  $(document).ready()
     </script>
 
 </body>

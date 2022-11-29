@@ -25,11 +25,11 @@ if ($_POST)
 
                 $dacd->insertACD($acd);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja_det.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja_det.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -37,7 +37,10 @@ if ($_POST)
         case '2':
             try 
             {
-                
+                if($_POST['confpass'] != $_POST['pass']){
+                    header("Location: /ProyectoKermesse/arqueocajaDet/editar_arqueocajaDet.php?msj=5&varEnter={$_POST['idArqueoCaja_Det']}");
+                    die();
+                }
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $acd->__SET('idArqueoCaja_Det', $_POST['idArqueoCaja_Det']);
@@ -49,11 +52,11 @@ if ($_POST)
                 
                 $dacd->editACD($acd);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja_det.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_arqueoCaja_det.php?msj=4");
                 die($e->getMessage());
             }
             break;
@@ -71,11 +74,11 @@ if ($_GET)
         
         $acd->__SET('idArqueoCaja_Det', $_GET['delACD']);
         $dacd->deleteACD($acd->__GET('idArqueoCaja_Det'));
-        header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=5");
+        header("Location: /ProyectoKermesse/tbl_arqueoCaja_det.php?msj=5");
     }
     catch(Exception $e) 
     {
-        header("Location: /Kermesse/tbl_arqueoCaja_det.php?msj=6");
+        header("Location: /ProyectoKermesse/tbl_arqueoCaja_det.php?msj=6");
         die($e->getMessage());
     }
 }
