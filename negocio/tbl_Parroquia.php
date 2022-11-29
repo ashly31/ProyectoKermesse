@@ -21,8 +21,7 @@ if ($_POST)
                 $pq->__SET('direccion', $_POST['direccion']);              
                 $pq->__SET('telefono', $_POST['telefono']);              
                 $pq->__SET('parroco', $_POST['logo']);              
-                $pq->__SET('sitio_web', $_POST['sitio_web']);              
-                $pq->__SET('estado', 1);
+                $pq->__SET('sitio_web', $_POST['sitio_web']);
 
                 $dpq->insertarParroquia($pq);
                 //var_dump($emp);
@@ -41,15 +40,12 @@ if ($_POST)
                 
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $pq->__SET('idParroquia', $_POST['idpq']);
+                $pq->__SET('idParroquia', $_POST['idParroquia']);
                 $pq->__SET('nombre', $_POST['nombre']);              
                 $pq->__SET('direccion', $_POST['direccion']);              
                 $pq->__SET('telefono', $_POST['telefono']);              
                 $pq->__SET('parroco', $_POST['logo']);              
-                $pq->__SET('sitio_web', $_POST['sitio_web']); 
-                $pq->__SET('estado', 2);
-                
-                
+                $pq->__SET('sitio_web', $_POST['sitio_web']);
         
                 $dpq->editParroquia($pq);
                 //var_dump($emp);

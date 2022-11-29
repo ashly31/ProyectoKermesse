@@ -10,11 +10,11 @@ $pq = new Tbl_parroquia();
 $varIdPq = 0;
 if(isset($varIdPq))
 {
-    $varIdMon = $_GET['editPq']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
+    $varIdPq = $_GET['editPq']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
 }
 
 //OBTENEMOS LOS DATOS DEL USUARIO PARA SER EDITADO
-$tpq = $dpq ->getPqByID($varIdPq);
+$pq = $dpq ->getPqByID($varIdPq);
 
 ?>
 
@@ -28,7 +28,7 @@ $tpq = $dpq ->getPqByID($varIdPq);
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
 
-    <title>Kermesse - Editar Moneda</title>
+    <title>Kermesse - Editar Parroquia</title>
 
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
@@ -229,7 +229,7 @@ $tpq = $dpq ->getPqByID($varIdPq);
 
                         <div class="form-floating mb-3">
                             <label for="idParroquia">ID Parroquia</label>
-                            <input class="form-control" id="idParroquia" name="idParroquia" type="text" readonly required/>            
+                            <input class="form-control" id="idParroquia" name="idParroquia" readonly required/>
                         </div>
 
 
@@ -341,14 +341,14 @@ $tpq = $dpq ->getPqByID($varIdPq);
     function setValores()
     {
         $("#idParroquia").css("background-color", "#E3E4E5");
-        $("#idParroquia").val("<?php echo $tpq->__GET('id_moneda') ?>");
+        $("#idParroquia").val("<?php echo $pq->__GET('id_moneda') ?>");
 
-        $("#nombre").val("<?php echo $tpq->__GET('nombre') ?>");
-        $("#direccion").val("<?php echo $tpq->__GET('direccion') ?>");
-        $("#telefono").val("<?php echo $tpq->__GET('telefono') ?>");
-        $("#parroco").val("<?php echo $tpq->__GET('parroco') ?>");
-        $("#logo").val("<?php echo $tpq->__GET('logo') ?>");
-        $("#sitio_web").val("<?php echo $tpq->__GET('sitio_web') ?>");pq
+        $("#nombre").val("<?php echo $pq->__GET('nombre') ?>");
+        $("#direccion").val("<?php echo $pq->__GET('direccion') ?>");
+        $("#telefono").val("<?php echo $pq->__GET('telefono') ?>");
+        $("#parroco").val("<?php echo $pq->__GET('parroco') ?>");
+        $("#logo").val("<?php echo $pq->__GET('logo') ?>");
+        $("#sitio_web").val("<?php echo $pq->__GET('sitio_web') ?>");
 
     }
 
