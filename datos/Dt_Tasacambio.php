@@ -1,6 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_tasacambio.php");
 
 
 class Dt_Tasacambio extends Conexion
@@ -12,7 +11,7 @@ class Dt_Tasacambio extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_tasacambio;";
+			$querySQL = "select * from dbkermesse.tbl_tasacambio where estado <>3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -37,39 +36,106 @@ class Dt_Tasacambio extends Conexion
 		}
 	}
 
-	/* public function insertarUsuario(tbl_usuario $user){
+	public function insertTc(tbl_tasacambio $tc){
 		try{
 			$this->myCon = parent::conectar();
-			$sql = "INSERT INTO dbkermesse.tbl_usuario (usuario, pwd, nombres, apellidos, email, estado)
-					VALUES(?,?,?,?,?,?)";
+			$sql = "INSERT INTO dbkermesse.tbl_tasacambio (id_monedaO, id_monedaC, mes, anio, estado)
+					VALUES(?,?,?,?,?)";
 			
 			$this->myCon->prepare($sql)->execute(array(
-				$user->__GET('usuario'),
-				$user->__GET('pwd'),
-				$user->__GET('nombres'),
-				$user->__GET('apellidos'),
-				$user->__GET('email'),
-				$user->__GET('estado')));
+				$tc->__GET('id_monedaO'),
+				$tc->__GET('id_monedaC'),
+				$tc->__GET('mes'),
+				$tc->__GET('anio'),
+				$tc->__GET('estado')));
 			
 			$this->myCon = parent::desconectar();
 
 		}catch (Exception $e){
 			die($e->getMessage());
 		}
-	} */
+	}
+
+    public function getTcByID($id)
+    {
+        try
+        {
+            $this->myCon = parent::conectar();
+            $querySQL = "SELECT * FROM dbkermesse.tbl_tasacambio WHERE id_tasaCambio= ?;";
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->execute(array($id));
+
+            $r = $stm->fetch(PDO::FETCH_OBJ);
+
+            $u = new Tbl_tasacambio();
+
+            //_SET(CAMPOBD, atributoEntidad)
+            $u->__SET('id_tasaCambio', $r->id_tasaCambio);
+            $u->__SET('id_monedaO', $r->id_monedaO);
+            $u->__SET('id_monedaC', $r->id_monedaC);
+            $u->__SET('mes', $r->mes);
+            $u->__SET('anio', $r->anio);
+
+
+            $this->myCon = parent::desconectar();
+            return $u;
+        }
+        catch (Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
+
+    public function editTc(tbl_tasacambio $tc)
+    {
+        try
+        {
+            $this->myCon = parent::conectar();
+            $sql = "UPDATE dbkermesse.tbl_tasacambio SET
+						id_monedaO = ?,
+						id_monedaC = ?, 
+						mes = ?, 
+						anio = ?, 
+						estado = ?
+				    WHERE id_tasaCambio = ?";
+
+            $this->myCon->prepare($sql)
+                ->execute(
+                    array(
+                        $tc->__GET('id_monedaO'),
+                        $tc->__GET('id_monedaC'),
+                        $tc->__GET('mes'),
+                        $tc->__GET('anio'),
+                        $tc->__GET('estado'),
+                        $tc->__GET('id_tasaCambio')));
+
+            $this->myCon = parent::desconectar();
+        }
+        catch (Exception $e)
+        {
+            var_dump($e);
+            die($e->getMessage());
+        }
+    }
+    public function deleteTc($id)
+    {
+        try
+        {
+            $this->myCon = parent::conectar();
+            $sql = "UPDATE dbkermesse.tbl_tasacambio SET
+						estado = 3
+				    WHERE id_tasaCambio = ?";
+
+            $stm = $this->myCon->prepare($sql);
+            $stm->execute(array($id));
+
+            $this->myCon = parent::desconectar();
+        }
+        catch (Exception $e)
+        {
+            var_dump($e);
+            die($e->getMessage());
+        }
+    }
 
 	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
-}
-*/

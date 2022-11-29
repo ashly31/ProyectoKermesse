@@ -7,10 +7,11 @@ $p = new Dt_productos();
 
 //variable de control msj
 $varMsj = 0;
-if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
-}
+if(isset($_GET['$varMsj']))
+{
+    $varMsj = $_GET['varMsj'];
 
+}
 ?>
 
 <!DOCTYPE html>
@@ -360,7 +361,7 @@ if (isset($varMsj)) {
                     <h1 class="h3 mb-0 text-gray-800">Productos</h1>
                     <p class="mb-4">Un producto es todo aquello que está a disposición,
                         es decir, en el mercado, para que cualquier usuario lo adquiera
-                        con la finalidad de satisfacer una necesidad un deseo. <a target="_blank" href="agregar_productos.php">Agregar</a>.</p>
+                        con la finalidad de satisfacer una necesidad un deseo. <a href="productos/agregar_productos.php">  <br> <i class="fa fa-plus-square"></i> Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -372,28 +373,28 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_Productos" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_producto</th>
-                                            <th>id_comunidad</th>
-                                            <th>id_cat_producto</th>
-                                            <th>nombre</th>
-                                            <th>descripcion</th>
-                                            <th>cantidad</th>
-                                            <th>preciov_sugerido</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID del producto</th>
+                                            <th>ID Comunidad</th>
+                                            <th>ID categoría de producto</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio sugerido</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_producto</th>
-                                            <th>id_comunidad</th>
-                                            <th>id_cat_producto</th>
-                                            <th>nombre</th>
-                                            <th>descripcion</th>
-                                            <th>cantidad</th>
-                                            <th>preciov_sugerido</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID del producto</th>
+                                            <th>ID Comunidad</th>
+                                            <th>ID categoría de producto</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio sugerido</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -416,13 +417,13 @@ if (isset($varMsj)) {
                                                 <td> <?php echo $r->__GET('preciov_sugerido');  ?> </td>
                                                 <td> <?php echo  $estado ?> </td>
                                                 <td>
-                                                    <a href="visualizar_productos.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="productos/visualizar_productos.php?viewP= <?php echo $r->__GET('id_producto') ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_productos.php" target="_blank" title="Modificar los datos">
+                                                    <a href="productos/editar_productos.php?editP= <?php echo $r->__GET('id_producto')?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_productos.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_Productos.php?delProd=<?php echo $r->__GET('id_producto')?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>

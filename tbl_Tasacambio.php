@@ -5,10 +5,12 @@ include './datos/Dt_Tasacambio.php';
 
 $tc = new Dt_Tasacambio();
 
-//variable de control msj
+///variable de control msj
 $varMsj = 0;
-if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+if(isset($_GET['$varMsj']))
+{
+    $varMsj = $_GET['varMsj'];
+
 }
 ?>
 <!DOCTYPE html>
@@ -358,7 +360,8 @@ if (isset($varMsj)) {
                     <h1 class="h3 mb-0 text-gray-800">Tasa Cambio</h1>
                     <p class="mb-4">Dicha tasa es un indicador que expresa
                         cuántas unidades de una divisa se necesitan para
-                        obtener una unidad de la otra. <a target="_blank" href="agregar_tasacambio.php">Agregar</a>.</p>
+                        obtener una unidad de la otra. <a href="tasacambio/agregar_tasacambio.php">
+                            <br> <i class="fa fa-plus-square"></i> Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -370,24 +373,24 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_tasaCambio</th>
-                                            <th>id_monedaO</th>
-                                            <th>id_monedaC</th>
-                                            <th>mes</th>
-                                            <th>anio</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Tasa Cambio</th>
+                                            <th>ID Moneda Origen</th>
+                                            <th>ID Moneda Cambio</th>
+                                            <th>Mes</th>
+                                            <th>Año</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_tasaCambio</th>
-                                            <th>id_monedaO</th>
-                                            <th>id_monedaC</th>
-                                            <th>mes</th>
-                                            <th>anio</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Tasa Cambio</th>
+                                            <th>ID Moneda Origen</th>
+                                            <th>ID Moneda Cambio</th>
+                                            <th>Mes</th>
+                                            <th>Año</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -408,13 +411,13 @@ if (isset($varMsj)) {
                                                 <td> <?php echo $r->__GET('anio');  ?> </td>
                                                 <td> <?php echo  $estado ?> </td>
                                                 <td>
-                                                    <a href="visualizar_tasacambio.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="tasacambio/visualizar_tasacambio.php?viewT=<?php echo $r->__GET('id_tasaCambio')?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_tasacambio.php" target="_blank" title="Modificar los datos">
+                                                    <a href="tasacambio/editar_tasacambio.php?editT= <?php echo $r->__GET('id_tasaCambio') ?>"  title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_tasacambio.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_tasaCambio.php?delTc= <?php echo $r->__GET('id_tasaCambio')?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>

@@ -4,6 +4,22 @@ class Tbl_productos
 {
     //Atributos
     private $id_producto;
+
+    /**
+     * @return mixed
+     */
+    public function getIdProducto()
+    {
+        return $this->id_producto;
+    }
+
+    /**
+     * @param mixed $id_producto
+     */
+    public function setIdProducto($id_producto)
+    {
+        $this->id_producto = $id_producto;
+    }
     private $id_comunidad;
     private $id_cat_producto;
     private $nombre;

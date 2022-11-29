@@ -1,6 +1,6 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tbl_gastos.php");
+include_once("../entidades/tbl_gastos.php");
 
 
 class Dt_Gastos extends Conexion
@@ -43,6 +43,38 @@ class Dt_Gastos extends Conexion
 			die($e->getMessage());
 		}
 	}
+
+    public function getGastosByID($id)
+    {
+        try
+        {
+            $this->myCon = parent::conectar();
+            $querySQL = "SELECT * FROM dbkermesse.tbl_gastos WHERE id_registro_gastos = ?;";
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->execute(array($id));
+            $r = $stm->fetch(PDO::FETCH_OBJ);
+            $g = new Tbl_Usuario();
+            //_SET(CAMPOBD, atributoEntidad)
+            $g->__SET('id_registro_gastos', $r->id_registro_gastos);
+            $g->__SET('idKermesse', $r->idKermesse);
+            $g->__SET('idCatGastos', $r->idCatGastos);
+            $g->__SET('fechaGasto', $r->fechaGasto);
+            $g->__SET('concepto', $r->concepto);
+            $g->__SET('monto', $r->monto);
+            $g->__SET('usuario_creacion', $r->usuario_creacion);
+            $g->__SET('fecha_creacion', $r->fecha_creacion);
+            $g->__SET('usuario_modificacion', $r->usuario_modificacion);
+            $g->__SET('fecha_modificacion', $r->fecha_modificacion);
+            $g->__SET('usuario_eliminacion', $r->usuario_eliminacion);
+            $g->__SET('fecha_eliminacion', $r->fecha_eliminacion);
+            $this->myCon = parent::desconectar();
+            return $g;
+        }
+        catch (Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
 
 	/* public function insertarUsuario(tbl_usuario $user){
 		try{
