@@ -1,8 +1,6 @@
 <?php
 include_once("conexion.php");
 
-
-
 class Dt_Parroquia extends Conexion
 {
     private $myCon;
@@ -12,7 +10,7 @@ class Dt_Parroquia extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_parroquia;";
+			$querySQL = "SELECT * from dbkermesse.tbl_parroquia;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -105,7 +103,7 @@ class Dt_Parroquia extends Conexion
 						telefono = ?,
 						parroco = ?,
 						logo = ?,
-						sitio_web = ?,
+						sitio_web = ?
 					WHERE idParroquia = ?";
 
 				$this->myCon->prepare($sql)
@@ -128,13 +126,12 @@ class Dt_Parroquia extends Conexion
 		}
 	}
 	
-	public function deleteParroquia($id)
+	public function deletePq($id)
 	{
 		try
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE dbkermesse.tbl_parroquia SET
-						estado = 3
+			$sql = "DELETE FROM dbkermesse.tbl_parroquia 						
 				    WHERE idParroquia = ?";
 
 			$stm = $this->myCon->prepare($sql);
@@ -150,17 +147,3 @@ class Dt_Parroquia extends Conexion
 	}
 
 	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
-}
-*/

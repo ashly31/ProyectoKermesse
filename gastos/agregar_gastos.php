@@ -211,21 +211,16 @@
                                 <label for="id">idArqueoCaja:</label>
                             </div>  -->
                         <div class="form-floating mb-3">
-                            <label for="id_registro_gastos">ID Registro Gastos:</label>
-                            <input class="form-control" id="id_registro_gastos" name="id_registro_gastos" type="id" title="Ingrese ID de Registro de Gastos" required/>
-                        </div>
-
-                        <div class="form-floating mb-3">
                             <label for="idKermesse">ID Kermesse:</label>
-                            <input class="form-control" id="idKermesse" name="idKermesse" type="id" title="Ingrese ID de Kermesse" required/>
+                            <input class="form-control" id="idKermesse" name="idKermesse" type="text" title="Ingrese ID de Kermesse" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="idCatGastos">ID Cat Gastos:</label>
-                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="id" title="Ingrese el ID de Cat Gastos" required/>
+                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="text" title="Ingrese el ID de Cat Gastos" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fechaGasto">Fecha Gasto:</label>
-                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="date" title="Ingrese la fecha de gasto" required/>
+                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="datetime-local" title="Ingrese la fecha de gasto" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="concepto">Concepto:</label>
@@ -233,7 +228,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="monto">Monto:</label>
-                            <input class="form-control" id="monto" name="monto" type="decimal" title="Ingrese el monto" required/>
+                            <input class="form-control" id="monto" name="monto" type="number" title="Ingrese el monto" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="usuario_creacion">Usuario Creación:</label>
@@ -241,27 +236,12 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_creacion">Fecha Creación:</label>
-                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="date" title="Ingrese la fecha de creación" required/>
+                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" required/>
                         </div>
-                        <div class="form-floating mb-3">
-                            <label for="usuario_modificacion">Usuario Modificacion:</label>
-                            <input class="form-control" id="usuario_modificacion" name="usuario_modificacion" type="text" title="Ingrese el usuario modificado" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fecha_modificacion">Fecha Modificacion:</label>
-                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="date" title="Ingrese le fecha modificada" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="usuario_eliminacion">Usuario Eliminación:</label>
-                            <input class="form-control" id="usuario_eliminacion" name="usuario_eliminacion" type="text" title="Ingrese el usuario eliminado" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fecha_eliminacion">Fecha Eliminacion:</label>
-                            <input class="form-control" id="fecha_eliminacion" name="fecha_eliminacion" type="date" title="Ingrese la fecha eliminada" required/>
-                        </div>
+
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <input class="btn btn-danger" type="reset" value="Cancelar"/>
+                            <a href="../tbl_Gastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
                         </div>
                     </form>
                 </div>

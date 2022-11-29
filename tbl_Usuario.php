@@ -50,13 +50,12 @@ if(isset($varMsj))
     <script src="https://kit.fontawesome.com/6aba70b797.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-
-
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
-    <link href="./css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- jAlert css  -->
     <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
+
 </head>
 
 <body>
@@ -142,6 +141,40 @@ if(isset($varMsj))
             </div>
         </li>
 
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Complementos
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Páginas</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Cuenta: </h6>
+                    <a class="collapse-item" href="login.php">Login</a>
+                    <a class="collapse-item" href="registro.php">Registro</a>
+                    <a class="collapse-item" href="olvido_Contra.php">Olvido de Contraseña</a>
+                    <div class="collapse-divider"></div>
+                    <!--    <h6 class="collapse-header">Otras Páginas:</h6>
+                <a class="collapse-item" href="404.html">Página 404</a>
+                <a class="collapse-item" href="blank.html">Página en Blanco</a> -->
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="nosotros.php">
+                <i class="fa-solid fa-users-between-lines"></i>
+                <span>Sobre nosotros</span></a>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -377,7 +410,6 @@ if(isset($varMsj))
 
             </nav>
             <!-- End of Topbar -->
-
             <!-- Begin Page Content -->
             <div class="container-fluid">
 

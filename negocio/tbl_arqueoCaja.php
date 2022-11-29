@@ -55,7 +55,7 @@ if ($_POST)
                 $ac->__SET('fecha_modificacion', $_POST['fecha_modificacion']);
                 $ac->__SET('usuario_eliminacion', $_POST['usuario_eliminacion']);
                 $ac->__SET('fecha_eliminacion', $_POST['fecha_eliminacion']);
-                $ac->__SET('estado', 2);
+                $ac->__SET('estado', 2); 
         
                 $dac->editAC($ac);
                 //var_dump($emp);
