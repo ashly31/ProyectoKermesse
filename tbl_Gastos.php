@@ -360,7 +360,7 @@ if (isset($varMsj)) {
                     <p class="mb-4">Un gasto es un egreso o salida de dinero
                         que una persona o empresa debe pagar para acreditar su
                         derecho sobre un artículo o a recibir un servicio.
-                        <a target="_blank" href="gastos/agregar_gastos.php">Agregar</a>.
+                        <a href="gastos/agregar_gastos.php">Agregar</a>.
                     </p>
 
                     <!-- DataTables -->
@@ -438,7 +438,7 @@ if (isset($varMsj)) {
                                                     <a href="gastos/editar_gastos.php" target="_blank" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="gastos/eliminar_gastos.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="./negocio/tbl_Gastos.php?delK=<?php echo $r->__GET ('id_registro_gastos'); ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>

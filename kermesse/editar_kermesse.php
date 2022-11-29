@@ -243,11 +243,11 @@ $tk = $dtk->getKermesseByID($varIdK);
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fInicio">Fecha de Inicio</label>
-                            <input class="form-control" id="fInicio" name="fInicio" type="date" title="Ingrese la fecha de inicio de la kermesse" required/>
+                            <input class="form-control" id="fInicio" name="fInicio" type="datetime-local" title="Ingrese la fecha de inicio de la kermesse" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fFinal">Fecha de Finalización</label>
-                            <input class="form-control" id="fFinal" name="fFinal" type="date" title="Ingrese la fecha de finalización de kermesse" required/>
+                            <input class="form-control" id="fFinal" name="fFinal" type="datetime-local" title="Ingrese la fecha de finalización de kermesse" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="descripcion">Descripción</label>
@@ -259,7 +259,7 @@ $tk = $dtk->getKermesseByID($varIdK);
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_creacion">Fecha Creación</label>
-                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="text" title="Ingrese la fecha de creación" readonly required/>
+                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" readonly required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="usuario_modificacion">Usuario Modificación</label>
@@ -267,7 +267,7 @@ $tk = $dtk->getKermesseByID($varIdK);
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_modificacion">Fecha Modificación</label>
-                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="date" title="Ingrese la fecha modificacion" required/>
+                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime-local" title="Ingrese la fecha modificacion" required/>
                         </div>
 
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
@@ -349,6 +349,8 @@ $tk = $dtk->getKermesseByID($varIdK);
     {
         $("#id_kermesse").css("background-color", "#E3E4E5");
         $("#id_kermesse").val("<?php echo $tk->__GET('id_kermesse') ?>");
+
+        $("#idK").val("<?php echo $tk->__GET('id_kermesse') ?>");
 
         $("#idParroquia").val("<?php echo $tk->__GET('idParroquia') ?>");
 
