@@ -4,7 +4,7 @@ include_once("conexion.php");
 class Dt_usuario extends Conexion
 {
     private $myCon;
-
+ 
     public function listarIngresoUsuario(){
 		
         try{
@@ -64,7 +64,7 @@ class Dt_usuario extends Conexion
             $this->myCon = parent::conectar();
             $querySQL = "SELECT * FROM dbkermesse.tbl_usuario WHERE id_usuario = ?;";
             $stm = $this->myCon->prepare($querySQL);
-            $stm->execute(array($id));
+            $stm->execute(array($id)); 
 
             $r = $stm->fetch(PDO::FETCH_OBJ);
 

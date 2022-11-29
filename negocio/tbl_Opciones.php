@@ -41,8 +41,7 @@ if ($_POST)
                 $op->__SET('opcion_descripcion', $_POST['opcion_descripcion']);
                 $op->__SET('estado', 2);
                 
-                
-        
+            
                 $dop->editOpciones($op);
                 //var_dump($emp);
                 header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=3");

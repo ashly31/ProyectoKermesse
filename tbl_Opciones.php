@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 //importamos las entidades
 include './entidades/tbl_opciones.php';
 include './datos/Dt_Opciones.php';
@@ -8,7 +9,7 @@ $o = new Dt_opciones();
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+    $varMsj = $_GET['msj'];
 }
 
 ?>
@@ -32,6 +33,8 @@ if (isset($varMsj)) {
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- jAlert css  -->
+    <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
 </head>
 
 <body>
@@ -95,7 +98,7 @@ if (isset($varMsj)) {
                             <a class="collapse-item" href="tbl_Productos.php">Productos</a>
                             <a class="collapse-item" href="tbl_Rol.php">Rol</a>
                             <a class="collapse-item" href="tbl_Tasacambio.php">Tasa Cambio</a>
-                           
+
                             <a class="collapse-item" href="tbl_Usuario.php">Usuario</a>
                         </div>
                     </div>
@@ -361,7 +364,7 @@ if (isset($varMsj)) {
                     <h1 class="h3 mb-0 text-gray-800">Opciones</h1>
                     <p class="mb-4">Las opciones son contratos entre dos partes
                         en los que se establece la compra o venta de un activo determinado,
-                        a un cierto precio y en un momento futuro. <a target="_blank" href="agregar_opciones.php">Agregar</a>.</p>
+                        a un cierto precio y en un momento futuro. <a href="./opciones/agregar_opciones.php"><i class="fa fa-plus-square "></i>Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -373,7 +376,7 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_opciones" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            
+                                            <th>ID Opcion</th>
                                             <th>opcion_descripcion</th>
                                             <th>estado</th>
                                             <th>opciones</th>
@@ -381,14 +384,14 @@ if (isset($varMsj)) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            
+                                            <th>ID Opcion</th>
                                             <th>opcion_descripcion</th>
                                             <th>estado</th>
                                             <th>opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    <?php
+                                        <?php
                                         foreach ($o->listarOpciones() as $r) :
                                             $estado = "";
                                             if ($r->__GET('estado') == 1 || $r->__GET('estado') == 2) {
@@ -398,22 +401,23 @@ if (isset($varMsj)) {
                                             }
                                         ?>
                                             <tr>
-                                                
+                                                <td><?php echo $r->__GET('id_opciones');  ?></td>
                                                 <td> <?php echo $r->__GET('opcion_descripcion');  ?> </td>
-                                                <td><?php echo  $estado ?> </td>
-                                            
-                                            <td>
-                                                <a href="./opciones/visualizar_opciones.php?viewOp=<?php echo $r->__GET('id_opciones'); ?>" title="Visualizar los datos">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>&nbsp;
-                                                <a href="./opciones/editar_opciones.php" target="_blank" title="Modificar los datos">
-                                                    <i class="fa-solid fa-user-pen"></i>
-                                                </a>&nbsp;
-                                                <a href="./negocio/tbl_Opciones.php?delOp=<?php echo $r->__GET('id_opciones'); ?>" title="Eliminar los datos">
-                                                    <i class="fa-solid fa-user-minus"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                <td><?php echo  $estado ?></td>
+                                        
+
+                                                <td>
+                                                    <a href="./opciones/visualizar_opciones.php?viewO=<?php echo $r->__GET('id_opciones'); ?>" title="Visualizar los datos">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </a>&nbsp;
+                                                    <a href="./opciones/editar_opciones.php" title="Modificar los datos">
+                                                        <i class="fa-solid fa-user-pen"></i>
+                                                    </a>&nbsp;
+                                                    <a href="./negocio/tbl_Opciones.php?delOp=<?php echo $r->__GET('id_opciones'); ?>" title="Eliminar los datos">
+                                                        <i class="fa-solid fa-user-minus"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         <?php
                                         endforeach;
                                         ?>
@@ -471,8 +475,27 @@ if (isset($varMsj)) {
     </div>
     <!-- EXTRA -->
     <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+    <script src="./js/sb-admin-2.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="./js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="./vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="./js/demo/chart-area-demo.js"></script>
+    <script src="./js/demo/chart-pie-demo.js"></script>
+
+    
     <!-- JS DATATABLES -->
     <script src="./DataTables/datatables.min.js"></script>
     <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
@@ -486,42 +509,37 @@ if (isset($varMsj)) {
     <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+    
+    <!-- END EXTRA -->
+    
+
     <!-- jAlert js -->
     <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js">
-        //optional!!
-    </script>
-    <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./jAlert/dist/jAlert-functions.min.js"> </script> 
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(document).ready(function() {
             /////////// VARIABLE DE CONTROL MSJ ///////////
             var mensaje = 0;
             mensaje = "<?php echo $varMsj ?>";
 
-            if (mensaje == "1") {
-                successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
-            }
-            /////////// DATATABLE ///////////
-            $(document).ready(function() {
-
-                $("#tbl_Opciones").DataTable({
-                    "data": mensaje,
+    if(mensaje == "1")
+    {
+        successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
+    }
+    if(mensaje == "3")
+    {
+        successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+    }
+    if(mensaje == "5")
+    {
+        successAlert('Éxito', 'Ha sido eliminado exitosamente!');
+    }
+    if(mensaje == "2" || mensaje == "4" || mensaje == "6")
+    {
+        errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+    }
+    $("#tbl_opciones").DataTable({
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
@@ -616,13 +634,11 @@ if (isset($varMsj)) {
                         },
                         "infoEmpty": "No hay datos para mostrar"
                     }
-                }).buttons().container().appendTo('#tbl_Opciones_wrapper .col-md-6:eq(0)');
+                }).buttons().container().appendTo('#tbl_opciones_wrapper .col-md-6:eq(0)');
 
-            });
+                
+            });//FIN  $(document).ready()
 
-
-
-        }); //FIN  $(document).ready()
     </script>
 
 </body>

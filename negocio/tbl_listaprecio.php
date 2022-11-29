@@ -17,18 +17,19 @@ if ($_POST)
             {
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
+                $lp->__SET('id_lista_precio', $_POST['id_lista_precio']);              
                 $lp->__SET('id_kermesse', $_POST['id_kermesse']);              
-                $lp->__SET('nombre', $_POST['nombre']);              
-                $lp->__SET('descripcion', $_POST['descripcion']);              
+                $lp->__SET('nombre', $_POST['nombre']);  
+                $lp->__SET('descripcion', $_POST['descripcion']);            
                 $lp->__SET('estado', 1);
 
-                $dlp->insertarLP($lp);
+                $dlp->insertLP($lp);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_listaPrecio.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_listaPrecio.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_listaPrecio.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_listaPrecio.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -36,32 +37,43 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/listaprecio/editar_listaprecio.php?msj=5&varEnter={$_POST['idLp']}");
-                    die();
-                }
+    
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $lp->__SET('id_lista_precio', $_POST['idLp']);
+                $lp->__SET('id_lista_precio', $_POST['id_lista_precio']);
                 $lp->__SET('id_kermesse', $_POST['id_kermesse']);              
                 $lp->__SET('nombre', $_POST['nombre']);              
                 $lp->__SET('descripcion', $_POST['descripcion']);
-                
+                $lp->__SET('estado', 2);
                 
                 
         
                 $dlp->editLP($lp);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_listaPrecio.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_listaPrecio.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_listaPrecio.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_listaPrecio.php?msj=4");
                 die($e->getMessage());
             }
             break;
         
     }
+}
 
+if ($_GET)
+{
+    try
+    {
 
+        $lp->__SET('id_lista_precio', $_GET['delLp']);
+        $dlp->deleteLP($lp->__GET('id_lista_precio'));
+        header("Location: /ProyectoKermesse/tbl_listaPrecio.php?msj=5");
+    }
+    catch(Exception $e)
+    {
+        header("Location: /ProyectoKermesse/tbl_listaPrecio.php?msj=6");
+        die($e->getMessage());
+    }
 }

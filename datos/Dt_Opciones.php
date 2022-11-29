@@ -11,7 +11,7 @@ class Dt_Opciones extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_opciones where estado<>3;";
+			$querySQL = "SELECT * from dbkermesse.tbl_opciones where estado<>3;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -58,7 +58,7 @@ class Dt_Opciones extends Conexion
 		try
 		{
 			$this->myCon = parent::conectar();
-			$querySQL = "SELECT * FROM dbkermesse.tbl_opciones WHERE id_opciones = ?;";
+			$querySQL = "SELECT * FROM dbkermesse.tbl_opciones where id_opciones=?;";
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute(array($id));
 

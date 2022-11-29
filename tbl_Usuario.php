@@ -52,6 +52,7 @@ if(isset($_GET['$varMsj']))
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -433,14 +434,14 @@ if(isset($_GET['$varMsj']))
                                                 <td><?php echo $r->__GET('email');  ?></td>
                                                 <td><?php echo  $estadoUser ?></td>
                                                 <td>
-                                                    <a href="usuario/visualizar_usuario.php?viewU=<?php echo $r->__GET('id_usuario'); ?>" title="Visualizar los datos">
+                                                    <a href="./usuario/visualizar_usuario.php?viewU=<?php echo $r->__GET('id_usuario'); ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="usuario/editar_usuario.php?editU=<?php echo $r->getIdUsuario();
+                                                    <a href="./usuario/editar_usuario.php?editU=<?php echo $r->getIdUsuario();
                                                     ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="negocio/tbl_Usuario.php?delUser=<?php echo $r->__GET('id_usuario');
+                                                    <a href="./negocio/tbl_Usuario.php?delUser=<?php echo $r->__GET('id_usuario');
                                                     ?>"  title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>

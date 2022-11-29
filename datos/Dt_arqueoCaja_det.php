@@ -101,7 +101,7 @@ class Dt_arqueoCaja_det extends Conexion
 						idMoneda = ?, 
 						idDenominacion = ?,
 						cantidad = ?,
-						subtotal = ?,
+						subtotal = ?
 						
 				    WHERE idArqueoCaja_Det = ?";
 
@@ -130,8 +130,8 @@ class Dt_arqueoCaja_det extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE dbkermesse.tbl_arqueocaja_det SET
-						estado = 3
+			$sql = "DELETE FROM dbkermesse.tbl_arqueocaja_det 
+						
 				    WHERE idArqueoCaja_Det = ?";
 
 			$stm = $this->myCon->prepare($sql);

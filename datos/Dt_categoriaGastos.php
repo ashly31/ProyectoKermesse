@@ -85,7 +85,7 @@ class Dt_categoriaGastos extends Conexion
 		}
 	}
 
-	public function editCG(Tbl_categoria_gastos $tcg)
+	public function editCG(Tbl_categoria_gastos $cg)
 	{
 		try 
 		{
@@ -99,10 +99,10 @@ class Dt_categoriaGastos extends Conexion
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$tcg->__GET('nombre_categoria'), 
-					$tcg->__GET('descripcion'), 
-					$tcg->__GET('estado'),
-					$tcg->__GET('id_categoria_gastos')
+					$cg->__GET('nombre_categoria'), 
+					$cg->__GET('descripcion'), 
+					$cg->__GET('estado'),
+					$cg->__GET('id_categoria_gastos')
 					)
 				);
 				$this->myCon = parent::desconectar();

@@ -231,7 +231,6 @@ $acd = $dacd->getACDByID($varIdACD);
                         <div class="form-floating mb-3">
                             <label for="idArqueoCaja_Det">ID ACD</label>
                               <input class="form-control" id="idArqueoCaja_Det" name="idArqueoCaja_Det" type="text" readonly required/> 
-                            <input class="form-control" id="idArqueoCaja_Det" name="idArqueoCaja_Det" type="hidden" />
                         </div>
 
                         <div class="form-floating mb-3">

@@ -409,15 +409,15 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('descripcion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                    <a href="./categoriaGastos/visualizar_categoriaGastos.php?viewCG=<?php echo $r->__GET('id_categoria_gastos');
+                                                    <a href="categoriaGastos/visualizar_categoriaGastos.php?viewCG=<?php echo $r->__GET('id_categoria_gastos');
                                                     ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="./categoriaGastos/editar_categoriaGastos.php?editCG=<?php echo $r->__GET('id_categoria_gastos');
+                                                    <a href="categoriaGastos/editar_categoriaGastos.php?editCG=<?php echo $r->__GET('id_categoria_gastos');
                                                     ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="./negocio/tbl_categoriaGastos.php?delCG=<?php echo $r->__GET('id_categoria_gastos');
+                                                    <a href="negocio/tbl_categoriaGastos.php?delCG=<?php echo $r->__GET('id_categoria_gastos');
                                                     ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
