@@ -79,7 +79,6 @@ class Dt_Gastos extends Conexion
             $g = new Tbl_gastos();
 
             //_SET(CAMPOBD, atributoEntidad)
-            $g->__SET('id_registro_gastos', $r->id_registro_gastos);
             $g->__SET('idKermesse', $r->idKermesse);
             $g->__SET('idCatGastos', $r->idCatGastos);
             $g->__SET('fechaGasto', $r->fechaGasto);

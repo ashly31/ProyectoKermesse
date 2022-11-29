@@ -8,7 +8,7 @@ $icd = new Dt_ingresoComunidad_det();
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+    $varMsj = $_GET['msj'];
 }
 
 ?>
@@ -53,7 +53,7 @@ if (isset($varMsj)) {
             <hr class="sidebar-divider my-2">
 
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="../index.php">
                     <i class="fa-solid fa-house-chimney"></i>
                     <span>Inicio</span></a>
             </li>
@@ -94,7 +94,6 @@ if (isset($varMsj)) {
                         <a class="collapse-item" href="tbl_Productos.php">Productos</a>
                         <a class="collapse-item" href="tbl_Rol.php">Rol</a>
                         <a class="collapse-item" href="tbl_Tasacambio.php">Tasa Cambio</a>
-                        
                         <a class="collapse-item" href="tbl_Usuario.php">Usuario</a>
                     </div>
                 </div>
@@ -360,7 +359,7 @@ if (isset($varMsj)) {
                     <h1 class="h3 mb-0 text-gray-800">Ingreso Comunidad Det</h1>
                     <p class="mb-4">El ingreso a la comunidad es el proceso de entrar a espacios
                         comunitarios para presentar a las autoridades municipales, locales y ancestrales,
-                        así como a líderes y actores clave de la comunidad <a target="_blank" href="agregar_ingresocomunidadDet.php">Agregar</a>.</p>
+                        así como a líderes y actores clave de la comunidad <a href="./ingresoComunidad_det/agregar_ingresocomunidadDet.php">Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -372,30 +371,30 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_ingresoComunidad_det" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_ingreso_comunidad_det</th>
-                                            <th>id_ingreso_comunidad</th>
-                                            <th>id_bono</th>
-                                            <th>denominacion</th>
-                                            <th>cantidad</th>
-                                            <th>subtotal_bono</th>
-                                            <th>opciones</th>
+                                            <th>ID Ingreso Comunidad Detalle</th>
+                                            <th>ID Ingreso Comunidad</th>
+                                            <th>ID Bono</th>
+                                            <th>Denominacion</th>
+                                            <th>Dantidad</th>
+                                            <th>Subtotal Bono</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_ingreso_comunidad_det</th>
-                                            <th>id_ingreso_comunidad</th>
-                                            <th>id_bono</th>
-                                            <th>denominacion</th>
-                                            <th>cantidad</th>
-                                            <th>subtotal_bono</th>
-                                            <th>opciones</th>
+                                            <th>ID Ingreso Comunidad Detalle</th>
+                                            <th>ID Ingreso Comunidad</th>
+                                            <th>ID Bono</th>
+                                            <th>Denominacion</th>
+                                            <th>Dantidad</th>
+                                            <th>Subtotal Bono</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
                                         foreach ($icd->listarIngresoComunidad_det() as $r) :
-                                           
+
                                         ?>
                                             <tr>
                                                 <td> <?php echo $r->__GET('id_ingreso_comunidad_det');  ?> </td>
@@ -404,15 +403,16 @@ if (isset($varMsj)) {
                                                 <td> <?php echo $r->__GET('denominacion');  ?> </td>
                                                 <td> <?php echo $r->__GET('cantidad');  ?> </td>
                                                 <td> <?php echo $r->__GET('subtotal_bono');  ?> </td>
-                                            
+
                                                 <td>
-                                                    <a href="visualizar_ingresocomunidadDet.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="./ingresoComunidad_det/visualizar_ingresocomunidadDet.php?viewICD=<?php echo $r->__GET('id_ingreso_comunidad_det'); ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_ingresocomunidadDet.php" target="_blank" title="Modificar los datos">
+                                                    <a href="./ingresoComunidad_det/editar_ingresocomunidadDet.php?editICD=<?php echo $r->__GET('id_ingreso_comunidad_det');
+                                                    ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
-                                                    </a>&nbsp;
-                                                    <a href="eliminar_ingresocomunidadDet.php" target="_blank" title="Eliminar los datos">
+                                                    </a>
+                                                    <a href="./negocio/tbl_ingresocomunidadDet.php?delICD=<?php echo $r->__GET ('id_ingreso_comunidad_det'); ?>"   title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
@@ -474,8 +474,27 @@ if (isset($varMsj)) {
     </div>
     <!-- EXTRA -->
     <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+    <script src="./js/sb-admin-2.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="./js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="./vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="./js/demo/chart-area-demo.js"></script>
+    <script src="./js/demo/chart-pie-demo.js"></script>
+
+
     <!-- JS DATATABLES -->
     <script src="./DataTables/datatables.min.js"></script>
     <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
@@ -489,143 +508,135 @@ if (isset($varMsj)) {
     <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+
+    <!-- END EXTRA -->
+
+
     <!-- jAlert js -->
     <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js">
-        //optional!!
-    </script>
-    <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./jAlert/dist/jAlert-functions.min.js"> </script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
     <script>
         $(document).ready(function() {
             /////////// VARIABLE DE CONTROL MSJ ///////////
             var mensaje = 0;
             mensaje = "<?php echo $varMsj ?>";
 
-            if (mensaje == "1") {
+            if(mensaje == "1")
+            {
                 successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
             }
-            /////////// DATATABLE ///////////
-            $(document).ready(function() {
+            if(mensaje == "3")
+            {
+                successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+            }
+            if(mensaje == "5")
+            {
+                successAlert('Éxito', 'La moneda ha sido eliminado exitosamente!');
+            }
+            if(mensaje == "2" || mensaje == "4" || mensaje == "6")
+            {
+                errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+            }
+            $("#tbl_ingresoComunidad_det").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["excel", "pdf", "print"],
+                "language": {
+                    "aria": {
+                        "sortAscending": "Activar para ordenar la columna de manera ascendente",
+                        "sortDescending": "Activar para ordenar la columna de manera descendente"
+                    },
+                    "buttons": {
+                        "collection": "Colección",
+                        "colvis": "Visibilidad",
+                        "colvisRestore": "Restaurar visibilidad",
+                        "copy": "Copiar",
+                        "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+                        "copySuccess": {
+                            "1": "Copiada 1 fila al portapapeles",
+                            "_": "Copiadas %d fila al portapapeles"
+                        },
+                        "copyTitle": "Copiar al portapapeles",
+                        "csv": "CSV",
+                        "excel": "Excel",
+                        "pageLength": {
+                            "-1": "Mostrar todas las filas",
+                            "_": "Mostrar %d filas"
+                        },
+                        "pdf": "PDF",
+                        "print": "Imprimir",
+                        "createState": "Crear Estado",
+                        "removeAllStates": "Borrar Todos los Estados",
+                        "removeState": "Borrar Estado",
+                        "renameState": "Renombrar Estado",
+                        "savedStates": "Guardar Estado",
+                        "stateRestore": "Restaurar Estado",
+                        "updateState": "Actualizar Estado"
+                    },
+                    "infoThousands": ",",
+                    "loadingRecords": "Cargando...",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "searchBuilder": {
+                        "add": "Añadir condición",
+                        "button": {
+                            "0": "Constructor de búsqueda",
+                            "_": "Constructor de búsqueda (%d)"
+                        },
+                        "clearAll": "Borrar todo",
+                        "condition": "Condición",
+                        "deleteTitle": "Eliminar regla de filtrado",
+                        "leftTitle": "Criterios anulados",
+                        "logicAnd": "Y",
+                        "logicOr": "O",
+                        "rightTitle": "Criterios de sangría",
+                        "title": {
+                            "0": "Constructor de búsqueda",
+                            "_": "Constructor de búsqueda (%d)"
+                        },
+                        "value": "Valor",
+                        "data": "Datos"
+                    },
+                    "searchPanes": {
+                        "clearMessage": "Borrar todo",
+                        "collapse": {
+                            "0": "Paneles de búsqueda",
+                            "_": "Paneles de búsqueda (%d)"
+                        },
+                        "count": "{total}",
+                        "emptyPanes": "Sin paneles de búsqueda",
+                        "loadMessage": "Cargando paneles de búsqueda",
+                        "title": "Filtros Activos - %d",
+                        "countFiltered": "{shown} ({total})",
+                        "collapseMessage": "Colapsar",
+                        "showMessage": "Mostrar Todo"
+                    },
+                    "decimal": ".",
+                    "emptyTable": "No hay datos disponibles en la tabla",
+                    "zeroRecords": "No se encontraron coincidencias",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total de entradas)",
+                    "lengthMenu": "Mostrar _MENU_ entradas",
+                    "stateRestore": {
+                        "removeTitle": "Eliminar",
+                        "creationModal": {
+                            "search": "Buscar"
+                        }
+                    },
+                    "infoEmpty": "No hay datos para mostrar"
+                }
+            }).buttons().container().appendTo('#tbl_ingresoComunidad_det_wrapper .col-md-6:eq(0)');
 
-                $("#tbl_ingresoComunidad_det").DataTable({
-                    "data": mensaje,
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    "buttons": ["excel", "pdf", "print"],
-                    "language": {
-                        "aria": {
-                            "sortAscending": "Activar para ordenar la columna de manera ascendente",
-                            "sortDescending": "Activar para ordenar la columna de manera descendente"
-                        },
-                        "buttons": {
-                            "collection": "Colección",
-                            "colvis": "Visibilidad",
-                            "colvisRestore": "Restaurar visibilidad",
-                            "copy": "Copiar",
-                            "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
-                            "copySuccess": {
-                                "1": "Copiada 1 fila al portapapeles",
-                                "_": "Copiadas %d fila al portapapeles"
-                            },
-                            "copyTitle": "Copiar al portapapeles",
-                            "csv": "CSV",
-                            "excel": "Excel",
-                            "pageLength": {
-                                "-1": "Mostrar todas las filas",
-                                "_": "Mostrar %d filas"
-                            },
-                            "pdf": "PDF",
-                            "print": "Imprimir",
-                            "createState": "Crear Estado",
-                            "removeAllStates": "Borrar Todos los Estados",
-                            "removeState": "Borrar Estado",
-                            "renameState": "Renombrar Estado",
-                            "savedStates": "Guardar Estado",
-                            "stateRestore": "Restaurar Estado",
-                            "updateState": "Actualizar Estado"
-                        },
-                        "infoThousands": ",",
-                        "loadingRecords": "Cargando...",
-                        "paginate": {
-                            "first": "Primero",
-                            "last": "Último",
-                            "next": "Siguiente",
-                            "previous": "Anterior"
-                        },
-                        "processing": "Procesando...",
-                        "search": "Buscar:",
-                        "searchBuilder": {
-                            "add": "Añadir condición",
-                            "button": {
-                                "0": "Constructor de búsqueda",
-                                "_": "Constructor de búsqueda (%d)"
-                            },
-                            "clearAll": "Borrar todo",
-                            "condition": "Condición",
-                            "deleteTitle": "Eliminar regla de filtrado",
-                            "leftTitle": "Criterios anulados",
-                            "logicAnd": "Y",
-                            "logicOr": "O",
-                            "rightTitle": "Criterios de sangría",
-                            "title": {
-                                "0": "Constructor de búsqueda",
-                                "_": "Constructor de búsqueda (%d)"
-                            },
-                            "value": "Valor",
-                            "data": "Datos"
-                        },
-                        "searchPanes": {
-                            "clearMessage": "Borrar todo",
-                            "collapse": {
-                                "0": "Paneles de búsqueda",
-                                "_": "Paneles de búsqueda (%d)"
-                            },
-                            "count": "{total}",
-                            "emptyPanes": "Sin paneles de búsqueda",
-                            "loadMessage": "Cargando paneles de búsqueda",
-                            "title": "Filtros Activos - %d",
-                            "countFiltered": "{shown} ({total})",
-                            "collapseMessage": "Colapsar",
-                            "showMessage": "Mostrar Todo"
-                        },
-                        "decimal": ".",
-                        "emptyTable": "No hay datos disponibles en la tabla",
-                        "zeroRecords": "No se encontraron coincidencias",
-                        "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-                        "infoFiltered": "(Filtrado de _MAX_ total de entradas)",
-                        "lengthMenu": "Mostrar _MENU_ entradas",
-                        "stateRestore": {
-                            "removeTitle": "Eliminar",
-                            "creationModal": {
-                                "search": "Buscar"
-                            }
-                        },
-                        "infoEmpty": "No hay datos para mostrar"
-                    }
-                }).buttons().container().appendTo('#tbl_ingresoComunidad_det_wrapper .col-md-6:eq(0)');
 
-            });
-
-
-
-        }); //FIN  $(document).ready()
+        });//FIN  $(document).ready()
     </script>
 </body>
 

@@ -384,8 +384,6 @@ if (isset($varMsj)) {
                                             <th>Fecha Creación</th>
                                             <th>Usuario Modificación</th>
                                             <th>Fecha Modificación</th>
-                                            <th>Usuario Eliminacion</th>
-                                            <th>Fecha Eliminacion</th>
                                             <th>Opciones</th>
                                         </tr>
                                     </thead>
@@ -402,8 +400,6 @@ if (isset($varMsj)) {
                                             <th>Fecha Creación</th>
                                             <th>Usuario Modificación</th>
                                             <th>Fecha Modificación</th>
-                                            <th>Usuario Eliminacion</th>
-                                            <th>Fecha Eliminacion</th>
                                             <th>Opciones</th>
                                         </tr>
                                         </tr>
@@ -430,11 +426,6 @@ if (isset($varMsj)) {
                                                 <td> <?php echo $r->__GET('fecha_creacion');  ?> </td>
                                                 <td> <?php echo $r->__GET('usuario_modificacion');  ?> </td>
                                                 <td> <?php echo $r->__GET('fecha_modificacion');  ?> </td>
-                                                <td> <?php echo $r->__GET('usuario_eliminacion');  ?> </td>
-                                                <td> <?php echo $r->__GET('fecha_eliminacion');  ?> </td>
-                                            
-                                            
-
                                                 <td>
                                                     <a href="./ingresoComunidad/visualizar_ingresocomunidad.php?viewIC=<?php echo $r->__GET('id_ingreso_comunidad'); ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
@@ -569,7 +560,7 @@ if (isset($varMsj)) {
             {
                 errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
             }
-            $("#tbl_Moneda").DataTable({
+            $("#tbl_ingresoComunidad").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
@@ -664,7 +655,7 @@ if (isset($varMsj)) {
                     },
                     "infoEmpty": "No hay datos para mostrar"
                 }
-            }).buttons().container().appendTo('#tbl_Moneda_wrapper .col-md-6:eq(0)');
+            }).buttons().container().appendTo('#tbl_ingresoComunidad_wrapper .col-md-6:eq(0)');
 
 
         });//FIN  $(document).ready()
