@@ -1,4 +1,7 @@
 <?php
+
+
+error_reporting(0);
 //importamos las entidades
 include './entidades/tbl_tasacambio.php';
 include './datos/Dt_Tasacambio.php';
