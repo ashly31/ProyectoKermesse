@@ -3,18 +3,18 @@
 include '../entidades/tbl_opciones.php';
 include '../datos/Dt_Opciones.php';
 
-$dop = new Dt_Opciones();
-$op = new Tbl_opciones();
+$dtr = new Dt_Opciones();
+$tr = new Tbl_opciones();
 
 //variable de control msj
-$varIdOp = 0;
-if(isset($varIdOp))
+$varIdR = 0;
+if(isset($varIdR))
 {
-    $varIdOp = $_GET['editOp']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
+    $varIdR = $_GET['editOp']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
 }
 
 //OBTENEMOS LOS DATOS DEL USUARIO PARA SER EDITADO
-$top = $dop ->getOpByID($varIdOp);
+$tr = $dtr ->getOpByID($varIdR);
 
 ?>
 
@@ -28,7 +28,7 @@ $top = $dop ->getOpByID($varIdOp);
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
 
-    <title>Kermesse - Editar Moneda</title>
+    <title>Kermesse - Editar Rol</title>
 
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
@@ -214,38 +214,37 @@ $top = $dop ->getOpByID($varIdOp);
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Categoria Opción</h1>
-            <p class="mb-4">En este formulario podrá editar opciones.
+            <h1 class="h3 mb-0 text-gray-800">Opciones</h1>
+            <p class="mb-4">En este formulario podrá editar las opciones de roles existentes.
             </p>
             <!-- Edit rol -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Editar Opciones
+                    Editar opción
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_Opciones.php">
-                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/> 
+                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
 
                         <div class="form-floating mb-3">
                             <label for="id_opciones">ID Opción</label>
-                            <input class="form-control" id="id_opciones" name="id_opciones" type="text" readonly required/>            
+                            <input class="form-control" id="id_opciones" name="id_opciones" readonly required/>
                         </div>
 
-
                         <div class="form-floating mb-3">
-                            <label for="opcion_descripcion">Descripcion</label>
-                            <input class="form-control" id="opcion_descripcion" name="opcion_descripcion" type="text" title="Ingrese la descripcion" required/>
-                        </div>                    
+                            <label for="opcion_descripcion">Descripción del Rol</label>
+                            <input class="form-control" id="opcion_descripcion" name="opcion_descripcion" type="text" title="Ingrese la descripción de la opción" required/>
+                        </div>
 
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <a href="../tbl_opciones.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
+                            <a href="../tbl_Opciones.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- end of Edit CG -->
+            <!-- end of Edit Rol -->
         </div>
         <!-- end begin -->
 
@@ -316,9 +315,8 @@ $top = $dop ->getOpByID($varIdOp);
     function setValores()
     {
         $("#id_opciones").css("background-color", "#E3E4E5");
-        $("#id_opciones").val("<?php echo $top->__GET('id_opciones') ?>");
-
-        $("#opcion_descripcion").val("<?php echo $top->__GET('opcion_descripcion') ?>");
+        $("#id_opciones").val("<?php echo $tr->__GET('id_opciones') ?>");
+        $("#opcion_descripcion").val("<?php echo $tr->__GET('opcion_descripcion') ?>");
 
     }
 
