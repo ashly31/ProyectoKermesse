@@ -42,7 +42,10 @@ if ($_POST)
         case '2':
             try 
             {
+<<<<<<< HEAD
+=======
                 
+>>>>>>> c355c3e61684a3c95bb0c77c742b8e0f9317518f
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $ac->__SET('id_ArqueoCaja', $_POST['idAC']);

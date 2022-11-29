@@ -3,12 +3,14 @@
 include './entidades/tbl_comunidad.php';
 include './datos/Dt_Comunidad.php';
 
-$c = new Dt_Comunidad();
+$dc = new Dt_Comunidad();
 
 //variable de control msj
 $varMsj = 0;
-if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+if(isset($varMsj))
+{
+    $varMsj = $_GET['msj'];
+
 }
 ?>
 
@@ -31,6 +33,8 @@ if (isset($varMsj)) {
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- jAlert css  -->
+    <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
 </head>
 
 <body>
@@ -357,10 +361,10 @@ if (isset($varMsj)) {
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-0 text-gray-800">Comunidad</h1>
-                    <p class="mb-4">un grupo de personas con diversas características
+                    <p class="mb-4">Un grupo de personas con diversas características
                         que se encuentran asociadas por vínculos sociales, comparten
                         perspectivas comunes y participan en acción conjunta en localidades
-                        o entornos geográficos <a target="_blank" href="agregar_comunidad.php">Agregar</a>.</p>
+                        o entornos geográficos <a href="./comunidad/agregar_comunidad.php">Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -392,7 +396,7 @@ if (isset($varMsj)) {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        foreach ($c->listarComunidad() as $r) :
+                                        foreach ($dc->listarComunidad() as $r) :
                                             $estado = "";
                                             if ($r->__GET('estado') == 1 || $r->__GET('estado') == 2) {
                                                 $estado = "Activo";
@@ -407,13 +411,16 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('desc_contribucion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                    <a href="visualizar_comunidad.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="./comunidad/visualizar_comunidad.php?viewCom=<?php echo $r->__GET('id_comunidad');
+                                                     ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_comunidad.php" target="_blank" title="Modificar los datos">
-                                                        <i class="fa-solid fa-user-pen"></i>
+                                                    <a href="./comunidad/editar_comunidad.php?editCom=<?php echo $r->__GET('id_comunidad');
+                                                    ?>" title="Modificar los datos">
+                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_comunidad.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="./negocio/tbl_Comunidad.php?delCom=<?php echo $r->__GET ('id_comunidad'); 
+                                                        ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
@@ -474,59 +481,73 @@ if (isset($varMsj)) {
         </div>
     </div>
     <!-- EXTRA -->
-    <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
-    <!-- JS DATATABLES -->
-    <script src="./DataTables/datatables.min.js"></script>
-    <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
-    <script src="./DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
-    <script src="./DataTables/Responsive-2.3.0/js/responsive.dataTables.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.bootstrap5.min.js"></script>
-    <script src="./DataTables/JSZip-2.5.0/jszip.min.js"></script>
-    <script src="./DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
-    <script src="./DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
-    <!-- jAlert js -->
-    <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js">
-        //optional!!
-    </script>
-    <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+<!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+<script src="./js/sb-admin-2.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="./js/sb-admin-2.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+<!-- Page level plugins -->
+<script src="./vendor/chart.js/Chart.min.js"></script>
 
+<!-- Page level custom scripts -->
+<script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script>
+
+
+<!-- JS DATATABLES -->
+<script src="./DataTables/datatables.min.js"></script>
+<!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
+<script src="./DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="./DataTables/Responsive-2.3.0/js/responsive.dataTables.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.bootstrap5.min.js"></script>
+<script src="./DataTables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="./DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="./DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+
+<!-- END EXTRA -->
+
+
+<!-- jAlert js -->
+<script src="./jAlert/dist/jAlert.min.js"></script>
+<script src="./jAlert/dist/jAlert-functions.min.js"> </script>
     <script>
             $(document).ready(function() {
                 /////////// VARIABLE DE CONTROL MSJ ///////////
                 var mensaje = 0;
                 mensaje = "<?php echo $varMsj ?>";
 
-                if (mensaje == "1") {
+                if(mensaje == "1")
+                {
                     successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
                 }
+                if(mensaje == "3")
+                {
+                    successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+                }
+                if(mensaje == "5")
+                {
+                    successAlert('Éxito', 'El usuario ha sido dado de baja exitosamente!');
+                }
+                if(mensaje == "2"  ||  mensaje == "4" || mensaje == "6")
+                {
+                    errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+                }
                 /////////// DATATABLE ///////////
-                $(document).ready(function() {
 
                     $("#tbl_Comunidad").DataTable({
-                        "data": mensaje,
                         "responsive": true,
                         "lengthChange": false,
                         "autoWidth": false,
@@ -625,9 +646,7 @@ if (isset($varMsj)) {
 
                 });
 
-
-
-            }); //FIN  $(document).ready()
+     //FIN  $(document).ready()
         </script>
 
 </body>
