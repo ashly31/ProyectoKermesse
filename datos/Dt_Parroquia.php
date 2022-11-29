@@ -1,8 +1,6 @@
 <?php
 include_once("conexion.php");
 
-
-
 class Dt_Parroquia extends Conexion
 {
     private $myCon;
@@ -12,7 +10,7 @@ class Dt_Parroquia extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "SELECT * from dbkermesse.tbl_parroquia ;";
+			$querySQL = "SELECT * from dbkermesse.tbl_parroquia;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
