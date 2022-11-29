@@ -1,7 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/tasacambio_det.php");
-
 
 class Dt_tasacambio_det extends Conexion
 {
@@ -54,19 +52,79 @@ class Dt_tasacambio_det extends Conexion
 			die($e->getMessage());
 		}
 	} 
+	public function getTasaCDetByID($id)
+	{
+		try 
+		{
+			$this->myCon = parent::conectar();
+			$querySQL = "SELECT * FROM dbkermesse.tasacambio_det 
+						WHERE id_tasaCambio_det = ?;";
+			$stm = $this->myCon->prepare($querySQL);
+			$stm->execute(array($id));
+			
+			$r = $stm->fetch(PDO::FETCH_OBJ);
 
+			$tcd = new Tasacambio_det();
+
+			//_SET(CAMPOBD, atributoEntidad)			
+			$tcd->__SET('id_tasaCambio_det', $r->id_tasaCambio_det);
+			$tcd->__SET('id_tasaCambio', $r->id_tasaCambio);
+			$tcd->__SET('fecha', $r->fecha);
+			$tcd->__SET('tipoCambio', $r->tipoCambio);
+
+			$this->myCon = parent::desconectar();
+			return $tcd;
+		} 
+		catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
 	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
+	public function editarTasaCambioDet(Tasacambio_det $tcd)
+	{
+		try 
+		{
+			$this->myCon = parent::conectar();
+			$sql = "UPDATE FROM dbkermesse.tasacambio_det SET 
+						id_tasaCambio = ?,
+						fecha = ?,
+						tipoCambio= ?
+				    WHERE id_tasaCambio_det = ?";
+
+				$this->myCon->prepare($sql)
+			     ->execute(
+				array(
+					$tcd->__GET('id_tasaCambio'), 
+					$tcd->__GET('fecha'),
+					$tcd->__GET('tipoCambio')
+					)
+				);
+				$this->myCon = parent::desconectar();
+		} 
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
+	public function eliminarTasaCambioDet($id)
+	{
+		try 
+		{
+			$this->myCon = parent::conectar();
+			$sql = "DELETE FROM dbkermesse.tasacambio_det
+							  WHERE id_tasaCambio_det = ?";
+
+			$stm = $this->myCon->prepare($sql);
+			$stm->execute(array($id));
+
+			$this->myCon = parent::desconectar();
+		} 
+		catch (Exception $e) 
+		{
+			var_dump($e);
+			die($e->getMessage());
+		}
+	}
+
 }
-*/
