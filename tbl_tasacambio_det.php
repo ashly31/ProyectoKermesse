@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 //importamos las entidades
 include './entidades/tasacambio_det.php';
 include './datos/Dt_tasacambio_det.php';
@@ -7,8 +9,10 @@ $tcd = new Dt_tasacambio_det();
 
 //variable de control msj
 $varMsj = 0;
-if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+if(isset($varMsj))
+{
+   $varMsj = $_GET['msj']; 
+
 }
 
 ?>
@@ -31,6 +35,8 @@ if (isset($varMsj)) {
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+     <!-- jAlert css  -->
+    <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
 </head>
 
 <body>
@@ -137,9 +143,6 @@ if (isset($varMsj)) {
                         <a class="collapse-item" href="registro.php">Registro</a>
                         <a class="collapse-item" href="olvido_Contra.php">Olvido de Contraseña</a>
                         <div class="collapse-divider"></div>
-                        <!--    <h6 class="collapse-header">Otras Páginas:</h6>
-                    <a class="collapse-item" href="404.html">Página 404</a>
-                    <a class="collapse-item" href="blank.html">Página en Blanco</a> -->
                     </div>
                 </div>
             </li>
@@ -359,7 +362,7 @@ if (isset($varMsj)) {
                     <h1 class="h3 mb-0 text-gray-800">Tasa Cambio Det</h1>
                     <p class="mb-4">La tasa o tipo de cambio entre dos divisas
                         es la tasa o relación de proporción que existe entre el
-                        valor de una y la otra. <a target="_blank" href="agregar_tasacambioDet.php">Agregar</a>.</p>
+                        valor de una y la otra. <a href="./tasacambio_det/agregar_tasacambioDet.php"> Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -367,23 +370,23 @@ if (isset($varMsj)) {
                             <h6 class="m-0 font-weight-bold text-primary">Tasa Cambio Det</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="tbl_tasacambio_det" width="100%" cellspacing="0">
+                            
+                                <table class="table table-bordered" id="tbl_tasacambio_det">
                                     <thead>
                                         <tr>
-                                            <th>id_tasaCambio_det</th>
-                                            <th>id_tasaCambio</th>
-                                            <th>fecha</th>
-                                            <th>tipoCambio</th>
+                                            <th>id Tasa Cambio Detalle</th>
+                                            <th>id Tasa Cambio</th>
+                                            <th>Fecha</th>
+                                            <th>TipoCambio</th>
                                             <th>opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_tasaCambio_det</th>
-                                            <th>id_tasaCambio</th>
-                                            <th>fecha</th>
-                                            <th>tipoCambio</th>
+                                            <th>id Tasa Cambio Detalle</th>
+                                            <th>id Tasa Cambio</th>
+                                            <th>Fecha</th>
+                                            <th>TipoCambio</th>
                                             <th>opciones</th>
                                         </tr>
                                     </tfoot>
@@ -398,14 +401,18 @@ if (isset($varMsj)) {
                                                 <td> <?php echo $r->__GET('fecha');  ?> </td>
                                                 <td> <?php echo $r->__GET('tipoCambio');  ?> </td>
                                                 <td>
-                                                    <a href="visualizar_tasacambioDet.php" target="_blank" title="Visualizar los datos">
-                                                        <i class="fa-solid fa-eye"></i>
+                                                    <a href="./tasacambio_det/visualizar_tasacambioDet.php?viewTCD=<?php echo $r->__GET('id_tasaCambio_det');
+                                                        ?>" title="Visualizar los datos">
+                                                            <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_tasacambioDet.php" target="_blank" title="Modificar los datos">
-                                                        <i class="fa-solid fa-user-pen"></i>
+                                                    <a href="./tasacambio_det/editar_tasacambioDet.php?editTCD=<?php echo $r->__GET('id_tasaCambio_det');
+                                                        ?>" title="Modificar los datos">
+                                                            <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_tasacambioDet.php" target="_blank" title="Eliminar los datos">
-                                                        <i class="fa-solid fa-user-minus"></i>
+                                                    <a href="./negocio/tasacambioDet.php?delTCD=<?php echo $r->__GET('id_tasaCambio_det'); 
+                                                            ?>" title="Eliminar los datos">
+                                                            <i class="fa-solid fa-user-minus"></i>
+                                                        </a>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -414,7 +421,7 @@ if (isset($varMsj)) {
                                         ?>
                                     </tbody>
                                 </table>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- end of datatables -->
@@ -464,10 +471,29 @@ if (isset($varMsj)) {
             </div>
         </div>
     </div>
-    <!-- EXTRA -->
+      <!-- EXTRA -->
     <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+    <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+    <script src="./js/sb-admin-2.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="./js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="./vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="./js/demo/chart-area-demo.js"></script>
+    <script src="./js/demo/chart-pie-demo.js"></script>
+
+    
     <!-- JS DATATABLES -->
     <script src="./DataTables/datatables.min.js"></script>
     <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
@@ -481,42 +507,38 @@ if (isset($varMsj)) {
     <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
     <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+    
+    <!-- END EXTRA -->
+    
+
     <!-- jAlert js -->
     <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js">
-        //optional!!
-    </script>
-    <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./jAlert/dist/jAlert-functions.min.js"> </script> 
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-     <script>
         $(document).ready(function() {
             /////////// VARIABLE DE CONTROL MSJ ///////////
             var mensaje = 0;
             mensaje = "<?php echo $varMsj ?>";
 
-            if (mensaje == "1") {
-                successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
-            }
-            /////////// DATATABLE ///////////
-            $(document).ready(function() {
-
-                $("#tbl_tasacambio_det").DataTable({
-                    "data": mensaje,
+        if(mensaje == "1")
+        {
+            successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
+        }
+        if(mensaje == "3")
+        {
+            successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+        }
+        if(mensaje == "5")
+        {
+            successAlert('Éxito', 'La TCD ha sido eliminado exitosamente!');
+        }
+        if(mensaje == "2" || mensaje == "4" || mensaje == "6")
+        {
+            errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+        }
+    $("#tbl_tasacambio_det").DataTable({
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
@@ -613,11 +635,9 @@ if (isset($varMsj)) {
                     }
                 }).buttons().container().appendTo('#tbl_tasacambio_det_wrapper .col-md-6:eq(0)');
 
-            });
+                
+            });//FIN  $(document).ready()
 
-
-
-        }); //FIN  $(document).ready()
     </script>
 
 </body>

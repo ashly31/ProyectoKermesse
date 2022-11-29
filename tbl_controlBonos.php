@@ -478,7 +478,8 @@ if(isset($varMsj))
             </div>
         </div>
     </div>
-    <!-- EXTRA -->
+   
+ <!-- EXTRA -->
 <!-- jQuery -->
 <script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
 <!--<script src="./vendor/jquery/jquery.min.js"></script>-->
@@ -517,8 +518,7 @@ if(isset($varMsj))
 
 <!-- END EXTRA -->
 
-
-<!-- jAlert js -->
+jAlert js -->
 <script src="./jAlert/dist/jAlert.min.js"></script>
 <script src="./jAlert/dist/jAlert-functions.min.js"> </script>
     <script>

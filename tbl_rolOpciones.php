@@ -1,14 +1,15 @@
 <?php
+error_reporting(0);
 //importamos las entidades
 include './entidades/rol_Opciones.php';
 include './datos/Dt_rolOpciones.php';
 
-$ro = new Dt_rolOpciones();
+$dro = new Dt_rolOpciones();
 
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+     $varMsj = $_GET['msj'];
 }
 
 ?>
@@ -31,6 +32,8 @@ if (isset($varMsj)) {
 
     <link rel="shortcut icon" type="icon-x" src="/img/logo-kermes.png">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+     <!-- jAlert css  -->
+     <link rel="stylesheet" href="./jAlert/dist/jAlert.css" />
 </head>
 
 <body>
@@ -356,7 +359,7 @@ if (isset($varMsj)) {
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-0 text-gray-800">Rol Opciones</h1>
-                    <p class="mb-4">La define como la tarea que corresponde realizar a algún rol. <a target="_blank" href="agregar_rolOpciones.php">Agregar</a>.</p>
+                    <p class="mb-4">La define como la tarea que corresponde realizar a algún rol. <a href="./rol_Opciones/agregar_rolOpciones.php">Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -384,7 +387,7 @@ if (isset($varMsj)) {
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        foreach ($ro->listarRolOpciones() as $r) :
+                                        foreach ($dro->listarRolOpciones() as $r) :
                                          
                                         ?>
                                             <tr>
@@ -392,14 +395,17 @@ if (isset($varMsj)) {
                                                 <td> <?php echo $r->__GET('tbl_rol_id_rol');  ?> </td>
                                                 <td> <?php echo $r->__GET('tbl_opciones_id_opciones');  ?> </td>
                                                 <td>
-                                                    <a href="visualizar_rolOpciones.php" target="_blank" title="Visualizar los datos">
-                                                        <i class="fa-solid fa-eye"></i>
+                                                    <a href="./rol_Opciones/visualizar_rolOpciones.php?viewRO=<?php echo $r->__GET('id_rol_opciones');
+                                                        ?>" title="Visualizar los datos">
+                                                            <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_rolOpciones.php" target="_blank" title="Modificar los datos">
-                                                        <i class="fa-solid fa-user-pen"></i>
+                                                    <a href="./rol_Opciones/editar_rolOpciones.php?editRO=<?php echo $r->__GET('id_rol_opciones');
+                                                        ?>" title="Modificar los datos">
+                                                            <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_rolOpciones.php" target="_blank" title="Eliminar los datos">
-                                                        <i class="fa-solid fa-user-minus"></i>
+                                                    <a href="./negocio/eliminar_rolOpciones.php?delRO=<?php echo $r->__GET ('id_rol_opciones'); 
+                                                            ?>" title="Eliminar los datos">
+                                                            <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -458,56 +464,72 @@ if (isset($varMsj)) {
             </div>
         </div>
     </div>
-    <!-- EXTRA -->
-    <!-- jQuery -->
-    <script src="js/scripts.js"></script>
-    <script src="DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
-    <!-- JS DATATABLES -->
-    <script src="./DataTables/datatables.min.js"></script>
-    <!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
-    <script src="./DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
-    <script src="./DataTables/Responsive-2.3.0/js/responsive.dataTables.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.bootstrap5.min.js"></script>
-    <script src="./DataTables/JSZip-2.5.0/jszip.min.js"></script>
-    <script src="./DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
-    <script src="./DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
-    <script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
-    <!-- jAlert js -->
-    <script src="./jAlert/dist/jAlert.min.js"></script>
-    <script src="./jAlert/dist/jAlert-functions.min.js">
-        //optional!!
-    </script>
-    <!-- END EXTRA -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <!-- EXTRA -->
+<!-- jQuery -->
+<script src="./DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+<!--<script src="./vendor/jquery/jquery.min.js"></script>-->
+<script src="./js/sb-admin-2.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="./js/sb-admin-2.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+<!-- Page level plugins -->
+<script src="./vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script>
+
+
+<!-- JS DATATABLES -->
+<script src="./DataTables/datatables.min.js"></script>
+<!--<script src="./DataTables/Responsive-2.3.0/js/responsive.bootstrap5.min.js"></script>-->
+<script src="./DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="./DataTables/Responsive-2.3.0/js/responsive.dataTables.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.bootstrap5.min.js"></script>
+<script src="./DataTables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="./DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="./DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.print.min.js"></script>
+<script src="./DataTables/Buttons-2.2.3/js/buttons.colVis.min.js"></script>
+
+<!-- END EXTRA -->
+
+
+jAlert js -->
+<script src="./jAlert/dist/jAlert.min.js"></script>
+<script src="./jAlert/dist/jAlert-functions.min.js"> </script>
     <script>
         $(document).ready(function() {
             /////////// VARIABLE DE CONTROL MSJ ///////////
             var mensaje = 0;
-            mensaje = "<?php echo $varMsj ?>";
+                mensaje = "<?php echo $varMsj ?>";
 
-            if (mensaje == "1") {
-                successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
-            }
+                if(mensaje == "1")
+                {
+                    successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
+                }
+                if(mensaje == "3")
+                {
+                    successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+                }
+                if(mensaje == "5")
+                {
+                    successAlert('Éxito', 'El usuario ha sido dado de baja exitosamente!');
+                }
+                if(mensaje == "2"  ||  mensaje == "4" || mensaje == "6")
+                {
+                    errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
+                }
             /////////// DATATABLE ///////////
-            $(document).ready(function() {
 
                 $("#tbl_rolOpciones").DataTable({
                     "data": mensaje,
@@ -609,9 +631,6 @@ if (isset($varMsj)) {
 
             });
 
-
-
-        }); //FIN  $(document).ready()
     </script>
 </body>
 
