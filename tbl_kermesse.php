@@ -361,7 +361,7 @@ if (isset($varMsj)) {
                     <p class="mb-4">Una kermés es una fiesta popular,
                         generalmente barrial o de vecindario, que incluye
                         puestos de juegos de destreza, juegos mecánicos,
-                        puestos de comida y bebida, sorteos y números artísticos, etc. <a target="_blank" href="agregar_kermesse.php">Agregar</a>.</p>
+                        puestos de comida y bebida, sorteos y números artísticos, etc. <a  href="kermesse/agregar_kermesse.php">Agregar</a>.</p>
 
                     <!-- DataTables -->
                     <div class="card shadow mb-4">
@@ -373,36 +373,38 @@ if (isset($varMsj)) {
                                 <table class="table table-bordered" id="tbl_kermesse" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id_kermesse</th>
-                                            <th>idParroquia</th>
-                                            <th>nombre</th>
-                                            <th>finicio</th>
-                                            <th>fFinal</th>
-                                            <th>descripcion</th>
-                                            <th>estado</th>
-                                            <th>usuario_creacion</th>
-                                            <th>fecha_creacion</th>
-                                            <th>usuario_modificacion</th>
-                                            <th>fecha_modificacion</th>
-                                            <th>usuario_eliminacion</th>
-                                            <th>opciones</th>
+                                            <th>ID Kermesse</th>
+                                            <th>ID Parroquia</th>
+                                            <th>Nombre</th>
+                                            <th>Fecha de Inicio</th>
+                                            <th>Fecha Final</th>
+                                            <th>Descripcion</th>
+                                            <th>Estado</th>
+                                            <th>Usuario Creacion</th>
+                                            <th>Fecha Creacion</th>
+                                            <th>Usuario Modificacion</th>
+                                            <th>Fecha Modificacion</th>
+                                            <th>Usuario Eliminacion</th>
+                                            <th>Fecha Eliminacion</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>id_kermesse</th>
-                                            <th>idParroquia</th>
-                                            <th>nombre</th>
-                                            <th>finicio</th>
-                                            <th>fFinal</th>
-                                            <th>descripcion</th>
-                                            <th>estado</th>
-                                            <th>usuario_creacion</th>
-                                            <th>fecha_creacion</th>
-                                            <th>usuario_modificacion</th>
-                                            <th>fecha_modificacion</th>
-                                            <th>usuario_eliminacion</th>
-                                            <th>opciones</th>
+                                            <th>ID Kermesse</th>
+                                            <th>ID Parroquia</th>
+                                            <th>Nombre</th>
+                                            <th>Fecha de Inicio</th>
+                                            <th>Fecha Final</th>
+                                            <th>Descripcion</th>
+                                            <th>Estado</th>
+                                            <th>Usuario Creacion</th>
+                                            <th>Fecha Creacion</th>
+                                            <th>Usuario Modificacion</th>
+                                            <th>Fecha Modificacion</th>
+                                            <th>Usuario Eliminacion</th>
+                                            <th>Fecha Eliminacion</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -428,15 +430,16 @@ if (isset($varMsj)) {
                                                 <td> <?php echo $r->__GET('usuario_modificacion');  ?> </td>
                                                 <td> <?php echo $r->__GET('fecha_modificacion');  ?> </td>
                                                 <td> <?php echo $r->__GET('usuario_eliminacion');  ?> </td>
+                                                <td> <?php echo $r->__GET('fecha_eliminacion');  ?> </td>
                                             
                                                 <td>
-                                                    <a href="visualizat_kermesse.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="kermesse/visualizar_kermesse.php?viewK=<?php echo $r->getIdKermesse() ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="editar_kermesse.php" target="_blank" title="Modificar los datos">
+                                                    <a href="kermesse/editar_kermesse.php?editKermesse=<?php echo $r->getIdKermesse() ?>"title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
-                                                    <a href="eliminar_kermesse.php" target="_blank" title="Eliminar los datos">
+                                                    <a href="negocio/tbl_kermesse.php?delK=<?php echo $r->__GET ('id_kermesse') ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
