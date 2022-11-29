@@ -1,20 +1,20 @@
 <?php
 
-include '../entidades/tbl_Kermesse.php';
-include '../datos/Dt_kermesse.php';
+include '../entidades/tbl_gastos.php';
+include '../datos/Dt_Gastos.php';
 
-$dtk = new Dt_kermesse();
-$tk = new Tbl_kermesse();
+$dtg = new Dt_Gastos();
+$tg = new Tbl_gastos();
 
 //variable de control msj
 $varIdK = 0;
-if(isset($varIdK))
+if(isset($varIdG))
 {
-    $varIdK = $_GET['editKermesse']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
+    $varIdG = $_GET['editG']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
 }
 
 //OBTENEMOS LOS DATOS DEL USUARIO PARA SER EDITADO
-$tk = $dtk->getKermesseByID($varIdK);
+$tg = $dtg->getGastosByID($varIdG);
 
 ?>
 
@@ -215,64 +215,60 @@ $tk = $dtk->getKermesseByID($varIdK);
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Kermesse</h1>
-            <p class="mb-4">En este formulario podrá editar kermesses existentes.
+            <h1 class="h3 mb-0 text-gray-800">Gastos</h1>
+            <p class="mb-4">En este formulario podrá editar gastos existentes.
             </p>
             <!-- Agregar AC -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Editar Kermesse
+                    Editar Gastos
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="../negocio/tbl_kermesse.php">
+                    <form method="POST" action="../negocio/tbl_Gastos.php">
                         <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
 
+                        <<div class="form-floating mb-3">
+                            <label for="idKermesse">ID Kermesse:</label>
+                            <input class="form-control" id="idKermesse" name="idKermesse" type="text" title="Ingrese ID de Kermesse" required/>
+                        </div>
                         <div class="form-floating mb-3">
-                            <label for="id_kermesse">ID Kermesse</label>
-                            <input class="form-control" id="id_kermesse" name="id_kermesse" type="text" readonly required/>
+                            <label for="idCatGastos">ID Cat Gastos:</label>
+                            <input class="form-control" id="idCatGastos" name="idCatGastos" type="text" title="Ingrese el ID de Cat Gastos" required/>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="fechaGasto">Fecha Gasto:</label>
+                            <input class="form-control" id="fechaGasto" name="fechaGasto" type="datetime-local" title="Ingrese la fecha de gasto" required/>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="concepto">Concepto:</label>
+                            <input class="form-control" id="concepto" name="concepto" type="text" title="Ingrese el concepto" required/>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="monto">Monto:</label>
+                            <input class="form-control" id="monto" name="monto" type="number" title="Ingrese el monto" required/>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="usuario_creacion">Usuario Creación:</label>
+                            <input class="form-control" id="usuario_creacion" name="usuario_creacion" type="text" title="Ingrese el usuario creacion" required/>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="fecha_creacion">Fecha Creación:</label>
+                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" required/>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="idParroquia">ID Parroquia</label>
-                            <input class="form-control" id="idParroquia" name="idParroquia" type ="text" title="Ingrese ID la parroquia" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="nombre">Nombre</label>
-                            <input class="form-control" id="nombre" name="nombre" type="text"  title="Ingrese el nombre:" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fInicio">Fecha de Inicio</label>
-                            <input class="form-control" id="fInicio" name="fInicio" type="date" title="Ingrese la fecha de inicio de la kermesse" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fFinal">Fecha de Finalización</label>
-                            <input class="form-control" id="fFinal" name="fFinal" type="date" title="Ingrese la fecha de finalización de kermesse" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="descripcion">Descripción</label>
-                            <input class="form-control" id="descripcion" name="descripcion" type="text" title="Ingrese la descripción" required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="usuario_creacion">Usuario Creación</label>
-                            <input class="form-control" id="usuario_creacion" name="usuario_creacion" type="text" title="Ingrese el usuario creacion" readonly required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fecha_creacion">Fecha Creación</label>
-                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="text" title="Ingrese la fecha de creación" readonly required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="usuario_modificacion">Usuario Modificación</label>
+                            <label for="usuario_modificacion">Usuario Creación:</label>
                             <input class="form-control" id="usuario_modificacion" name="usuario_modificacion" type="text" title="Ingrese el usuario modificacion" required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="fecha_modificacion">Fecha Modificación</label>
-                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="date" title="Ingrese la fecha modificacion" required/>
+                            <label for="fecha_modificacion">Fecha Creación:</label>
+                            <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime-local" title="Ingrese la fecha de modificacion" required/>
                         </div>
 
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <input class="btn btn-primary" type="submit" value="Guardar"/>
-                            <a href="../tbl_kermesse.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
+                            <a href="../tbl_Gastos.php"> <button type="button" class="btn btn-info">Cancelar</button> </a>
                         </div>
                     </form>
                 </div>
@@ -348,27 +344,28 @@ $tk = $dtk->getKermesseByID($varIdK);
     function setValores()
     {
         $("#id_kermesse").css("background-color", "#E3E4E5");
-        $("#id_kermesse").val("<?php echo $tk->__GET('id_kermesse') ?>");
+        $("#id_kermesse").val("<?php echo $tg->__GET('id_kermesse') ?>");
 
-        $("#idParroquia").val("<?php echo $tk->__GET('idParroquia') ?>");
+        $("#idCatGastos").css("background-color", "#E3E4E5");
+        $("#idCatGastos").val("<?php echo $tg->__GET('idParroquia') ?>");
 
-        $("#nombre").val("<?php echo $tk->__GET('nombre') ?>");
+        $("#fechaGasto").css("background-color", "#E3E4E5");
 
-        $("#fInicio").val("<?php echo $tk->__GET('fInicio') ?>");
+        $("#concepto").css("background-color", "#E3E4E5");
+        $("#concepto").val("<?php echo $tg->__GET('concepto') ?>");
 
-        $("#fFinal").val("<?php echo $tk->__GET('fFinal') ?>");
-
-        $("#descripcion").val("<?php echo $tk->__GET('descripcion') ?>");
+        $("#monto").css("background-color", "#E3E4E5");
+        $("#monto").val("<?php echo $tg->__GET('monto') ?>");
 
         $("#usuario_creacion").css("background-color", "#E3E4E5");
-        $("#usuario_creacion").val("<?php echo $tk->__GET('usuario_creacion') ?>");
 
         $("#fecha_creacion").css("background-color", "#E3E4E5");
-        $("#fecha_creacion").val("<?php echo $tk->__GET('fecha_creacion') ?>");
 
-        $("#usuario_modificacion").val("<?php echo $tk->__GET('usuario_modificacion') ?>");
+        $("#usuario_modificacion").css("background-color", "#E3E4E5");
+        $("#usuario_modificacion").val("<?php echo $tg->__GET('usuario_modificacion') ?>");
 
-        $("#fecha_modificacion").val("<?php echo $tk->__GET('fecha_modificacion') ?>");
+        $("#usuario_modificacion").css("background-color", "#E3E4E5");
+        $("#usuario_modificacion").val("<?php echo $tg->__GET('usuario_modificacion') ?>");
     }
 
     $(document).ready(function ()

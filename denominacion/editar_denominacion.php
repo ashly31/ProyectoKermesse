@@ -325,7 +325,10 @@ $td = $dtd->getDenoByID($varIdD);
 <script>
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores() {
+
+
         $("#id_Denominacion").css("background-color", "#E3E4E5");
+        $("#id_Denominacion").val("<?php echo $td->__GET('id_Denominacion') ?>");
 
         $("#idMoneda").val("<?php echo $td->__GET('idMoneda') ?>");
 

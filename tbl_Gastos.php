@@ -435,9 +435,10 @@ if (isset($varMsj)) {
                                                     <a href="./gastos/visualizar_gastos.php?viewG="<?php echo $r->__GET('id_registro_gastos') ?> title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="gastos/editar_gastos.php" target="_blank" title="Modificar los datos">
+                                                    <a href="./gastos/editar_gastos.php?editG=<?php echo $r->__GET('id_registro_gastos');
+                                                    ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
-                                                    </a>&nbsp;
+                                                    </a>
                                                     <a href="./negocio/tbl_Gastos.php?delK=<?php echo $r->__GET ('id_registro_gastos'); ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
@@ -544,8 +545,21 @@ if (isset($varMsj)) {
                 var mensaje = 0;
                 mensaje = "<?php echo $varMsj ?>";
 
-                if (mensaje == "1") {
+                if(mensaje == "1")
+                {
                     successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
+                }
+                if(mensaje == "3")
+                {
+                    successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+                }
+                if(mensaje == "5")
+                {
+                    successAlert('Éxito', 'La moneda ha sido eliminado exitosamente!');
+                }
+                if(mensaje == "2" || mensaje == "4" || mensaje == "6")
+                {
+                    errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
                 }
                 /////////// DATATABLE ///////////
                 $(document).ready(function() {

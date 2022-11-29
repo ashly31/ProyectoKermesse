@@ -72,6 +72,7 @@ class Dt_Denominacion extends Conexion
             $d->__SET('idMoneda', $r->idMoneda);
             $d->__SET('valor', $r->valor);
             $d->__SET('valor_letras', $r->valor_letras);
+            $d->__SET('estado', $r->estado);
 
 
             $this->myCon = parent::desconectar();
@@ -89,8 +90,8 @@ class Dt_Denominacion extends Conexion
 						idMoneda = ?,
 						valor = ?, 
 						valor_letras = ?, 
-						estado = ?
-				    WHERE id_denominacion = ?";
+						estado = 2
+				    WHERE id_Denominacion = ?";
 
             $this->myCon->prepare($sql)
                 ->execute(
@@ -98,8 +99,7 @@ class Dt_Denominacion extends Conexion
                         $td->__GET('idMoneda'),
                         $td->__GET('valor'),
                         $td->__GET('valor_letras'),
-                        $td->__GET('estado'),
-                        $td->__GET('id_denominacion')
+                        $td->__GET('id_Denominacion')
                     )
                 );
             $this->myCon = parent::desconectar();
