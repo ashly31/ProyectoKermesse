@@ -6,6 +6,7 @@ include './datos/Dt_Opciones.php';
 
 $o = new Dt_opciones();
 
+
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
@@ -373,21 +374,21 @@ if (isset($varMsj)) {
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="tbl_opciones" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-striped" id="tbl_opciones">
                                     <thead>
                                         <tr>
-                                            <th>ID Opcion</th>
-                                            <th>opcion_descripcion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Opción</th>
+                                            <th>Descripción Opción</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>ID Opcion</th>
-                                            <th>opcion_descripcion</th>
-                                            <th>estado</th>
-                                            <th>opciones</th>
+                                            <th>ID Opción</th>
+                                            <th>Descripción Opción</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>

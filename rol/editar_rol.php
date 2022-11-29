@@ -230,9 +230,7 @@ $tr = $dtr ->getUserByID($varIdR);
                         <div class="form-floating mb-3">
                             <label for="id_rol">ID Rol</label>
                             <input class="form-control" id="id_rol" name="id_rol" type="text" readonly required/>
-                            <input class="form-control" id="idR" name="idR" type="hidden" />
                         </div>
-
 
                         <div class="form-floating mb-3">
                             <label for="rol_descripcion">Descripción del Rol</label>
