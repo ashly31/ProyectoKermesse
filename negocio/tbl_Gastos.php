@@ -54,8 +54,6 @@ if ($_POST)
                 $tbg->__SET('fecha_creacion', $_POST['fecha_creacion']);
                 $tbg->__SET('usuario_modificacion', $_POST['usuario_modificacion']);
                 $tbg->__SET('fecha_modificacion', $_POST['fecha_modificacion']);
-                $tbg->__SET('usuario_eliminacion', $_POST['usuario_eliminacion']);
-                $tbg->__SET('fecha_eliminacion', $_POST['fecha_eliminacion']);
                 $tbg->__SET('estado', 2);
 
                 $dtg->editGastos($tbg);

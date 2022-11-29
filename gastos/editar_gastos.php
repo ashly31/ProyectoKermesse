@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 include '../entidades/tbl_gastos.php';
 include '../datos/Dt_Gastos.php';
 
@@ -228,7 +230,7 @@ $tg = $dtg->getGastosByID($varIdG);
                     <form method="POST" action="../negocio/tbl_Gastos.php">
                         <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
 
-                        <<div class="form-floating mb-3">
+                        <div class="form-floating mb-3">
                             <label for="idKermesse">ID Kermesse:</label>
                             <input class="form-control" id="idKermesse" name="idKermesse" type="text" title="Ingrese ID de Kermesse" required/>
                         </div>
@@ -250,19 +252,19 @@ $tg = $dtg->getGastosByID($varIdG);
                         </div>
                         <div class="form-floating mb-3">
                             <label for="usuario_creacion">Usuario Creación:</label>
-                            <input class="form-control" id="usuario_creacion" name="usuario_creacion" type="text" title="Ingrese el usuario creacion" required/>
+                            <input class="form-control" id="usuario_creacion" name="usuario_creacion" type="text" title="Ingrese el usuario creacion" readonly/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_creacion">Fecha Creación:</label>
-                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" required/>
+                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" readonly/>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <label for="usuario_modificacion">Usuario Creación:</label>
+                            <label for="usuario_modificacion">Usuario Modificación:</label>
                             <input class="form-control" id="usuario_modificacion" name="usuario_modificacion" type="text" title="Ingrese el usuario modificacion" required/>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="fecha_modificacion">Fecha Creación:</label>
+                            <label for="fecha_modificacion">Fecha Modificación:</label>
                             <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime-local" title="Ingrese la fecha de modificacion" required/>
                         </div>
 
@@ -343,18 +345,15 @@ $tg = $dtg->getGastosByID($varIdG);
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores()
     {
-        $("#id_kermesse").css("background-color", "#E3E4E5");
+
         $("#id_kermesse").val("<?php echo $tg->__GET('id_kermesse') ?>");
 
-        $("#idCatGastos").css("background-color", "#E3E4E5");
         $("#idCatGastos").val("<?php echo $tg->__GET('idParroquia') ?>");
 
-        $("#fechaGasto").css("background-color", "#E3E4E5");
+        $("#fechaGasto").val("<?php echo $tg->__GET('fechaGasto') ?>");
 
-        $("#concepto").css("background-color", "#E3E4E5");
         $("#concepto").val("<?php echo $tg->__GET('concepto') ?>");
 
-        $("#monto").css("background-color", "#E3E4E5");
         $("#monto").val("<?php echo $tg->__GET('monto') ?>");
 
         $("#usuario_creacion").css("background-color", "#E3E4E5");
