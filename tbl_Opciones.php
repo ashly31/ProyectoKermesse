@@ -407,10 +407,10 @@ if (isset($varMsj)) {
                                         
 
                                                 <td>
-                                                    <a href="./opciones/visualizar_opciones.php?viewO=<?php echo $r->__GET('id_opciones'); ?>" title="Visualizar los datos">
+                                                    <a href="./opciones/visualizar_opciones.php?viewO=<?php echo $r->__GET('id_opciones');?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="./opciones/editar_opciones.php" title="Modificar los datos">
+                                                    <a href="./opciones/editar_opciones.php?editOp=<?php echo $r->__GET('id_opciones'); ?>"  title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     <a href="./negocio/tbl_Opciones.php?delOp=<?php echo $r->__GET('id_opciones'); ?>" title="Eliminar los datos">

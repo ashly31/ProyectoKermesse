@@ -413,7 +413,7 @@ if (isset($varMsj)) {
                                                 <a href="moneda/visualizar_moneda.php?viewMon= <?php echo $r->__GET('id_moneda')?>" title="Visualizar los datos">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>&nbsp;
-                                                <a href="moneda/editar_moneda.php?editMon=<?php echo $r->__GET('id_moneda');
+                                                <a href="./moneda/editar_moneda.php?editMon=<?php echo $r->__GET('id_moneda');
                                                     ?>"  title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;

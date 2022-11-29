@@ -37,7 +37,7 @@ if ($_POST)
             {   
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $mon->__SET('id_moneda', $_POST['idmon']);
+                $mon->__SET('id_moneda', $_POST['id_moneda']);
                 $mon->__SET('nombre', $_POST['nombre']);
                 $mon->__SET('simbolo', $_POST['simbolo']);
                 $mon->__SET('estado', 2);

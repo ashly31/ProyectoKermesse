@@ -4,7 +4,7 @@ include '../entidades/tbl_arqueocaja_det.php';
 include '../datos/Dt_arqueoCaja_det.php';
 
 $dacd = new Dt_arqueoCaja_det();
-$acd = new tbl_arqueocaja_det();
+$acd = new tbl_arqueocaja_det(); 
 
 //variable de control msj
 $varIdACD = 0;

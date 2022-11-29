@@ -422,7 +422,7 @@ if (isset($varMsj)) {
                                                     <a href="parroquia/visualizar_parroquia.php?viewPq=<?php echo $r->__GET('idParroquia'); ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="parroquia/editar_parroquia.php" title="Modificar los datos">
+                                                    <a href="./parroquia/editar_parroquia.php?editPq=<?php echo $r->__GET('idParroquia'); ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     <a href="./negocio/tbl_Parroquia.php?delPq=<?php echo $r->__GET('idParroquia'); ?>" title="Eliminar los datos">

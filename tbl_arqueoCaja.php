@@ -419,7 +419,7 @@ if (isset($varMsj)) {
                                         ?>
                                             <tr>
                                                 <td><?php echo $r->__GET('id_ArqueoCaja');  ?></td>
-                                                <td><?php echo $r->__GET('idKermesse');  ?></td>
+                                                <td><?php echo $r->__GET('idKermesse');  ?></td> 
                                                 <td><?php echo $r->__GET('fechaArqueo');  ?></td>
                                                 <td><?php echo $r->__GET('granTotal');  ?></td>
                                                 <td><?php echo $r->__GET('usuario_creacion');  ?></td>

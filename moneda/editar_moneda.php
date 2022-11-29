@@ -229,8 +229,7 @@ $tmon = $dmon ->getMonByID($varIdMon);
 
                         <div class="form-floating mb-3">
                             <label for="id_moneda">ID Moneda</label>
-                            <input class="form-control" id="id_moneda" name="id_moneda" type="text" readonly required/>
-                            <input class="form-control" id="id_moneda" name="id_moneda" type="hidden" />
+                            <input class="form-control" id="id_moneda" name="id_moneda" type="text" readonly required/>            
                         </div>
 
 
@@ -320,8 +319,9 @@ $tmon = $dmon ->getMonByID($varIdMon);
     ////// FUNCION PARA CARGAR LOS VALORES EN LOS CONTROLES
     function setValores()
     {
+        $("#id_moneda").css("background-color", "#E3E4E5");
         $("#id_moneda").val("<?php echo $tmon->__GET('id_moneda') ?>");
-        $("#id_moneda").val("<?php echo $tmon->__GET('id_moneda') ?>");
+
         $("#nombre").val("<?php echo $tmon->__GET('nombre') ?>");
         $("#simbolo").val("<?php echo $tmon->__GET('simbolo') ?>");
 
