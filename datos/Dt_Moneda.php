@@ -81,7 +81,7 @@ class Dt_Moneda extends Conexion
 		}
 	}
 
-	public function editMoneda(tbl_moneda $m)
+	public function editMoneda(tbl_moneda $tm)
 	{
 		try
 		{
@@ -95,10 +95,10 @@ class Dt_Moneda extends Conexion
 				$this->myCon->prepare($sql)
 			     ->execute(
 				array(
-					$m->__GET('nombre'),
-					$m->__GET('simbolo'),
-					$m->__GET('estado'),
-					$m->__GET('id_moneda')
+					$tm->__GET('nombre'),
+					$tm->__GET('simbolo'),
+					$tm->__GET('estado'),
+					$tm->__GET('id_moneda')
 				)
 				 );
 				 $this->myCon = parent::desconectar();

@@ -231,13 +231,12 @@ $a = $tac->getACByID($varIdAC);
                         <div class="form-floating mb-3">
                             <label for="id_ArqueoCaja">ID AC</label>
                               <input class="form-control" id="id_ArqueoCaja" name="id_ArqueoCaja" type="text" readonly required/> 
-                            <input class="form-control" id="id_ArqueoCaja" name="id_ArqueoCaja" type="hidden" />
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="idKermesse">idKermesse</label>
                             <input class="form-control" id="idKermesse" name="idKermesse" type="text" title="Ingrese el idKermesse" readonly required/>
-                            <!-- <input class="form-control" id="idKermesse" name="idKermesse" type="hidden" /> -->
+                            
                         </div>
 
                         <div class="form-floating mb-3">

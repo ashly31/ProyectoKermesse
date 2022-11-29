@@ -7,7 +7,7 @@ private $pdoStmt;
 private $serverName;
 private $dbName;
 private $userName;
-private $pwd;
+private $pwd; 
 // Metodos
 public function conectar()
 {

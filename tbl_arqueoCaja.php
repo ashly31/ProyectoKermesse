@@ -287,7 +287,7 @@ if (isset($varMsj)) {
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                                        <img class="rounded-circle" src="./img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -298,7 +298,7 @@ if (isset($varMsj)) {
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                                        <img class="rounded-circle" src="./img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -419,7 +419,7 @@ if (isset($varMsj)) {
                                         ?>
                                             <tr>
                                                 <td><?php echo $r->__GET('id_ArqueoCaja');  ?></td>
-                                                <td><?php echo $r->__GET('idKermesse');  ?></td>
+                                                <td><?php echo $r->__GET('idKermesse');  ?></td> 
                                                 <td><?php echo $r->__GET('fechaArqueo');  ?></td>
                                                 <td><?php echo $r->__GET('granTotal');  ?></td>
                                                 <td><?php echo $r->__GET('usuario_creacion');  ?></td>

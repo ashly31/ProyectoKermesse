@@ -34,16 +34,14 @@ if ($_POST)
         
         case '2':
             try 
-            {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /ProyectoKermesse/moneda/editar_moneda.php?msj=5&varEnter={$_POST['idMon']}");
-                    die();
-                }
+            {   
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $op->__SET('id_moneda', $_POST['idmon']);
-                $op->__SET('nombre', $_POST['nombre']);
-                $op->__SET('simbolo', $_POST['simbolo']);
+                $mon->__SET('id_moneda', $_POST['id_moneda']);
+                $mon->__SET('nombre', $_POST['nombre']);
+                $mon->__SET('simbolo', $_POST['simbolo']);
+                $mon->__SET('estado', 2);
+
                 
         
                 $dmon->editMoneda($mon);
@@ -65,13 +63,13 @@ if ($_GET)
     try
     {
 
-        $mon->__SET('id_opciones', $_GET['delMon']);
+        $mon->__SET('id_moneda', $_GET['delMon']);
         $dmon->deleteMoneda($mon->__GET('id_moneda'));
-        header("Location: /ProyectoKermesse/tbl_Mpciones.php?msj=5");
+        header("Location: /ProyectoKermesse/tbl_Moneda.php?msj=5");
     }
     catch(Exception $e)
     {
-        header("Location: /ProyectoKermesse/tbl_Mpciones.php?msj=6");
+        header("Location: /ProyectoKermesse/tbl_Moneda.php?msj=6");
         die($e->getMessage());
     }
 }

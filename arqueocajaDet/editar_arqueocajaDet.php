@@ -4,7 +4,7 @@ include '../entidades/tbl_arqueocaja_det.php';
 include '../datos/Dt_arqueoCaja_det.php';
 
 $dacd = new Dt_arqueoCaja_det();
-$acd = new tbl_arqueocaja_det();
+$acd = new tbl_arqueocaja_det(); 
 
 //variable de control msj
 $varIdACD = 0;
@@ -231,7 +231,6 @@ $acd = $dacd->getACDByID($varIdACD);
                         <div class="form-floating mb-3">
                             <label for="idArqueoCaja_Det">ID ACD</label>
                               <input class="form-control" id="idArqueoCaja_Det" name="idArqueoCaja_Det" type="text" readonly required/> 
-                            <input class="form-control" id="idArqueoCaja_Det" name="idArqueoCaja_Det" type="hidden" />
                         </div>
 
                         <div class="form-floating mb-3">

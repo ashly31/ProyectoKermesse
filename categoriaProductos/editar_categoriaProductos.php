@@ -231,7 +231,6 @@ $c = $dcp->getCPByID($varIdCP);
                         <div class="form-floating mb-3">
                             <label for="id_categoria_producto">ID CP</label>
                               <input class="form-control" id="id_categoria_producto" name="id_categoria_producto" type="text" readonly required/> 
-                            <input class="form-control" id="id_categoria_producto" name="id_categoria_producto" type="hidden" />
                         </div>
 
                         <div class="form-floating mb-3">

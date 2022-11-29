@@ -26,11 +26,11 @@ if ($_POST)
 
                 $dpq->insertarParroquia($pq);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_Parroquia.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_Parroquia.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_Parroquia.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_Parroquia.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -38,10 +38,7 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/parroquia/editar_parroquia.php?msj=5&varEnter={$_POST['idPq']}");
-                    die();
-                }
+                
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $pq->__SET('idParroquia', $_POST['idpq']);
@@ -50,22 +47,36 @@ if ($_POST)
                 $pq->__SET('telefono', $_POST['telefono']);              
                 $pq->__SET('parroco', $_POST['logo']);              
                 $pq->__SET('sitio_web', $_POST['sitio_web']); 
-                
+                $pq->__SET('estado', 2);
                 
                 
         
                 $dpq->editParroquia($pq);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_Parroquia.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_Parroquia.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_Parroquia.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_Parroquia.php?msj=4");
                 die($e->getMessage());
             }
             break;
         
     }
+}
 
+if ($_GET)
+{
+    try
+    {
 
+        $pq->__SET('idParroquia', $_GET['delPq']);
+        $dpq->deletePq($pq->__GET('idParroquia'));
+        header("Location: /ProyectoKermesse/tbl_Parroquia.php?msj=5");
+    }
+    catch(Exception $e)
+    {
+        header("Location: /ProyectoKermesse/tbl_Parroquia.php?msj=6");
+        die($e->getMessage());
+    }
 }

@@ -37,10 +37,7 @@ if ($_POST)
         case '2':
             try 
             {
-                if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /ProyectoKermesse/arqueocajaDet/editar_arqueocajaDet.php?msj=5&varEnter={$_POST['idArqueoCaja_Det']}");
-                    die();
-                }
+                
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
                 $acd->__SET('idArqueoCaja_Det', $_POST['idArqueoCaja_Det']);

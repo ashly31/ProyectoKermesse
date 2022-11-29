@@ -93,7 +93,7 @@ class Dt_categoriaProducto extends Conexion
 			$sql = "UPDATE dbkermesse.tbl_categoria_producto SET
 						nombre = ?, 
 						descripcion = ?, 
-						estado = ?,
+						estado = ?
 				    WHERE id_categoria_producto = ?";
 
 				$this->myCon->prepare($sql)

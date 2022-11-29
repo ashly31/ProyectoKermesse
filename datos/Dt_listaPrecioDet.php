@@ -12,7 +12,7 @@ class Dt_listaPrecioDet extends Conexion
         try{
             $this->myCon = parent::conectar();
 			$result = array();
-			$querySQL = "select * from dbkermesse.tbl_listaprecio_det;";
+			$querySQL = "SELECT * from dbkermesse.tbl_listaprecio_det;";
 
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute();
@@ -63,7 +63,7 @@ class Dt_listaPrecioDet extends Conexion
 		try
 		{
 			$this->myCon = parent::conectar();
-			$querySQL = "SELECT * FROM dbkermesse.tbl_listaprecio_det WHERE id_listaprecio_det = ?;";
+			$querySQL = "select * from dbkermesse.tbl_listaprecio_det;";
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute(array($id));
 
@@ -139,17 +139,3 @@ class Dt_listaPrecioDet extends Conexion
 	}
 
 	}
-/*
-$prueba = new Dt_usuario();
-$element = $prueba->listarIngresoUsuario();
-foreach($element as $value){
-    echo "<br>";
-    echo $value->id_usuario;
-    echo $value->usuario;
-    echo $value->pwd;
-    echo $value->nombres;
-    echo $value->apellidos;
-    echo $value->email;
-    echo $value->estado;
-}
-*/
