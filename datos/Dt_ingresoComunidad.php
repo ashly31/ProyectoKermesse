@@ -12,7 +12,7 @@ class Dt_ingresoComunidad extends Conexion
         try {
             $this->myCon = parent::conectar();
             $result = array();
-            $querySQL = "select * from dbkermesse.tbl_ingreso_comunidad;";
+            $querySQL = "select * from dbkermesse.tbl_ingreso_comunidad where estado<>3;";
 
             $stm = $this->myCon->prepare($querySQL);
             $stm->execute();
@@ -149,7 +149,9 @@ class Dt_ingresoComunidad extends Conexion
             $stm->execute(array($id));
 
             $this->myCon = parent::desconectar();
-        } catch (Exception $e) {
+        }
+        catch (Exception $e)
+        {
             var_dump($e);
             die($e->getMessage());
         }

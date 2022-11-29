@@ -46,12 +46,12 @@ if ($_POST)
             try
             {
                 //CONSTRUIMOS EL OBJETO
-                //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-
+                //ATRIBUTO ENTIDAD //NAME DEL CONTROLid_ingreso_comunidad
+                $tic->__SET('id_ingreso_comunidad', $_POST['id_ingreso_comunidad']);
                 $tic->__SET('id_kermesse', $_POST['id_kermesse']);
                 $tic->__SET('id_comunidad', $_POST['id_comunidad']);
                 $tic->__SET('id_producto', $_POST['id_producto']);
-                $tic->__SET('cant_productos', $_POST['fFinal']);
+                $tic->__SET('cant_productos', $_POST['cant_productos']);
                 $tic->__SET('total_bonos', $_POST['total_bonos']);
                 $tic->__SET('usuario_creacion', $_POST['usuario_creacion']);
                 $tic->__SET('fecha_creacion', $_POST['fecha_creacion']);
@@ -79,7 +79,7 @@ if ($_GET)
     try
     {
 
-        $tic->__SET('id_kermesse', $_GET['delIC']);
+        $tic->__SET('id_ingreso_comunidad', $_GET['delIC']);
         $dtic->deleteIngresoC($tic->__GET('id_ingreso_comunidad'));
         header("Location: /ProyectoKermesse/tbl_ingresoComunidad.php?msj=5");
     }
