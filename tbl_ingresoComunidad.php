@@ -439,9 +439,10 @@ if (isset($varMsj)) {
                                                     <a href="./ingresoComunidad/visualizar_ingresocomunidad.php?viewIC=<?php echo $r->__GET('id_ingreso_comunidad'); ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="./ingresoComunidad/editar_ingresocomunidad.php" target="_blank" title="Modificar los datos">
+                                                    <a href="./ingresoComunidad/editar_ingresocomunidad.php?editIC=<?php echo $r->__GET('id_ingreso_comunidad');
+                                                    ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
-                                                    </a>&nbsp;
+                                                    </a>
                                                     <a href="./negocio/tbl_ingresocomunidad.php?delIC=<?php echo $r->__GET ('id_ingreso_comunidad'); ?>"   title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
@@ -521,8 +522,8 @@ if (isset($varMsj)) {
     <script src="./vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="./js/demo/chart-area-demo.js"></script>
+    <script src="./js/demo/chart-pie-demo.js"></script>
 
 
     <!-- JS DATATABLES -->
@@ -546,7 +547,6 @@ if (isset($varMsj)) {
     <script src="./jAlert/dist/jAlert.min.js"></script>
     <script src="./jAlert/dist/jAlert-functions.min.js"> </script>
 
-
     <script>
         $(document).ready(function() {
             /////////// VARIABLE DE CONTROL MSJ ///////////
@@ -563,14 +563,13 @@ if (isset($varMsj)) {
             }
             if(mensaje == "5")
             {
-                successAlert('Éxito', 'El usuario ha sido dado de baja exitosamente!');
+                successAlert('Éxito', 'La moneda ha sido eliminado exitosamente!');
             }
             if(mensaje == "2" || mensaje == "4" || mensaje == "6")
             {
                 errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
             }
-
-            $("#tbl_kermesse").DataTable({
+            $("#tbl_Moneda").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
@@ -665,10 +664,11 @@ if (isset($varMsj)) {
                     },
                     "infoEmpty": "No hay datos para mostrar"
                 }
-            }).buttons().container().appendTo('#tbl_kermesse_wrapper .col-md-6:eq(0)');
+            }).buttons().container().appendTo('#tbl_Moneda_wrapper .col-md-6:eq(0)');
 
 
         });//FIN  $(document).ready()
+
     </script>
 
 </body>

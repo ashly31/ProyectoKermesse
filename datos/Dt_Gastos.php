@@ -1,7 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("../entidades/tbl_gastos.php");
-
 
 class Dt_Gastos extends Conexion
 {
@@ -77,7 +75,9 @@ class Dt_Gastos extends Conexion
             $stm->execute(array($id));
 
             $r = $stm->fetch(PDO::FETCH_OBJ);
-            $g = new Tbl_Usuario();
+
+            $g = new Tbl_gastos();
+
             //_SET(CAMPOBD, atributoEntidad)
             $g->__SET('id_registro_gastos', $r->id_registro_gastos);
             $g->__SET('idKermesse', $r->idKermesse);

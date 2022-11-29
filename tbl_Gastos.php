@@ -432,7 +432,7 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('fecha_eliminacion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                    <a href="gastos/visualizar_gastos.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="./gastos/visualizar_gastos.php?viewG="<?php echo $r->__GET('id_registro_gastos') ?> title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
                                                     <a href="gastos/editar_gastos.php" target="_blank" title="Modificar los datos">
