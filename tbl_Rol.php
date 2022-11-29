@@ -1,4 +1,6 @@
 <?php
+
+error_reporting(0);
 //importamos las entidades
 include './entidades/tbl_rol.php';
 include './datos/Dt_Rol.php';
