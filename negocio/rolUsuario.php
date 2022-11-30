@@ -3,8 +3,8 @@
 include_once("../entidades/rol_Usuario.php");
 include_once("../datos/Dt_rolUsuario.php");
 
-$tro = new rol_usuario();
-$dro = new Dt_rolUsuario();
+$tru = new rol_usuario();
+$dru = new Dt_rolUsuario();
 
 if($_POST)
 {
@@ -15,10 +15,11 @@ if($_POST)
             try{
                  //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $tro->__SET('id_rol_usuario', $_POST['id_rol_usuario']);
-                $tro->__SET('tbl_usuario_id_usuario', $_POST['tbl_usuario_id_usuario']);
-                $tro->__SET('tbl_rol_id_rol', $_POST['tbl_rol_id_rol']);
-                 $dro->insertarRU($tro);
+                $tru->__SET('id_rol_usuario', $_POST['id_rol_usuario']);
+                $tru->__SET('tbl_usuario_id_usuario', $_POST['tbl_usuario_id_usuario']);
+                $tru->__SET('tbl_rol_id_rol', $_POST['tbl_rol_id_rol']);
+                $result[] = $tru;
+                $dru->insertarRU($tru);
                 //var_dump($emp);
                 header("Location: /ProyectoKermesse/tbl_rolUsuario.php?msj=1");
             }
@@ -31,17 +32,16 @@ if($_POST)
             try{
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROl
-                $tro->__SET('id_rol_usuario', $_POST['id_rol_usuario']);
-                $tro->__SET('tbl_usuario_id_usuario', $_POST['tbl_usuario_id_usuario']);
-                $tro->__SET('tbl_rol_id_rol', $_POST['tbl_rol_id_rol']);
-                $tcb->__SET('estado', 2);
+                $tru->__SET('id_rol_usuario', $_POST['id_rol_usuario']);
+                $tru->__SET('tbl_usuario_id_usuario', $_POST['tbl_usuario_id_usuario']);
+                $tru->__SET('tbl_rol_id_rol', $_POST['tbl_rol_id_rol']);
 
-                $dro->editRU($tro);
+                $dru->editRU($tru);
                 //var_dump($emp);
                 header("Location: /ProyectoKermesse/tbl_rolUsuario.php?msj=3");
             }
             catch(Exception $e){
-                header("Location: /Kermesse/tbl_rolUsuario.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_rolUsuario.php?msj=4");
                 die($e->getMessage());
             }
     }
@@ -52,8 +52,8 @@ if ($_GET)
     try 
     {
         
-        $tcb->__SET('id_rol_usuario', $_GET['delUr']);
-        $dcb->deleteRU($tcb->__GET('id_rol_usuario'));
+        $tru->__SET('id_rol_usuario', $_GET['delRU']);
+        $dru->deleteRU($tru->__GET('id_rol_usuario'));
         header("Location: /ProyectoKermesse/tbl_rolUsuario.php?msj=5");
     }
     catch(Exception $e) 

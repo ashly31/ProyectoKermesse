@@ -32,16 +32,16 @@ class Dt_rolOpciones extends Conexion
 		}
 	}
 
-	public function insertar_rolOpciones(rol_opciones $rc){
+	public function insertar_rolOpciones(rol_opciones $ro){
 		try{
 			$this->myCon = parent::conectar();
 			$sql = "INSERT INTO dbkermesse.rol_opciones (id_rol_opciones, tbl_rol_id_rol, tbl_opciones_id_opciones)
 					VALUES(?,?,?)";
 			
 			$this->myCon->prepare($sql)->execute(array(
-				$rc->__GET('id_rol_opciones'),
-				$rc->__GET('tbl_rol_id_rol'),
-				$rc->__GET('tbl_opciones_id_opciones')));
+				$ro->__GET('id_rol_opciones'),
+				$ro->__GET('tbl_rol_id_rol'),
+				$ro->__GET('tbl_opciones_id_opciones')));
 			
 			$this->myCon = parent::desconectar();
 
@@ -54,7 +54,9 @@ class Dt_rolOpciones extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$querySQL = "SELECT * FROM dbkermesse.rol_opciones WHERE id_rol_opciones = ?;";
+			$querySQL = "SELECT * FROM dbkermesse.rol_opciones 
+						WHERE id_rol_opciones = ?;";
+			
 			$stm = $this->myCon->prepare($querySQL);
 			$stm->execute(array($id));
 			
@@ -80,7 +82,7 @@ class Dt_rolOpciones extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE dbkermesse.rol_opciones SET 
+			$sql = "UPDATE FROM dbkermesse.rol_opciones SET 
 						tbl_rol_id_rol = ?,
 						tbl_opciones_id_opciones = ?
 				    WHERE id_rol_opciones = ?";
@@ -90,6 +92,7 @@ class Dt_rolOpciones extends Conexion
 				array(
 					$tro->__GET('tbl_rol_id_rol'), 
 					$tro->__GET('tbl_opciones_id_opciones'),
+					$tro->__GET('id_rol_opciones')
 					)
 				);
 				$this->myCon = parent::desconectar();
@@ -105,8 +108,7 @@ class Dt_rolOpciones extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE dbkermesse.rol_opciones SET
-						estado = 3
+			$sql = "DELETE FROM dbkermesse.rol_opciones 
 				    WHERE id_rol_opciones = ?";
 
 			$stm = $this->myCon->prepare($sql);

@@ -1,7 +1,5 @@
 <?php
 include_once("conexion.php");
-include_once("./entidades/rol_Usuario.php");
-
 
 class Dt_rolUsuario extends Conexion
 {
