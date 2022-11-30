@@ -360,7 +360,7 @@ if (isset($varMsj)) {
                     <p class="mb-4">Un gasto es un egreso o salida de dinero
                         que una persona o empresa debe pagar para acreditar su
                         derecho sobre un artículo o a recibir un servicio.
-                        <a target="_blank" href="gastos/agregar_gastos.php">Agregar</a>.
+                        <a href="gastos/agregar_gastos.php">Agregar</a>.
                     </p>
 
                     <!-- DataTables -->
@@ -432,13 +432,14 @@ if (isset($varMsj)) {
                                                 <td><?php echo $r->__GET('fecha_eliminacion');  ?></td>
                                                 <td><?php echo  $estado  ?></td>
                                                 <td>
-                                                    <a href="gastos/visualizar_gastos.php" target="_blank" title="Visualizar los datos">
+                                                    <a href="./gastos/visualizar_gastos.php?viewG="<?php echo $r->__GET('id_registro_gastos') ?> title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="gastos/editar_gastos.php" target="_blank" title="Modificar los datos">
+                                                    <a href="./gastos/editar_gastos.php?editG=<?php echo $r->__GET('id_registro_gastos');
+                                                    ?>" title="Modificar los datos">
                                                         <i class="fa-solid fa-user-pen"></i>
-                                                    </a>&nbsp;
-                                                    <a href="gastos/eliminar_gastos.php" target="_blank" title="Eliminar los datos">
+                                                    </a>
+                                                    <a href="./negocio/tbl_Gastos.php?delK=<?php echo $r->__GET ('id_registro_gastos'); ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
                                                 </td>
@@ -544,8 +545,21 @@ if (isset($varMsj)) {
                 var mensaje = 0;
                 mensaje = "<?php echo $varMsj ?>";
 
-                if (mensaje == "1") {
+                if(mensaje == "1")
+                {
                     successAlert('Éxito', 'Los datos han sido registrados exitosamente!');
+                }
+                if(mensaje == "3")
+                {
+                    successAlert('Éxito', 'Los datos han sido editados exitosamente!');
+                }
+                if(mensaje == "5")
+                {
+                    successAlert('Éxito', 'La moneda ha sido eliminado exitosamente!');
+                }
+                if(mensaje == "2" || mensaje == "4" || mensaje == "6")
+                {
+                    errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
                 }
                 /////////// DATATABLE ///////////
                 $(document).ready(function() {

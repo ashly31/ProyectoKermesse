@@ -4,20 +4,19 @@ include '../entidades/tbl_categoria_gastos.php';
 include '../datos/Dt_categoriaGastos.php';
 
 $dcg = new Dt_categoriaGastos();
-$cg = new Tbl_categoria_gastos();
+$cg = new Tbl_categoria_gastos(); 
 
-//variable de control msj
+//variable de control msj 
 $varIdCG = 0;
 if(isset($varIdCG))
-{
-$varIdCG = $_GET['editCG']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL AC
+{ 
+    $varIdCG = $_GET['editCG']; //RECUPERAMOS EL VALOR DE NUESTRA VARIABLE PARA EDITAR EL USUARIO
 }
 
-//OBTENEMOS LOS DATOS DEL AC PARA SER EDITADO
-$cg = $dcg->getCGByID($varIdCG);
+//OBTENEMOS LOS DATOS DEL USUARIO PARA SER EDITADO
+$cg = $dcg ->getCGByID($varIdCG);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +28,7 @@ $cg = $dcg->getCGByID($varIdCG);
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
 
-    <title>Kermesse - Editar ACD</title>
+    <title>Kermesse - Editar CG</title>
 
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
@@ -216,32 +215,32 @@ $cg = $dcg->getCGByID($varIdCG);
 
             <!-- Page Heading -->
             <h1 class="h3 mb-0 text-gray-800">Categoria Gastos</h1>
-            <p class="mb-4">En este formulario podrá editar CG existentes.
+            <p class="mb-4">En este formulario podrá editar los datos de Categorias gastos existentes.
             </p>
-            <!-- editar ACD -->
+            <!-- Edit rol -->
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                  Editar Categoria Gastos
+                    Editar CG
                 </div>
                 <div class="card-body">
                     <form method="POST" action="../negocio/tbl_categoriagastos.php">
-                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/>
+                        <input type="hidden" value="2" name="txtaccion" id="txtaccion"/> 
 
                         <div class="form-floating mb-3">
-                            <label for="id_categoria_gastos">ID CG</label>
-                              <input class="form-control" id="id_categoria_gastos" name="id_categoria_gastos" type="text" readonly required/> 
-                            <input class="form-control" id="id_categoria_gastos" name="id_categoria_gastos" type="hidden" />
+                            <label for="id_categoria_gastos">ID categoria gastos</label>
+                            <input class="form-control" id="id_categoria_gastos" name="id_categoria_gastos" type="text" readonly required/>
                         </div>
 
+
                         <div class="form-floating mb-3">
-                            <label for="nombre_categoria">nombre_categoria</label>
-                            <input class="form-control" id="nombre_categoria" name="nombre_categoria" type="text" required/>
+                            <label for="nombre_categoria">nombre de categoria</label>
+                            <input class="form-control" id="nombre_categoria" name="nombre_categoria" type="text" title="Ingrese el nombre_categoria" required/>
                         </div>
 
                         <div class="form-floating mb-3">
                             <label for="descripcion">descripcion</label>
-                            <input class="form-control" id="descripcion" name="descripcion" type="text" required/>
+                            <input class="form-control" id="descripcion" name="descripcion" type="text" title="Ingrese la descripcion" required/>
                         </div>
 
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
@@ -251,7 +250,7 @@ $cg = $dcg->getCGByID($varIdCG);
                     </form>
                 </div>
             </div>
-            <!-- end of editar AC -->
+            <!-- end of Edit CG -->
         </div>
         <!-- end begin -->
 
@@ -325,6 +324,7 @@ $cg = $dcg->getCGByID($varIdCG);
         $("#id_categoria_gastos").val("<?php echo $cg->__GET('id_categoria_gastos') ?>");
         $("#nombre_categoria").val("<?php echo $cg->__GET('nombre_categoria') ?>");
         $("#descripcion").val("<?php echo $cg->__GET('descripcion') ?>");
+
     }
 
     $(document).ready(function ()

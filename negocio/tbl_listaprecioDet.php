@@ -24,11 +24,11 @@ if ($_POST)
 
                 $dlpd->insertarLPDet($lpd);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_listaPrecioDet.php?msj=1");
+                header("Location: /ProyectoKermesse/tbl_listaPrecioDet.php?msj=1");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_listaPrecioDet.php?msj=2");
+                header("Location: /ProyectoKermesse/tbl_listaPrecioDet.php?msj=2");
                 die($e->getMessage());
             }
             break;
@@ -37,7 +37,7 @@ if ($_POST)
             try 
             {
                 if($_POST['confpass'] != $_POST['pass']){
-                    header("Location: /Kermesse/listaprecio_det/editar_listaprecioDet.php?msj=5&varEnter={$_POST['idListPrecDet']}");
+                    header("Location: /ProyectoKermesse/listaprecio_det/editar_listaprecioDet.php?msj=5&varEnter={$_POST['idListPrecDet']}");
                     die();
                 }
                 //CONSTRUIMOS EL OBJETO
@@ -52,16 +52,30 @@ if ($_POST)
         
                 $dlpd->editLPDet($lpd);
                 //var_dump($emp);
-                header("Location: /Kermesse/tbl_listaPrecioDet.php?msj=3");
+                header("Location: /ProyectoKermesse/tbl_listaPrecioDet.php?msj=3");
             } 
             catch (Exception $e) 
             {
-                header("Location: /Kermesse/tbl_listaPrecioDet.php?msj=4");
+                header("Location: /ProyectoKermesse/tbl_listaPrecioDet.php?msj=4");
                 die($e->getMessage());
             }
             break;
         
     }
+}
 
+if ($_GET)
+{
+    try
+    {
 
+        $lpd->__SET('id_listaprecio_det', $_GET['delLpd']);
+        $dlpd->deleteLPDet($lpd->__GET('id_listaprecio_det'));
+        header("Location: /ProyectoKermesse/tbl_listaPrecioDet.php?msj=5");
+    }
+    catch(Exception $e)
+    {
+        header("Location: /ProyectoKermesse/tbl_listaPrecioDet.php?msj=6");
+        die($e->getMessage());
+    }
 }

@@ -8,7 +8,7 @@
     <meta name="description" content="Pagina web oficial de registro, administracion y manutencion de los fondos de la Kermes Parroquia Corazon de Jesus Maria de las Palmas">
     <meta name="author" content="ABIMA TEAM">
 
-    <title>Kermesse - Agregar Gastos</title>
+    <title>Kermesse - Agregar Kermesse</title>
 
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Icons kit-->
@@ -26,7 +26,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
             <div class="sidebar-brand-icon">
                 <i class="fa-solid fa-bomb"></i>
             </div>
@@ -59,26 +59,26 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Tablas de registros: </h6>
-                    <a class="collapse-item" href="tbl_arqueoCaja_det.php">Arqueo caja det</a>
-                    <a class="collapse-item" href="tbl_arqueoCaja.php">Arqueo caja</a>
-                    <a class="collapse-item" href="tbl_categoriaGastos.php">Categorías Gastos</a>
-                    <a class="collapse-item" href="tbl_categoriaProducto.php">Categorías Productos</a>
-                    <a class="collapse-item" href="tbl_Comunidad.php">Comunidad</a>
-                    <a class="collapse-item" href="tbl_controlBonos.php">Control Bonos</a>
-                    <a class="collapse-item" href="tbl_Denominacion.php">Denominación</a>
-                    <a class="collapse-item" href="tbl_Gastos.php">Gastos</a>
-                    <a class="collapse-item" href="tbl_ingresoComunidad_det.php">Ingreso Comunidad Det</a>
-                    <a class="collapse-item" href="tbl_ingresoComunidad.php">Ingreso Comunidad</a>
-                    <a class="collapse-item" href="tbl_kermesse.php">Kermesse</a>
-                    <a class="collapse-item" href="tbl_listaPrecio.php">Lista Precio</a>
-                    <a class="collapse-item" href="tbl_listaPrecioDet.php">Lista Precio Det</a>
-                    <a class="collapse-item" href="tbl_Moneda.php">Moneda</a>
-                    <a class="collapse-item" href="tbl_Opciones.php">Opciones</a>
-                    <a class="collapse-item" href="tbl_Parroquia.php">Parroquia</a>
-                    <a class="collapse-item" href="tbl_Productos.php">Productos</a>
-                    <a class="collapse-item" href="tbl_Rol.php">Rol</a>
-                    <a class="collapse-item" href="tbl_Tasacambio.php">Tasa Cambio</a>
-                    <a class="collapse-item" href="tbl_Usuario.php">Usuario</a>
+                    <a class="collapse-item" href="../tbl_arqueoCaja_det.php">Arqueo caja det</a>
+                    <a class="collapse-item" href="../tbl_arqueoCaja.php">Arqueo caja</a>
+                    <a class="collapse-item" href="../tbl_categoriaGastos.php">Categorías Gastos</a>
+                    <a class="collapse-item" href="../tbl_categoriaProducto.php">Categorías Productos</a>
+                    <a class="collapse-item" href="../tbl_Comunidad.php">Comunidad</a>
+                    <a class="collapse-item" href="../tbl_controlBonos.php">Control Bonos</a>
+                    <a class="collapse-item" href="../tbl_Denominacion.php">Denominación</a>
+                    <a class="collapse-item" href="../tbl_Gastos.php">Gastos</a>
+                    <a class="collapse-item" href="../tbl_ingresoComunidad_det.php">Ingreso Comunidad Det</a>
+                    <a class="collapse-item" href="../tbl_ingresoComunidad.php">Ingreso Comunidad</a>
+                    <a class="collapse-item" href="../tbl_kermesse.php">Kermesse</a>
+                    <a class="collapse-item" href="../tbl_listaPrecio.php">Lista Precio</a>
+                    <a class="collapse-item" href="../tbl_listaPrecioDet.php">Lista Precio Det</a>
+                    <a class="collapse-item" href="../tbl_Moneda.php">Moneda</a>
+                    <a class="collapse-item" href="../tbl_Opciones.php">Opciones</a>
+                    <a class="collapse-item" href="../tbl_Parroquia.php">Parroquia</a>
+                    <a class="collapse-item" href="../tbl_Productos.php">Productos</a>
+                    <a class="collapse-item" href="../tbl_Rol.php">Rol</a>
+                    <a class="collapse-item" href="../tbl_Tasacambio.php">Tasa Cambio</a>
+                    <a class="collapse-item" href="../tbl_Usuario.php">Usuario</a>
                 </div>
             </div>
         </li>
@@ -217,11 +217,11 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fInicio">Fecha de Inicio:</label>
-                            <input class="form-control" id="fInicio" name="fInicio" type="date" title="Ingrese la fecha de inicio de la kermesse" required/>
+                            <input class="form-control" id="fInicio" name="fInicio" type="datetime-local" title="Ingrese la fecha de inicio de la kermesse" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fFinal">Fecha de Finalización:</label>
-                            <input class="form-control" id="fFinal" name="fFinal" type="date" title="Ingrese la fecha de finalización de kermesse" required/>
+                            <input class="form-control" id="fFinal" name="fFinal" type="datetime-local" title="Ingrese la fecha de finalización de kermesse" required/>
                         </div>
                         <div class="form-floating mb-3">
                             <label for="descripcion">Descripción:</label>
@@ -233,7 +233,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="fecha_creacion">Fecha Creación:</label>
-                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="date" title="Ingrese la fecha de creación" required/>
+                            <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="datetime-local" title="Ingrese la fecha de creación" required/>
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <input class="btn btn-primary" type="submit" value="Guardar"/>

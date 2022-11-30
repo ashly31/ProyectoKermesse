@@ -3,58 +3,56 @@
 include_once("../entidades/tbl_opciones.php");
 include_once("../datos/Dt_Opciones.php");
 
-$op = new Tbl_opciones();
-$dop = new Dt_Opciones();
+$tbr= new Tbl_opciones();
+$dtr = new Dt_Opciones();
 
-if ($_POST) 
+if ($_POST)
 {
     $varAccion = $_POST['txtaccion'];
 
-    switch ($varAccion) 
+    switch ($varAccion)
     {
         case '1':
-            try 
+            try
             {
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $op->__SET('opcion_descripcion', $_POST['opcion_descripcion']);              
-                $op->__SET('estado', 1);
+                $tbr->__SET('opcion_descripcion', $_POST['opcion_descripcion']);
+                $tbr->__SET('estado', 1);
 
-                $dop->insertarOpciones($op);
+
+                $dtr->insertOpcion($tbr);
                 //var_dump($emp);
                 header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=1");
-            } 
-            catch (Exception $e) 
+            }
+            catch (Exception $ex)
             {
                 header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=2");
-                die($e->getMessage());
+                die($ex->getMessage());
             }
             break;
-        
+
         case '2':
-            try 
+            try
             {
-               
                 //CONSTRUIMOS EL OBJETO
                 //ATRIBUTO ENTIDAD //NAME DEL CONTROL
-                $op->__SET('id_opciones', $_POST['idOp']);
-                $op->__SET('opcion_descripcion', $_POST['opcion_descripcion']);
-                $op->__SET('estado', 2);
-                
-                
-        
-                $dop->editOpciones($op);
-                //var_dump($emp);
+                $tbr->__SET('id_opciones', $_POST['id_opciones']);
+                $tbr->__SET('opcion_descripcion', $_POST['opcion_descripcion']);
+                $tbr->__SET('estado', 2);
+
+                $dtr->editOpcion($tbr);
+
                 header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=3");
-            } 
-            catch (Exception $e) 
+
+            }
+            catch (Exception $e)
             {
-                header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=4");
+                header("Location: /Kermesse/tbl_Opciones.php?msj=4");
                 die($e->getMessage());
             }
+
             break;
-            
-        
     }
 
 }
@@ -64,8 +62,8 @@ if ($_GET)
     try
     {
 
-        $op->__SET('id_opciones', $_GET['delOp']);
-        $dop->deleteOp($op->__GET('id_opciones'));
+        $tbr->__SET('id_opciones', $_GET['delOp']);
+        $dtr->deleteOp($tbr->__GET('id_opciones'));
         header("Location: /ProyectoKermesse/tbl_Opciones.php?msj=5");
     }
     catch(Exception $e)

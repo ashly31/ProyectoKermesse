@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 //importamos las entidades
 include './entidades/tbl_listaprecio_det.php';
 include './datos/Dt_listaPrecioDet.php';
@@ -405,7 +406,7 @@ if (isset($varMsj)) {
                                                 <a href="listaprecio_det/editar_listaprecioDet.php" target="_blank" title="Modificar los datos">
                                                     <i class="fa-solid fa-user-pen"></i>
                                                 </a>&nbsp;
-                                                <a href="listaprecio_det/eliminar_listaprecioDet.php" target="_blank" title="Eliminar los datos">
+                                                <a href="./negocio/tbl_listaprecioDet.php?delLpd=<?php echo $r->__GET('id_listaprecioDet'); ?>" title="Eliminar los datos">
                                                     <i class="fa-solid fa-user-minus"></i> 
                                                 </a>
                                                 </td>

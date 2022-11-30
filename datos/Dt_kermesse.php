@@ -115,9 +115,7 @@ class Dt_kermesse extends Conexion
 						fInicio = ?, 
 						fFinal = ?,
 						descripcion = ?,
-						estado = ?,
-						usuario_creacion = ?,
-						fecha_creacion = ?,
+						estado = 2,
 						usuario_modificacion = ?,
 						fecha_modificacion = ?
 				    WHERE id_kermesse = ?";
@@ -131,9 +129,6 @@ class Dt_kermesse extends Conexion
                         $tk->__GET('fInicio'),
                         $tk->__GET('fFinal'),
                         $tk->__GET('descripcion'),
-                        $tk->__GET('estado'),
-                        $tk->__GET('usuario_creacion'),
-                        $tk->__GET('fecha_creacion'),
                         $tk->__GET('usuario_modificacion'),
                         $tk->__GET('fecha_modificacion'),
                         $tk->__GET('id_kermesse')
