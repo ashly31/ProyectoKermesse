@@ -214,8 +214,8 @@ $tic = $dtic ->getIngresoCByID($varIdIC);
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">Categoria Moneda</h1>
-            <p class="mb-4">En este formulario podrá editar una Moneda.
+            <h1 class="h3 mb-0 text-gray-800">Editar Ingreso Comunidad</h1>
+            <p class="mb-4">En este formulario podrá editar un ingreso comunidad.
             </p>
             <!-- Edit rol -->
             <div class="card mb-4">

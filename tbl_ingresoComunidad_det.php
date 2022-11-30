@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(0);
+
 //importamos las entidades
 include './entidades/tbl_ingreso_comunidad_det.php';
 include './datos/Dt_ingresoComunidad_det.php';

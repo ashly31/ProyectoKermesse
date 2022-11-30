@@ -267,13 +267,6 @@ $tk = $dtic->getIngresoCByID($varIdIC);
                             <label for="fecha_modificacion">Fecha Modificación</label>
                             <input class="form-control" id="fecha_modificacion" name="fecha_modificacion" type="datetime-local" readonly required/>
                         </div>
-                        <div class="form-floating mb-3">
-                            <label for="usuario_eliminacion">Usuario Eliminacion</label>
-                            <input class="form-control" id="usuario_eliminacion" name="usuario_eliminacion" type="text" readonly required/>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="fecha_eliminacion">Fecha Eliminacion</label>
-                            <input class="form-control" id="fecha_eliminacion" name="fecha_eliminacion" type="datetime-local" readonly required/>
                         </div>
                         <div class="d-flex align-items-end justify-content-end mt-4 mb-0 gap-3">
                             <a href="../tbl_ingresoComunidad.php"> <button type="button" class="btn btn-info">Regresar</button> </a>
@@ -386,11 +379,6 @@ $tk = $dtic->getIngresoCByID($varIdIC);
         $("#fecha_modificacion").css("background-color", "#E3E4E5");
         $("#fecha_modificacion").val("<?php echo $tk->__GET('fecha_modificacion') ?>");
 
-        $("#usuario_eliminacion").css("background-color", "#E3E4E5");
-        $("#usuario_eliminacion").val("<?php echo $tk->__GET('usuario_eliminacion') ?>");
-
-        $("#fecha_eliminacion").css("background-color", "#E3E4E5");
-        $("#fecha_eliminacion").val("<?php echo $tk->__GET('fecha_eliminacion') ?>");
 
     }
 

@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(0);
+
 //importamos las entidades
 include './entidades/tbl_gastos.php';
 include './datos/Dt_Gastos.php';
@@ -8,7 +11,7 @@ $g = new Dt_Gastos();
 //variable de control msj
 $varMsj = 0;
 if (isset($varMsj)) {
-    // $varMsj = $_GET['msj'];
+    $varMsj = $_GET['msj'];
 }
 ?>
 

@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 include '../entidades/tbl_denominacion.php';
 include '../datos/Dt_Denominacion.php';
 
