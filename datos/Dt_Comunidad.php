@@ -87,7 +87,7 @@ class Dt_Comunidad extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE dbkermesse.tbl_comunidad SET 
+			$sql = "UPDATE  dbkermesse.tbl_comunidad SET 
 						nombre = ?, 
 						responsable = ?,
 						desc_contribucion = ?,
@@ -117,7 +117,7 @@ class Dt_Comunidad extends Conexion
 		try 
 		{
 			$this->myCon = parent::conectar();
-			$sql = "UPDATE dbkermesse.tbl_comunidad SET
+			$sql = "UPDATE FROM dbkermesse.tbl_comunidad SET
 						estado = 3
 				    WHERE id_comunidad = ?";
 

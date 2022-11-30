@@ -404,16 +404,16 @@ if(isset($varMsj))
                                             
 
                                                 <td>
-                                                    <a href="./rolUsario/visualizar_rolUsuario.php?viewRU=<?php echo $r->__GET('id_rol_usuario');
+                                                    <a href="./rol_Usuario/visualizar_rolUsuario.php?viewRU=<?php echo $r->__GET('id_rol_usuario');
                                                      ?>" title="Visualizar los datos">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>&nbsp;
-                                                    <a href="./rolUsuario/editar_rolUsuario.php?editRU=<?php echo $r->__GET('id_rol_usuario');
+                                                    <a href="./rol_Usuario/editar_rolUsuario.php?editRU=<?php echo $r->__GET('id_rol_usuario');
                                                     ?>" title="Modificar los datos">
                                                          <i class="fa-solid fa-user-pen"></i>
                                                     </a>&nbsp;
                                                     </a>&nbsp;
-                                                    <a href="./negocio/eliminar_rolUsuario.php?delRU=<?php echo $r->__GET ('id_rol_usuario'); 
+                                                    <a href="./negocio/rolUsuario.php?delRU=<?php echo $r->__GET ('id_rol_usuario'); 
                                                         ?>" title="Eliminar los datos">
                                                         <i class="fa-solid fa-user-minus"></i>
                                                     </a>
@@ -539,11 +539,10 @@ if(isset($varMsj))
                 {
                     errorAlert('Error', 'Revise los datos e intente nuevamente!!!');
                 }
-            /////////// DATATABLE ///////////
-            $(document).ready(function() {
+            
 
                 $("#tbl_rolUsuario").DataTable({
-                    "data": mensaje,
+                
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
@@ -640,11 +639,8 @@ if(isset($varMsj))
                     }
                 }).buttons().container().appendTo('#tbl_rolUsuario_wrapper .col-md-6:eq(0)');
 
-            });
+            });//FIN  $(document).ready()
 
-
-
-        }); //FIN  $(document).ready()
     </script>
 
 </body>
